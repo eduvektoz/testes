@@ -16,7 +16,7 @@ Público-alvo: donos e gestores de PME brasileira (clínicas, imobiliárias, esc
 
 ## Antes de começar
 
-Leia `projects/criacao-de-conteudo/memoria-editorial.md` para incorporar feedbacks de performance anteriores nas suas sugestões.
+Leia `projects/criacao-de-conteudo/memoria-editorial.md` para incorporar feedbacks de performance anteriores nas suas sugestões. Se o arquivo estiver vazio, continue normalmente sem mencionar isso.
 
 ## Fluxo (siga sempre nessa ordem)
 
@@ -29,7 +29,7 @@ Dado o tema fornecido, gere **3 opções de ângulo**. Para cada uma:
 - Exemplo de nicho onde aplica melhor (clínica, imobiliária, escola...)
 - Nível de atratividade: Alto / Médio (justifique com base na memoria-editorial.md se houver dados)
 
-**Apresente as 3 opções e aguarde Eduardo escolher antes de continuar.**
+**Apresente as 3 opções e aguarde Eduardo escolher antes de continuar.** Se nenhum ângulo servir, peça mais detalhes sobre o tema e gere 3 novos ângulos.
 
 ### Etapa 2 — Outline
 
@@ -39,7 +39,7 @@ Com o ângulo escolhido, gere o outline:
 - Deve haver pelo menos 1 seção com template/checklist copiável
 - A última seção é sempre o CTA
 
-**Apresente o outline e aguarde aprovação antes de continuar.**
+**Apresente o outline e aguarde aprovação antes de continuar.** Se Eduardo quiser ajustar alguma seção, aplique a mudança específica sem regenerar o outline inteiro.
 
 ### Etapa 3 — Geração completa
 
@@ -47,7 +47,7 @@ Com outline aprovado, gere em sequência:
 
 #### 3a. Página Notion
 
-Formato idêntico ao material de referência (Claude Skills):
+Estrutura obrigatória (nesta ordem):
 - Callout de abertura: hook em 1 linha + tempo de leitura estimado
 - Linha divisória
 - Seção "O problema que este guia resolve" (2-3 parágrafos, linguagem do ICP)
@@ -74,10 +74,14 @@ As 3 variações devem ter hooks diferentes: uma baseada em dor, uma em resultad
 
 ### Etapa 4 — Criação no Notion
 
-Use a ferramenta Notion MCP para criar a página gerada na Etapa 3a como subpágina de "Materiais e Tutoriais".
+**Antes de criar:** apresente o conteúdo gerado na Etapa 3a e aguarde confirmação de Eduardo para prosseguir.
 
-Para encontrar o ID da página pai "Materiais e Tutoriais", use `notion-search` com o termo "Materiais e Tutoriais".
+Use a ferramenta `mcp__claude_ai_Notion__notion-create-pages` para criar a página como subpágina de "Materiais e Tutoriais".
+
+Para encontrar o ID da página pai, use `mcp__claude_ai_Notion__notion-search` com o termo "Materiais e Tutoriais" e selecione o resultado correto.
 
 Se a página pai não existir: interrompa e informe Eduardo que ele precisa criar a página "Materiais e Tutoriais" no Notion antes de continuar.
 
-Após criar: informe a URL da página criada.
+Se a criação falhar por qualquer motivo: informe o erro e apresente o conteúdo da Etapa 3a no terminal para Eduardo copiar manualmente.
+
+Após criar com sucesso: informe a URL da página criada.
