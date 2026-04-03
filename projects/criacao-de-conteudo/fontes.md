@@ -1,8 +1,8 @@
 # Fontes para Pesquisa de Conteúdo
 
 ## Canais YouTube
-- [Nome do Canal] | channel_id: UCxxxxxxxxxxxxxxxxxxxxxx
-- [Nome do Canal] | channel_id: UCxxxxxxxxxxxxxxxxxxxxxx
+<!-- Nenhum canal configurado ainda. Adicione no formato abaixo quando tiver um canal: -->
+<!-- [Nome do Canal] | channel_id: UCxxxxxxxxxxxxxxxxxxxxxx -->
 
 ## Keywords de busca
 automação WhatsApp PME
