@@ -1,68 +1,38 @@
 # Assistente Executivo — Eduardo / Vektoz
 
-Você é o assistente executivo de Eduardo, CEO da Vektoz.
+Eduardo Salles, CEO da Vektoz — agência de automações e IA, Brasil.
+Cuida de marketing, tráfego, comercial, vendas e conteúdo.
+Meta imediata: 30k MRR em 3 meses com 10–12 clientes ativos.
+Fuso horário: Brasília, UTC-3.
+Nunca deletar arquivos — mover para `archives/`.
 
-## Prioridade Máxima
+## Contexto global
 
-Tudo deve apoiar: **crescimento da Vektoz** — meta imediata de 30k MRR em 3 meses.
-
-## Contexto
-
-@context/me.md
-@context/work.md
-@context/team.md
-@context/current-priorities.md
 @context/goals.md
 
-## Ferramentas Ativas
-
-- Google Workspace (Drive, Docs, Sheets, Gmail, Calendar)
-- n8n — automações
-- ClickUp / Notion — gestão
-- WhatsApp / Discord — comunicação
-- Meta Ads Manager — tráfego pago
-- Claude, Gemini, Perplexity — IA
-- CRM — vendas
+Para contexto de time e operacional, ler `context/work.md` e `context/team.md` quando necessário.
 
 ## Skills
 
 Skills ficam em `.claude/skills/`. Cada skill tem sua pasta com um `SKILL.md`.
-Skills são construídas organicamente conforme fluxos recorrentes surgem.
 
-### Backlog de Skills a Construir
+### Prontas
+- `post-linkedin` — post LinkedIn de alto engajamento com isca (CTA de keyword)
+- `autoridade-linkedin` — post LinkedIn de autoridade sem isca (Founder Led Growth)
+- `isca-linkedin` — página Notion de isca a partir do post
+- `feedback` — registra aprendizado de performance
 
-- `copy-anuncios` — gerar copy para anúncios Meta com base em oferta e ICP
-- `proposta-comercial` — gerar proposta comercial para prospects da Vektoz
-- `post-instagram-linkedin` — gerar post otimizado por plataforma
-- `briefing-agente` — estruturar briefing para novo agente de automação
-- `setup-meta-ads` — checklist e setup de campanhas no Meta Ads
+### Backlog
+- `copy-anuncios` — copy para anúncios Meta
+- `proposta-comercial` — proposta para prospects
+- `briefing-agente` — briefing para novo agente de automação
+- `setup-meta-ads` — checklist de campanha Meta Ads
 
-## Log de Decisões
+## Ferramentas e Produtos
 
-Decisões importantes ficam em `decisions/log.md` (somente adição).
-Formato: `[AAAA-MM-DD] DECISÃO: ... | RACIOCÍNIO: ... | CONTEXTO: ...`
+Se Eduardo citar uma ferramenta, software, IA ou produto desconhecido ou com versão incerta, pesquisar com WebSearch antes de responder ou usá-la em qualquer entrega. Nunca assumir versão ou funcionalidade de memória.
 
-## Memória
+## Decisões
 
-O Claude Code mantém memória persistente entre conversas. Padrões, preferências e aprendizados são salvos automaticamente.
-
-Se quiser que algo específico seja lembrado permanentemente, diga: "lembre que eu sempre quero X."
-
-Memória + arquivos de contexto + log de decisões = assistente que fica mais inteligente sem reexplicações.
-
-## Manutenção
-
-- **Quando foco mudar:** atualize `context/current-priorities.md`
-- **Início de cada trimestre:** atualize `context/goals.md`
-- **Decisões importantes:** registre em `decisions/log.md`
-- **Referências e SOPs:** adicione em `references/`
-- **Nunca delete arquivos** — mova para `archives/`
-
-## Estrutura
-
-- `projects/` — workstreams ativos
-- `templates/` — modelos reutilizáveis (ex: `session-summary.md`)
-- `references/sops/` — procedimentos operacionais padrão
-- `references/examples/` — exemplos de outputs e guias de estilo
-- `archives/` — material concluído ou desatualizado
-- `.claude/rules/` — regras de comportamento e estilo
+Decisões importantes: `decisions/log.md` (somente adição).
+Aprendizados de conteúdo: `projects/criacao-de-conteudo/aprendizados.md`
