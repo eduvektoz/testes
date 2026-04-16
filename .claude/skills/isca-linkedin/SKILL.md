@@ -49,20 +49,20 @@ Esta skill foi calibrada com base em análise profunda de 5 páginas validadas e
 
 ### Padrão de CTA final (obrigatório)
 
-```
-## Quer implementar [X] por completo em sua operação?
+O CTA não é genérico. Deve fazer a ponte explícita entre o tema da isca e o que a Vektoz implementa. Estrutura obrigatória:
 
-Eu sou Eduardo Salles, fundador da Vektoz e ajudo empresários a implementarem IA de
-forma estratégica e assertiva em suas operações.
+1. "Você aprendeu a fazer [X específico do tema da isca]"
+2. "A mesma lógica se aplica a [outros processos operacionais do ICP]"
+3. "Isso é o que a Vektoz implementa"
+4. Convite para reunião + link cal.com/vektoz-ed/bate-papo
 
-Todo mês, aceito um pequeno grupo de empresários que querem potencializar sua companhia,
-reduzir custos e aumentar o ROI.
-
-Se tiver interesse: agende uma reunião de 30 minutos comigo →
-
-[Marcador — cole o link e escolha "Criar marcador"]
-https://cal.com/vektoz-ed/bate-papo
-```
+Exemplo para isca sobre atendimento WhatsApp:
+> Você aprendeu a montar um fluxo de atendimento que responde em segundos e nunca perde um lead.
+> A mesma lógica se aplica a agendamentos, cobranças e follow-up de vendas.
+> É exatamente isso que a Vektoz implementa nas operações dos nossos clientes.
+>
+> Se quiser aplicar isso no seu negócio: agende 30 minutos comigo →
+> https://cal.com/vektoz-ed/bate-papo
 
 > **Nota pós-criação:** O MCP não suporta criação de marcadores via API. Após criar a página no Notion, adicione manualmente: cole `https://cal.com/vektoz-ed/bate-papo` no final da página → selecione **"Criar marcador"**. Aparece o card com nome, descrição e foto do Eduardo.
 
@@ -158,6 +158,16 @@ Antes de entregar o conteúdo final para aprovação: faça uma autoavaliação 
 
 ---
 
+## Input obrigatório
+
+Antes de iniciar qualquer etapa, verificar se Eduardo forneceu:
+1. **Tema da isca** — o assunto central do guia
+2. **Promessa do post** — o que o post prometeu entregar ao lead
+
+Se algum dos dois estiver faltando, solicitar antes de continuar. Não presumir nem inventar.
+
+---
+
 ## Antes de começar
 
 Leia `projects/criacao-de-conteudo/memoria-editorial.md` para incorporar feedbacks de performance anteriores. Se estiver vazio, continue normalmente sem mencionar isso.
@@ -208,5 +218,7 @@ Se a página pai não existir: interrompa e informe Eduardo que ele precisa cria
 Se a criação falhar: informe o erro e apresente o conteúdo da Etapa 3 no terminal para Eduardo copiar manualmente.
 
 Após criar com sucesso: informe a URL da página criada.
+
+> **Atenção formatação:** O MCP cria a página com texto estruturado, mas callouts coloridos, tabelas e checklists podem não ser preservados automaticamente. Após criar, revisar no Notion e ajustar a formatação visual conforme o padrão de excelência definido acima.
 
 **Nota pós-criação:** Adicione o link do calendário manualmente no final da página — cole `https://cal.com/vektoz-ed/bate-papo` e escolha **"Criar marcador"**.
