@@ -1,1 +1,25 @@
-{}
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ':*)",
+      "Bash(node -e ':*)",
+      "Bash(powershell -Command \"[Convert]::ToBase64String\\([IO.File]::ReadAllBytes\\('C:\\\\Users\\\\eduar\\\\OneDrive\\\\Área de Trabalho\\\\Vektoz\\\\Identidade Visual\\\\Logo.png'\\)\\)\")",
+      "Bash(powershell -Command ':*)",
+      "Read(//c/Users/eduar/AppData/Local/Temp/**)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:/Users/eduar/OneDrive/Área de Trabalho/make-banners.ps1\")",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\eduar\\\\OneDrive' -Recurse -Filter 'Logo.png' | Select-Object -First 3 FullName\")",
+      "Read(//c/Users/eduar/OneDrive/**)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:/Users/eduar/OneDrive/READET~1/make-banners.ps1\")",
+      "Bash(wc -l \"c:/Users/eduar/OneDrive/Área de Trabalho/IA/projects/criacao-de-conteudo\"/*.md)",
+      "Bash(rtk git:*)",
+      "Read(//c/Users/eduar/**)",
+      "mcp__claude_ai_Notion__notion-search",
+      "WebFetch(domain:youtu.be)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\eduar\\OneDrive\\Área de Trabalho",
+      "c:\\Users\\eduar\\OneDrive\\Área de Trabalho\\IA\\.claude\\skills"
+    ]
+  },
+  "autoDreamEnabled": true
+}

@@ -5,3 +5,5 @@ Atualizado com /feedback. Lido por /novo-conteudo e /briefing.
 Formato: [DATA] observação → resultado
 
 ---
+
+[2026-04-03] conteúdo com checklist copiável no final aumenta engajamento — o checklist das 10 perguntas do WhatsApp foi o elemento mais prático do post sobre clínicas
