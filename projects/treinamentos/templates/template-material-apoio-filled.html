@@ -695,37 +695,237 @@ td strong { color: var(--text-pri); }
        ════════════════════════════════════════════════════ -->
 
   <!-- ATO 2 / BLOCO 1 -->
-  <div class="section" data-section="d2-b1" data-day="2" data-block="1">
-    <div class="section-kicker">Ato 2 · Bloco 1</div>
-    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
-    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
-    <span class="badge badge-time">XX minutos</span>
-    <hr>
+<!-- ATO 2 / BLOCO 1 -->
+<div class="section" data-section="d2-b1" data-day="2" data-block="1">
+  <div class="section-kicker">Ato 2 · Bloco 1</div>
+  <div class="section-title">Como a IA Funciona.</div>
+  <div class="section-subtitle">Sem mistério: LLMs, tokens e probabilidade</div>
+  <span class="badge badge-time">20 minutos</span>
+  <hr>
 
-    <p>[SUBSTITUIR: conteúdo]</p>
+  <h2>O que são LLMs</h2>
+  <p><strong>LLMs (Large Language Models)</strong> são modelos de linguagem treinados em bilhões de textos para prever a próxima palavra em uma sequência.</p>
+  <p>Isso os permite escrever, resumir, responder perguntas e raciocinar em linguagem natural. O modelo não "pensa" como humano — ele calcula qual a próxima palavra mais provável, dado tudo o que foi escrito e as instruções recebidas.</p>
+
+  <div class="callout callout-warn">
+    <strong>Não existe mágica — existe estatística muito bem treinada</strong>
+    O ChatGPT não entende o mundo como você entende. Ele prevê padrões em texto. Isso é incrivelmente poderoso — e tem limitações claras. Saber disso evita frustrações.
   </div>
 
-  <!-- ATO 2 / BLOCO 2 -->
-  <div class="section" data-section="d2-b2" data-day="2" data-block="2">
-    <div class="section-kicker">Ato 2 · Bloco 2</div>
-    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
-    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
-    <span class="badge badge-time">XX minutos</span>
-    <hr>
+  <h2>O que acontece quando você digita algo</h2>
+  <ol class="stepper">
+    <li class="step">
+      <h4>Você escreve o prompt</h4>
+      <p>Seu texto é enviado ao modelo. A qualidade da instrução determina a qualidade da resposta.</p>
+    </li>
+    <li class="step">
+      <h4>O texto é convertido em tokens</h4>
+      <p><strong>Token</strong> = fragmento de texto (pedaço de palavra, símbolo). A palavra "treinamento" pode virar 3 tokens. O modelo processa tokens, não palavras.</p>
+    </li>
+    <li class="step">
+      <h4>O modelo analisa o contexto completo</h4>
+      <p>Tudo que você escreveu — e o histórico da conversa — entra na <strong>janela de contexto</strong>. É a "memória de curto prazo" do modelo.</p>
+    </li>
+    <li class="step">
+      <h4>A resposta é gerada token a token</h4>
+      <p>O modelo escolhe o próximo token mais provável, repete isso até completar a resposta, e você vê o texto sendo "digitado".</p>
+    </li>
+  </ol>
 
-    <p>[SUBSTITUIR: conteúdo]</p>
+  <h2>Dois conceitos que você vai ouvir</h2>
+  <div class="card">
+    <h3>Janela de contexto</h3>
+    <p>É quanto texto o modelo consegue considerar de uma vez — o tamanho da sua "memória". Modelos modernos (Gemini 2.5 Pro, GPT-4o) têm janelas de 128k a 1M tokens. Para referência: 1M tokens ≈ 750 mil palavras.</p>
+  </div>
+  <div class="card">
+    <h3>Temperatura</h3>
+    <p>Controla o nível de "criatividade" da resposta. <strong>Temperatura baixa</strong> = respostas mais previsíveis e precisas. <strong>Alta</strong> = mais criativa e variada. Para tarefas de negócio, baixa é geralmente melhor.</p>
+  </div>
+</div>
+
+<!-- ATO 2 / BLOCO 2 -->
+<div class="section" data-section="d2-b2" data-day="2" data-block="2">
+  <div class="section-kicker">Ato 2 · Bloco 2</div>
+  <div class="section-title">Glossário.</div>
+  <div class="section-subtitle">Os 12 termos que você precisa dominar</div>
+  <span class="badge badge-time">15 minutos</span>
+  <hr>
+
+  <p>Esses termos aparecem em artigos, ferramentas e conversas sobre IA. Não precisa decorar — use como referência.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Termo</th>
+          <th>Explicação simples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>IA Generativa</strong></td>
+          <td>Modelos que criam texto, imagem, áudio ou código a partir de instruções</td>
+        </tr>
+        <tr>
+          <td><strong>LLM</strong></td>
+          <td>Large Language Model — modelo de linguagem que conversa, escreve e raciocina</td>
+        </tr>
+        <tr>
+          <td><strong>Token</strong></td>
+          <td>Fragmento de texto (pedaço de palavra, símbolo) — unidade básica que o modelo processa</td>
+        </tr>
+        <tr>
+          <td><strong>Janela de contexto</strong></td>
+          <td>"Memória de curto prazo" da IA — quantos tokens ela considera por vez</td>
+        </tr>
+        <tr>
+          <td><strong>Temperatura</strong></td>
+          <td>Ajuste de criatividade: baixa = mais previsível; alta = mais criativa</td>
+        </tr>
+        <tr>
+          <td><strong>Prompt</strong></td>
+          <td>Texto de instrução que você envia para a IA (pergunta + contexto + regras)</td>
+        </tr>
+        <tr>
+          <td><strong>Prompt engineering</strong></td>
+          <td>Técnica de estruturar prompts para obter respostas melhores</td>
+        </tr>
+        <tr>
+          <td><strong>Persona</strong></td>
+          <td>Papel/identidade que você atribui à IA ("você é um especialista em...")</td>
+        </tr>
+        <tr>
+          <td><strong>Embeddings</strong></td>
+          <td>Representação numérica de textos usada para buscas semânticas e RAG</td>
+        </tr>
+        <tr>
+          <td><strong>RAG</strong></td>
+          <td>Retrieval-Augmented Generation: IA busca em bases externas antes de responder</td>
+        </tr>
+        <tr>
+          <td><strong>Alucinação</strong></td>
+          <td>Quando a IA inventa fatos com confiança — sem base na realidade</td>
+        </tr>
+        <tr>
+          <td><strong>Agente</strong></td>
+          <td>Sistema que combina LLM + ferramentas para atuar de forma semi-autônoma</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <!-- ATO 2 / BLOCO 3 -->
-  <div class="section" data-section="d2-b3" data-day="2" data-block="3">
-    <div class="section-kicker">Ato 2 · Bloco 3</div>
-    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
-    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
-    <span class="badge badge-time">XX minutos</span>
-    <hr>
+  <details class="toggle">
+    <summary>Os modelos principais em 2026 e onde cada um se destaca</summary>
+    <div class="toggle-content">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Modelo</th><th>Empresa</th><th>Ponto forte</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>GPT-4o</strong></td><td>OpenAI</td><td>Multimodal (texto, imagem, áudio), mais usado no Brasil</td></tr>
+            <tr><td><strong>o3</strong></td><td>OpenAI</td><td>Raciocínio complexo, matemática, código</td></tr>
+            <tr><td><strong>GPT-5</strong></td><td>OpenAI</td><td>Modelo mais capaz da OpenAI (2025+)</td></tr>
+            <tr><td><strong>Gemini 2.5 Pro</strong></td><td>Google</td><td>Contexto de 1M tokens, integrado ao Google Workspace</td></tr>
+            <tr><td><strong>Claude Sonnet 4.6</strong></td><td>Anthropic</td><td>Textos longos, análise, raciocínio estruturado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px; color:var(--text-ter);">Para uso cotidiano em empresas brasileiras, <strong>ChatGPT (GPT-4o)</strong> e <strong>Gemini</strong> são os mais acessíveis. Claude se destaca para análise de documentos longos.</p>
+    </div>
+  </details>
+</div>
 
-    <p>[SUBSTITUIR: conteúdo]</p>
+<!-- ATO 2 / BLOCO 3 -->
+<div class="section" data-section="d2-b3" data-day="2" data-block="3">
+  <div class="section-kicker">Ato 2 · Bloco 3</div>
+  <div class="section-title">Níveis de Uso.</div>
+  <div class="section-subtitle">Do Google turbinado à automação total</div>
+  <span class="badge badge-time">25 minutos</span>
+  <hr>
+
+  <h2>Os 4 níveis de uso da IA</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Nível</th>
+          <th>Nome</th>
+          <th>Como é</th>
+          <th>Exemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-outline">1</span></td>
+          <td><strong>Google turbinado</strong></td>
+          <td>Perguntas pontuais, sem contexto</td>
+          <td>Pedir definição, traduzir texto, resumir artigo</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-outline">2</span></td>
+          <td><strong>Analista assistido</strong></td>
+          <td>Contexto curto + análise ou criação</td>
+          <td>Resumir reunião, revisar proposta, criar e-mail de cobrança</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-outline">3</span></td>
+          <td><strong>Copiloto de processo</strong></td>
+          <td>Contexto rico + co-criação</td>
+          <td>Criar playbook de atendimento, política interna, fluxo de processo</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-outline">4</span></td>
+          <td><strong>Orquestração com N8N</strong></td>
+          <td>IA integrada a sistemas, roda sozinha</td>
+          <td>Lead chega → IA qualifica → CRM atualiza automaticamente</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+  <div class="callout callout-tip">
+    <strong>Onde você provavelmente está agora</strong>
+    A maioria das pessoas está no Nível 1. Este treinamento vai te levar ao Nível 2–3. O Nível 4 é o próximo passo — veremos no Ato 5.
+  </div>
+
+  <hr>
+  <h2>Mão na Massa #1 — Primeiro Prompt</h2>
+
+  <div class="callout callout-exercise">
+    <strong>Exercício — 10 minutos</strong>
+    Abra o ChatGPT (chat.openai.com) ou Gemini (gemini.google.com) agora. Vamos fazer o seu primeiro prompt de trabalho real.
+  </div>
+
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)">
+      <span class="checklist-box">✓</span>
+      <span class="checklist-text">Abra o ChatGPT ou Gemini no seu computador</span>
+    </li>
+    <li onclick="toggleCheck(this)">
+      <span class="checklist-box">✓</span>
+      <span class="checklist-text">Pense em uma tarefa repetitiva que você faz toda semana no trabalho</span>
+    </li>
+    <li onclick="toggleCheck(this)">
+      <span class="checklist-box">✓</span>
+      <span class="checklist-text">Peça para a IA fazer essa tarefa — da forma como você pediu naturalmente</span>
+    </li>
+    <li onclick="toggleCheck(this)">
+      <span class="checklist-box">✓</span>
+      <span class="checklist-text">Veja o resultado. Está bom? Está ruim? Anote o que faltou.</span>
+    </li>
+    <li onclick="toggleCheck(this)">
+      <span class="checklist-box">✓</span>
+      <span class="checklist-text">Guarde este prompt — vamos reescrever ele no Ato 3 usando o framework PACEF</span>
+    </li>
+  </ul>
+
+  <div class="callout callout-tip">
+    <strong>A pergunta certa para avaliar o resultado</strong>
+    Se um estagiário me entregasse isso, eu aceitaria? Se a resposta for não — vamos aprender a pedir melhor no próximo ato.
+  </div>
+</div>
 
 </main>
 
