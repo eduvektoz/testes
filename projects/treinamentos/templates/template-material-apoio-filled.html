@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--
+  ============================================================
+  TEMPLATE: MATERIAL DE APOIO — TREINAMENTO 1 DIA
+  ============================================================
+  Como usar:
+  1. Busque por [SUBSTITUIR] e preencha cada campo
+  2. Adicione/remova blocos no <main> e espelhe na sidebar + JS
+  3. Estrutura de 5 Atos com N blocos cada
+  4. Para mais atos: adicione data-day="6", botão no header,
+     grupo na sidebar e entrada em DAY_SECTIONS no JS
+
+  COMPONENTES DISPONÍVEIS (exemplos no Ato 1 / Bloco 1):
+  - .card .card-accent     → card com borda laranja
+  - .callout .callout-tip  → caixa azul dica
+  - .callout .callout-warn → caixa laranja aviso
+  - .callout .callout-exercise → caixa verde exercício
+  - .table-wrap > table    → tabela com scroll horizontal
+  - .code-block            → bloco de código escuro com copiar
+  - .prompt-block          → bloco de prompt com borda laranja
+  - .stepper > .step       → lista com numeração circular
+  - .checklist             → lista com checkboxes interativos
+  - details.toggle         → accordion expansível
+  - <hr>                   → divisor laranja
+  - .badge                 → pílula colorida
+  ============================================================
+-->
+
+<title>Implementação de IA para Empresas — Material de Apoio</title>
+<meta name="description" content="Material de apoio do treinamento de IA generativa para empresas — Vektoz">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --bg:          #E8E4DC;
+  --bg-alt:      #F5F2ED;
+  --card:        #D8D4CC;
+  --accent:      #FF4D00;
+  --accent-hover:#E64500;
+  --text-pri:    #1A1A1A;
+  --text-sec:    rgba(0,0,0,0.65);
+  --text-ter:    rgba(0,0,0,0.50);
+  --text-ghost:  rgba(0,0,0,0.30);
+  --border:      rgba(0,0,0,0.10);
+  --border-strong:rgba(0,0,0,0.20);
+  --font:        'Inter', sans-serif;
+  --radius:      12px;
+  --radius-sm:   8px;
+  --radius-pill: 100px;
+  --safe:        clamp(16px, 5vw, 40px);
+}
+
+/* ── RESET ───────────────────────────────────────────────── */
+*, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+html  { font-size: 16px; scroll-behavior: smooth; text-size-adjust: 100%; }
+body  { font-family: var(--font); background: var(--bg); color: var(--text-pri); line-height: 1.6; min-height: 100dvh; overflow-x: hidden; }
+img   { max-width: 100%; display: block; }
+a     { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 var(--safe); }
+.header-inner { max-width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+.header-brand { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-ter); }
+.header-brand span { color: var(--accent); }
+.header-breadcrumb { display: none; font-size: 12px; font-weight: 600; color: var(--text-ter); letter-spacing: 0.5px; }
+.header-day-toggle { display: flex; gap: 2px; background: var(--card); border-radius: var(--radius-pill); padding: 3px; }
+.header-day-btn { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: transparent; color: var(--text-ter); padding: 6px 14px; border-radius: var(--radius-pill); cursor: pointer; transition: 0.2s; }
+.header-day-btn.active { background: var(--text-pri); color: var(--bg); }
+.header-day-btn[data-day="home"].active { background: var(--accent); color: #fff; }
+
+/* ── PROGRESS BAR ────────────────────────────────────────── */
+.progress-bar { position: sticky; top: 56px; z-index: 99; background: var(--bg); padding: 0 var(--safe); border-bottom: 1px solid var(--border); }
+.progress-inner { max-width: 100%; margin: 0 auto; display: flex; align-items: center; gap: 8px; height: 44px; }
+.progress-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-ghost); white-space: nowrap; }
+.progress-track { flex: 1; height: 4px; background: var(--card); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s; width: 0%; }
+.progress-steps { display: flex; gap: 4px; }
+.progress-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--card); border: 2px solid var(--card); transition: 0.2s; cursor: pointer; }
+.progress-dot.done { background: var(--accent); border-color: var(--accent); }
+.progress-dot.current { background: transparent; border-color: var(--accent); }
+
+/* ── MAIN ────────────────────────────────────────────────── */
+.main { max-width: 100%; margin: 0 auto; padding: 32px var(--safe) 120px; min-height: calc(100dvh - 100px); }
+.section { display: none; animation: fadeIn 0.3s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── SECTION HEADER ──────────────────────────────────────── */
+.section-kicker   { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.section-title    { font-size: clamp(32px, 7vw, 48px); font-weight: 900; line-height: 1; letter-spacing: -1px; margin-bottom: 8px; }
+.section-subtitle { font-size: clamp(16px, 4vw, 22px); font-weight: 700; line-height: 1.1; color: var(--text-sec); text-transform: uppercase; margin-bottom: 24px; }
+
+/* ── TYPOGRAPHY ──────────────────────────────────────────── */
+h2 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-top: 40px; margin-bottom: 12px; }
+h3 { font-size: 17px; font-weight: 700; line-height: 1.3; margin-top: 28px; margin-bottom: 8px; }
+p  { margin-bottom: 16px; color: var(--text-sec); font-size: 15px; line-height: 1.65; }
+ul, ol { margin-bottom: 16px; padding-left: 20px; }
+li { margin-bottom: 8px; color: var(--text-sec); font-size: 15px; line-height: 1.55; }
+li strong { color: var(--text-pri); }
+hr { border: none; height: 3px; background: var(--accent); width: 40px; margin: 32px 0; border-radius: 2px; }
+code { font-family: "SF Mono","Fira Code",monospace; font-size: 0.88em; background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; }
+.code-block code, .prompt-block code { background: none; padding: 0; border-radius: 0; }
+
+/* ── ACCORDION ───────────────────────────────────────────── */
+details.toggle { background: var(--card); border-radius: var(--radius); margin-bottom: 20px; overflow: hidden; }
+details.toggle summary { padding: 16px 20px; font-weight: 700; font-size: 15px; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; color: var(--text-pri); }
+details.toggle summary::-webkit-details-marker { display: none; }
+details.toggle summary::before { content: "▸"; font-size: 14px; color: var(--accent); transition: transform 0.2s; }
+details.toggle[open] summary::before { transform: rotate(90deg); }
+details.toggle .toggle-content { padding: 0 20px 20px; }
+
+/* ── CARD ────────────────────────────────────────────────── */
+.card { background: var(--card); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+.card h3, .card h4 { margin-top: 0; }
+.card-accent { background: var(--bg-alt); border-left: 4px solid var(--accent); }
+
+/* ── CALLOUT ─────────────────────────────────────────────── */
+.callout { border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 14px; line-height: 1.55; }
+.callout-tip  { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2); }
+.callout-warn { background: rgba(255,77,0,0.08);  border: 1px solid rgba(255,77,0,0.2); }
+.callout-exercise { background: rgba(0,255,136,0.08); border: 1px solid rgba(0,255,136,0.2); }
+.callout > strong:first-child { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+/* ── CODE BLOCK ──────────────────────────────────────────── */
+.code-block { position: relative; background: #1a1a1a; color: #E8E4DC; border-radius: var(--radius); padding: 36px 20px 20px; margin-bottom: 20px; font-family: "SF Mono","Fira Code",monospace; font-size: 13px; line-height: 1.6; overflow-x: auto; }
+.code-block .code-text { display: block; white-space: pre-wrap; word-break: break-word; }
+.code-block-label { position: absolute; top: 8px; left: 16px; font-family: var(--font); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+.code-block-copy { position: absolute; top: 8px; right: 8px; font-family: var(--font); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; transition: 0.2s; }
+.code-block-copy:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── PROMPT BLOCK ────────────────────────────────────────── */
+.prompt-block { background: var(--bg-alt); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 36px 20px 20px; margin-bottom: 20px; position: relative; }
+.prompt-block p { color: var(--text-pri); font-size: 14px; font-style: italic; margin-bottom: 0; }
+.prompt-block .code-block-copy { background: rgba(0,0,0,0.05); color: var(--text-ter); border-color: var(--border); }
+.prompt-block .code-block-copy:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── STEPPER ─────────────────────────────────────────────── */
+.stepper { list-style: none; padding: 0; margin: 0 0 20px; counter-reset: step-counter; }
+.stepper .step { position: relative; padding-left: 48px; padding-bottom: 32px; }
+.stepper .step:last-child { padding-bottom: 0; }
+.stepper .step::before { content: ""; position: absolute; top: 32px; bottom: 0; left: 15px; width: 2px; background: var(--border-strong); }
+.stepper .step:last-child::before { display: none; }
+.stepper .step::after { counter-increment: step-counter; content: counter(step-counter); position: absolute; top: 0; left: 0; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.stepper .step h4 { margin: 0 0 6px; font-size: 15px; font-weight: 700; padding-top: 4px; }
+.stepper .step p  { margin: 0 0 8px; color: var(--text-sec); font-size: 14px; }
+.stepper .step .code-block { margin: 10px 0 0; }
+
+/* ── CHECKLIST ───────────────────────────────────────────── */
+.checklist { list-style: none; padding: 0; margin-bottom: 20px; }
+.checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; }
+.checklist li:last-child { border-bottom: none; }
+.checklist-box { width: 22px; height: 22px; min-width: 22px; border: 2px solid var(--border-strong); border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: 0.2s; margin-top: 1px; font-size: 12px; color: transparent; }
+.checklist li.checked .checklist-box { background: var(--accent); border-color: var(--accent); color: #fff; }
+.checklist li.checked .checklist-text { text-decoration: line-through; color: var(--text-ghost); }
+.checklist-text { font-size: 15px; line-height: 1.5; color: var(--text-sec); transition: 0.2s; }
+
+/* ── TABLE ───────────────────────────────────────────────── */
+.table-wrap { overflow-x: auto; margin-bottom: 20px; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { background: var(--card); font-weight: 700; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-ter); text-align: left; padding: 10px 16px; }
+td { padding: 12px 16px; border-top: 1px solid var(--border); color: var(--text-sec); vertical-align: top; }
+td strong { color: var(--text-pri); }
+
+/* ── BADGE ───────────────────────────────────────────────── */
+.badge         { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--accent); color: #fff; }
+.badge-outline { background: transparent; border: 1px solid var(--border-strong); color: var(--text-ter); }
+.badge-time    { background: rgba(0,0,0,0.06); color: var(--text-ter); font-size: 10px; padding: 4px 10px; }
+
+/* ── FOOTER NAV ──────────────────────────────────────────── */
+.footer-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--bg); border-top: 1px solid var(--border); padding: 12px var(--safe); }
+.footer-nav-inner { max-width: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.nav-btn { font-family: var(--font); font-size: 13px; font-weight: 700; border: none; border-radius: var(--radius-sm); padding: 12px 24px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
+.nav-btn-prev { background: var(--card); color: var(--text-sec); }
+.nav-btn-prev:hover { background: var(--border-strong); }
+.nav-btn-next { background: var(--accent); color: #fff; margin-left: auto; }
+.nav-btn-next:hover { background: var(--accent-hover); }
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.nav-current { font-size: 11px; font-weight: 600; color: var(--text-ghost); letter-spacing: 1px; }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero { text-align: center; padding: 48px 0 32px; }
+.hero-badge { margin-bottom: 24px; }
+.hero-title { font-size: clamp(36px, 9vw, 56px); font-weight: 900; line-height: 0.95; letter-spacing: -2px; margin-bottom: 12px; }
+.hero-title span { color: var(--accent); }
+.hero-subtitle { font-size: clamp(14px, 3.5vw, 18px); color: var(--text-sec); font-weight: 500; max-width: 480px; margin: 0 auto 32px; line-height: 1.5; }
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; font-family: var(--font); font-size: 15px; font-weight: 700; padding: 14px 32px; border-radius: var(--radius-pill); border: none; cursor: pointer; transition: 0.2s; }
+.hero-cta:hover { background: var(--accent-hover); transform: translateY(-1px); text-decoration: none; }
+
+/* ── DAY CARDS ───────────────────────────────────────────── */
+.day-cards { display: grid; gap: 16px; margin-top: 40px; }
+.day-card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: left; cursor: pointer; transition: 0.2s; }
+.day-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.day-card-num   { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.day-card-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.day-card-desc  { font-size: 14px; color: var(--text-sec); line-height: 1.5; margin-bottom: 12px; }
+.day-card-meta  { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ── SIDEBAR ─────────────────────────────────────────────── */
+.sidebar { display: none; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (min-width: 900px) {
+  :root { --sidebar-w: 280px; }
+  .sidebar { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100dvh; background: var(--bg-alt); border-right: 1px solid var(--border); overflow: hidden auto; z-index: 200; padding: 0; }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+  .sidebar-brand { position: sticky; top: 0; z-index: 1; background: var(--bg-alt); padding: 20px 24px 16px; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-ter); border-bottom: 1px solid var(--border); }
+  .sidebar-brand span { color: var(--accent); }
+  .sidebar-group { padding: 16px 0 4px; }
+  .sidebar-group-title { padding: 0 24px 8px; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-ghost); }
+  .sidebar-item { display: flex; align-items: center; gap: 10px; padding: 9px 24px; font-size: 13px; font-weight: 500; color: var(--text-sec); cursor: pointer; transition: 0.15s; border-left: 3px solid transparent; }
+  .sidebar-item:hover { background: var(--card); color: var(--text-pri); }
+  .sidebar-item.active { background: rgba(255,77,0,0.06); color: var(--accent); font-weight: 700; border-left-color: var(--accent); }
+  .sidebar-item-num { font-size: 10px; font-weight: 700; color: var(--text-ghost); min-width: 20px; }
+  .sidebar-item.active .sidebar-item-num { color: var(--accent); }
+  .sidebar-item-badge { margin-left: auto; font-size: 9px; font-weight: 600; color: var(--text-ghost); letter-spacing: 0.5px; }
+  .header { left: var(--sidebar-w); right: 0; padding: 0 clamp(32px, 4vw, 64px); }
+  .header-inner { max-width: none; height: 44px; }
+  .header-brand { display: none; }
+  .header-breadcrumb { display: block; }
+  .progress-bar { left: var(--sidebar-w); right: 0; top: 44px; border-bottom: none; padding: 0 clamp(32px, 4vw, 64px) 8px; }
+  .progress-inner { max-width: none; height: 28px; }
+  .progress-track { height: 3px; }
+  .main { margin-left: var(--sidebar-w); max-width: none; padding: 40px clamp(32px, 4vw, 64px) 100px; }
+  .footer-nav { left: var(--sidebar-w); right: 0; padding: 10px clamp(32px, 4vw, 64px); }
+  .footer-nav-inner { max-width: none; }
+  .hero { padding: 56px 0 40px; }
+  .hero-title { font-size: 56px; }
+  .day-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1200px) {
+  :root { --sidebar-w: 300px; }
+  .sidebar-item { padding: 10px 28px; }
+  .sidebar-group-title { padding: 0 28px 8px; }
+  .sidebar-brand { padding: 24px 28px 18px; }
+}
+@media (min-width: 481px) and (max-width: 899px) {
+  .day-cards { grid-template-columns: 1fr 1fr; }
+  .hero-title { font-size: 48px; }
+}
+@media (max-width: 480px) {
+  .header-inner { height: 48px; }
+  .progress-inner { height: 36px; }
+  .progress-label { display: none; }
+  .nav-btn { padding: 10px 16px; font-size: 12px; }
+  .footer-nav { padding: 8px var(--safe); }
+  .main { padding-bottom: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     SIDEBAR (desktop only)
+     Espelhe aqui todos os data-target que existem no <main>
+     ════════════════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">[SUBSTITUIR: Nome] <span>[SUBSTITUIR: Destaque]</span></div>
+
+  <div class="sidebar-group">
+    <div class="sidebar-item" data-target="home">
+      <span class="sidebar-item-num">●</span>
+      Início
+    </div>
+  </div>
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Ato 1 — [SUBSTITUIR: Título do Ato 1]</div>
+    <div class="sidebar-item" data-target="d1-b1">
+      <span class="sidebar-item-num">01</span>
+      [SUBSTITUIR: Título Bloco 1]
+      <span class="sidebar-item-badge">XX min</span>
+    </div>
+    <div class="sidebar-item" data-target="d1-b2">
+      <span class="sidebar-item-num">02</span>
+      [SUBSTITUIR: Título Bloco 2]
+      <span class="sidebar-item-badge">XX min</span>
+    </div>
+    <div class="sidebar-item" data-target="d1-b3">
+      <span class="sidebar-item-num">03</span>
+      [SUBSTITUIR: Título Bloco 3]
+      <span class="sidebar-item-badge">XX min</span>
+    </div>
+    <!-- Adicione mais sidebar-item aqui se necessário -->
+  </div>
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Ato 2 — [SUBSTITUIR: Título do Ato 2]</div>
+    <div class="sidebar-item" data-target="d2-b1">
+      <span class="sidebar-item-num">01</span>
+      [SUBSTITUIR: Título Bloco 1]
+      <span class="sidebar-item-badge">XX min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b2">
+      <span class="sidebar-item-num">02</span>
+      [SUBSTITUIR: Título Bloco 2]
+      <span class="sidebar-item-badge">XX min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b3">
+      <span class="sidebar-item-num">03</span>
+      [SUBSTITUIR: Título Bloco 3]
+      <span class="sidebar-item-badge">XX min</span>
+    </div>
+    <!-- Adicione mais sidebar-item aqui se necessário -->
+  </div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-brand">[SUBSTITUIR: Nome] <span>[SUBSTITUIR: Destaque]</span></div>
+    <div class="header-breadcrumb" id="headerBreadcrumb">Ato 1 / Bloco 1</div>
+    <div class="header-day-toggle">
+      <button class="header-day-btn" data-day="home">Início</button>
+      <button class="header-day-btn active" data-day="1">Ato 1</button>
+      <button class="header-day-btn" data-day="2">Ato 2</button>
+      <!-- Para mais atos: <button class="header-day-btn" data-day="3">Ato 3</button> -->
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar">
+  <div class="progress-inner">
+    <span class="progress-label" id="progressLabel">Ato 1 · Bloco 1 de 3</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width: 33%;"></div>
+    </div>
+    <div class="progress-steps" id="progressSteps"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN CONTENT
+     Cada <div class="section"> é uma "tela" do material.
+     data-section = ID único (espelhe na sidebar e no JS)
+     data-day     = "home" | "1" | "2" | ...
+     data-block   = número do bloco dentro do ato
+     ════════════════════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- ───────────────── HOME ─────────────────────────────── -->
+  <div class="section" data-section="home" data-day="home">
+    <div class="hero">
+      <div class="hero-badge"><span class="badge">[SUBSTITUIR: ex: 1 Dia de Imersão]</span></div>
+      <h1 class="hero-title">[SUBSTITUIR: Nome<br><span>do Treinamento.</span>]</h1>
+      <p class="hero-subtitle">[SUBSTITUIR: tagline do treinamento — uma frase]</p>
+      <button class="hero-cta" onclick="goToSection('d1-b1')">Começar agora →</button>
+    </div>
+
+    <div style="text-align:center; margin: 24px 0 8px;">
+      <p style="font-size:14px; color: var(--text-sec);"><strong>[SUBSTITUIR: Data]</strong> · [SUBSTITUIR: Horário]</p>
+      <p style="font-size:13px; color: var(--text-ter);">Mentor: <strong>[SUBSTITUIR: Nome do Mentor]</strong> — [SUBSTITUIR: Bio curta]</p>
+    </div>
+
+    <div class="callout callout-tip" style="text-align:left; margin-top:32px;">
+      <strong>📖 Como usar este material</strong>
+      <ul style="margin-top:8px; margin-bottom:0;">
+        <li>Use os botões <strong>Ato 1</strong> e <strong>Ato 2</strong> no topo (ou a barra lateral no desktop) para navegar.</li>
+        <li>Blocos com <strong>PROMPT</strong> têm botão <strong>Copiar</strong> — cole direto no Claude.</li>
+        <li>[SUBSTITUIR: instrução adicional sobre o formato do treinamento]</li>
+      </ul>
+    </div>
+
+    <div class="day-cards">
+      <div class="day-card" onclick="goToSection('d1-b1')">
+        <div class="day-card-num">Ato 1 — [SUBSTITUIR: período ex: Manhã]</div>
+        <div class="day-card-title">[SUBSTITUIR: Título do Ato 1]</div>
+        <div class="day-card-desc">[SUBSTITUIR: descrição do que acontece no Ato 1]</div>
+        <div class="day-card-meta">
+          <span class="badge badge-outline">[SUBSTITUIR: 09h–12h]</span>
+          <span class="badge badge-outline">3 blocos</span>
+        </div>
+      </div>
+      <div class="day-card" onclick="goToSection('d2-b1')">
+        <div class="day-card-num">Ato 2 — [SUBSTITUIR: período ex: Tarde]</div>
+        <div class="day-card-title">[SUBSTITUIR: Título do Ato 2]</div>
+        <div class="day-card-desc">[SUBSTITUIR: descrição do que acontece no Ato 2]</div>
+        <div class="day-card-meta">
+          <span class="badge badge-outline">[SUBSTITUIR: 14h–17h]</span>
+          <span class="badge badge-outline">3 blocos</span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <h2>Pré-requisitos</h2>
+    <ul class="checklist">
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text"><strong>[SUBSTITUIR: Requisito 1]</strong> — [SUBSTITUIR: detalhes]</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text"><strong>[SUBSTITUIR: Requisito 2]</strong> — [SUBSTITUIR: detalhes]</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text"><strong>[SUBSTITUIR: Requisito 3]</strong> — [SUBSTITUIR: detalhes]</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════ ATO 1 ══════════════════════════════════
+       Blocos do Ato 1. Renomeie data-section e data-block.
+       ════════════════════════════════════════════════════ -->
+
+  <!-- ATO 1 / BLOCO 1 -->
+  <div class="section active" data-section="d1-b1" data-day="1" data-block="1">
+    <div class="section-kicker">Ato 1 · Bloco 1</div>
+    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
+    <div class="section-subtitle">[SUBSTITUIR: subtítulo — complementa o título]</div>
+    <span class="badge badge-time">XX minutos</span>
+    <hr>
+
+    <!-- EXEMPLO: texto simples -->
+    <h2>[SUBSTITUIR: Título da seção]</h2>
+    <p>[SUBSTITUIR: Parágrafo explicativo. Use <strong>negrito</strong> para destacar conceitos-chave.]</p>
+
+    <!-- EXEMPLO: card com destaque -->
+    <div class="card card-accent">
+      <h3>[SUBSTITUIR: Título do card]</h3>
+      <p>[SUBSTITUIR: conteúdo do card]</p>
+    </div>
+
+    <!-- EXEMPLO: tabela -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>[Col 1]</th>
+            <th>[Col 2]</th>
+            <th>[Col 3]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>[SUBSTITUIR]</strong></td>
+            <td>[SUBSTITUIR]</td>
+            <td>[SUBSTITUIR]</td>
+          </tr>
+          <tr>
+            <td><strong>[SUBSTITUIR]</strong></td>
+            <td>[SUBSTITUIR]</td>
+            <td>[SUBSTITUIR]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EXEMPLO: callout dica -->
+    <div class="callout callout-tip">
+      <strong>💡 [SUBSTITUIR: Título da dica]</strong>
+      [SUBSTITUIR: texto da dica]
+    </div>
+
+    <!-- EXEMPLO: callout aviso -->
+    <div class="callout callout-warn">
+      <strong>⚠️ [SUBSTITUIR: Título do aviso]</strong>
+      [SUBSTITUIR: texto do aviso]
+    </div>
+
+    <!-- EXEMPLO: callout exercício -->
+    <div class="callout callout-exercise">
+      <strong>🏋️ Exercício</strong>
+      [SUBSTITUIR: instrução do exercício]
+    </div>
+
+    <!-- EXEMPLO: bloco de código -->
+    <div class="code-block">
+      <span class="code-block-label">BASH</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <code class="code-text">[SUBSTITUIR: código aqui]</code>
+    </div>
+
+    <!-- EXEMPLO: bloco de prompt -->
+    <div class="prompt-block">
+      <span class="code-block-label">PROMPT</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>[SUBSTITUIR: prompt para copiar e colar no Claude]</p>
+    </div>
+
+    <!-- EXEMPLO: accordion -->
+    <details class="toggle">
+      <summary>[SUBSTITUIR: Título do accordion]</summary>
+      <div class="toggle-content">
+        <p>[SUBSTITUIR: conteúdo expandido]</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ATO 1 / BLOCO 2 -->
+  <div class="section" data-section="d1-b2" data-day="1" data-block="2">
+    <div class="section-kicker">Ato 1 · Bloco 2</div>
+    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
+    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
+    <span class="badge badge-time">XX minutos</span>
+    <hr>
+
+    <p>[SUBSTITUIR: conteúdo do bloco 2]</p>
+
+    <!-- EXEMPLO: stepper (passo a passo) -->
+    <h2>[SUBSTITUIR: Passo a passo]</h2>
+    <ol class="stepper">
+      <li class="step">
+        <h4>[SUBSTITUIR: Passo 1]</h4>
+        <p>[SUBSTITUIR: descrição]</p>
+      </li>
+      <li class="step">
+        <h4>[SUBSTITUIR: Passo 2]</h4>
+        <p>[SUBSTITUIR: descrição]</p>
+        <div class="code-block">
+          <span class="code-block-label">COMANDO</span>
+          <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+          <code class="code-text">[SUBSTITUIR: comando]</code>
+        </div>
+      </li>
+      <li class="step">
+        <h4>[SUBSTITUIR: Passo 3]</h4>
+        <p>[SUBSTITUIR: descrição]</p>
+      </li>
+    </ol>
+  </div>
+
+  <!-- ATO 1 / BLOCO 3 -->
+  <div class="section" data-section="d1-b3" data-day="1" data-block="3">
+    <div class="section-kicker">Ato 1 · Bloco 3</div>
+    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
+    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
+    <span class="badge badge-time">XX minutos</span>
+    <hr>
+
+    <p>[SUBSTITUIR: conteúdo do bloco 3]</p>
+  </div>
+
+  <!-- ═══════════════ ATO 2 ══════════════════════════════════
+       Blocos do Ato 2. Mesma estrutura do Ato 1.
+       ════════════════════════════════════════════════════ -->
+
+  <!-- ATO 2 / BLOCO 1 -->
+  <div class="section" data-section="d2-b1" data-day="2" data-block="1">
+    <div class="section-kicker">Ato 2 · Bloco 1</div>
+    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
+    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
+    <span class="badge badge-time">XX minutos</span>
+    <hr>
+
+    <p>[SUBSTITUIR: conteúdo]</p>
+  </div>
+
+  <!-- ATO 2 / BLOCO 2 -->
+  <div class="section" data-section="d2-b2" data-day="2" data-block="2">
+    <div class="section-kicker">Ato 2 · Bloco 2</div>
+    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
+    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
+    <span class="badge badge-time">XX minutos</span>
+    <hr>
+
+    <p>[SUBSTITUIR: conteúdo]</p>
+  </div>
+
+  <!-- ATO 2 / BLOCO 3 -->
+  <div class="section" data-section="d2-b3" data-day="2" data-block="3">
+    <div class="section-kicker">Ato 2 · Bloco 3</div>
+    <div class="section-title">[SUBSTITUIR: Título do Bloco.]</div>
+    <div class="section-subtitle">[SUBSTITUIR: subtítulo]</div>
+    <span class="badge badge-time">XX minutos</span>
+    <hr>
+
+    <p>[SUBSTITUIR: conteúdo]</p>
+  </div>
+
+</main>
+
+<!-- FOOTER NAV -->
+<nav class="footer-nav">
+  <div class="footer-nav-inner">
+    <button class="nav-btn nav-btn-prev" id="btnPrev" onclick="prevSection()">← Anterior</button>
+    <span class="nav-current" id="navCurrent">1 / 3</span>
+    <button class="nav-btn nav-btn-next" id="btnNext" onclick="nextSection()">Próximo →</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT — Navegação automática
+     Atualize SECTIONS e DAY_SECTIONS se adicionar/remover blocos
+     ════════════════════════════════════════════════════════ -->
+<script>
+// Lista COMPLETA de seções na ordem de navegação
+const SECTIONS = [
+  'home',
+  'd1-b1', 'd1-b2', 'd1-b3',
+  'd2-b1', 'd2-b2', 'd2-b3'
+];
+
+// Mapeamento ato → blocos (sem 'home')
+const DAY_SECTIONS = {
+  '1': ['d1-b1', 'd1-b2', 'd1-b3'],
+  '2': ['d2-b1', 'd2-b2', 'd2-b3']
+};
+
+// Breadcrumb por seção
+const TITLES = {
+  'home':  'Início',
+  'd1-b1': 'Ato 1 / [Bloco 1]',
+  'd1-b2': 'Ato 1 / [Bloco 2]',
+  'd1-b3': 'Ato 1 / [Bloco 3]',
+  'd2-b1': 'Ato 2 / [Bloco 1]',
+  'd2-b2': 'Ato 2 / [Bloco 2]',
+  'd2-b3': 'Ato 2 / [Bloco 3]'
+};
+
+let currentIdx = 0;
+
+function goToSection(id) {
+  var i = SECTIONS.indexOf(id);
+  if (i !== -1) { currentIdx = i; render(); }
+}
+
+function nextSection() {
+  if (currentIdx < SECTIONS.length - 1) { currentIdx++; render(); }
+}
+
+function prevSection() {
+  if (currentIdx > 0) { currentIdx--; render(); }
+}
+
+function goToDay(day) {
+  if (day === 'home') { goToSection('home'); return; }
+  var f = DAY_SECTIONS[day];
+  if (f) goToSection(f[0]);
+}
+
+function render() {
+  var sid = SECTIONS[currentIdx];
+
+  // Mostra a seção ativa
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  var el = document.querySelector('[data-section="' + sid + '"]');
+  if (el) el.classList.add('active');
+
+  var day = el ? el.dataset.day : 'home';
+
+  // Botões de ato
+  document.querySelectorAll('.header-day-btn').forEach(function(b) {
+    b.classList.toggle('active', b.dataset.day === day);
+  });
+
+  // Botões prev/next
+  var prevBtn = document.getElementById('btnPrev');
+  var nextBtn = document.getElementById('btnNext');
+  prevBtn.disabled = currentIdx === 0;
+  nextBtn.disabled = currentIdx === SECTIONS.length - 1;
+  nextBtn.textContent = currentIdx === SECTIONS.length - 1 ? 'Fim' : 'Próximo →';
+
+  // Sidebar
+  document.querySelectorAll('.sidebar-item').forEach(function(item) {
+    item.classList.toggle('active', item.dataset.target === sid);
+    if (item.dataset.target === sid) item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+
+  // Breadcrumb
+  var bc = document.getElementById('headerBreadcrumb');
+  if (bc) bc.textContent = TITLES[sid] || '';
+
+  // Progress
+  updateProgress(sid, day);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  history.replaceState(null, '', '#' + sid);
+}
+
+function updateProgress(sid, day) {
+  var label   = document.getElementById('progressLabel');
+  var fill    = document.getElementById('progressFill');
+  var stepsEl = document.getElementById('progressSteps');
+  var navCur  = document.getElementById('navCurrent');
+
+  if (day === 'home') {
+    label.textContent = 'Início';
+    fill.style.width  = '0%';
+    stepsEl.innerHTML = '';
+    navCur.textContent = '';
+    return;
+  }
+
+  var sections = DAY_SECTIONS[day] || [];
+  var blockIdx = sections.indexOf(sid);
+  var pct = ((blockIdx + 1) / sections.length) * 100;
+
+  label.textContent  = 'Ato ' + day + ' · Bloco ' + (blockIdx + 1) + ' de ' + sections.length;
+  fill.style.width   = pct + '%';
+  navCur.textContent = (blockIdx + 1) + ' / ' + sections.length;
+
+  stepsEl.innerHTML = '';
+  sections.forEach(function(s, i) {
+    var dot = document.createElement('div');
+    dot.className = 'progress-dot' + (i < blockIdx ? ' done' : '') + (i === blockIdx ? ' current' : '');
+    dot.addEventListener('click', function() { goToSection(s); });
+    stepsEl.appendChild(dot);
+  });
+}
+
+function copyCode(btn) {
+  var block  = btn.parentElement;
+  var codeEl = block.querySelector('code') || block.querySelector('.code-text') || block.querySelector('p');
+  var text   = codeEl ? codeEl.textContent : '';
+  navigator.clipboard.writeText(text.trim()).then(function() {
+    btn.textContent = 'Copiado!';
+    btn.style.cssText = 'background:var(--accent);color:#fff;border-color:var(--accent)';
+    setTimeout(function() { btn.textContent = 'Copiar'; btn.style.cssText = ''; }, 2000);
+  });
+}
+
+function toggleCheck(li) { li.classList.toggle('checked'); }
+
+// Botões de ato no header
+document.querySelectorAll('.header-day-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { goToDay(btn.dataset.day); });
+});
+
+// Init — restaura da URL hash
+(function() {
+  var hash = location.hash.replace('#', '');
+  if (hash && SECTIONS.indexOf(hash) !== -1) { currentIdx = SECTIONS.indexOf(hash); }
+  render();
+})();
+</script>
+
+</body>
+</html>
