@@ -602,24 +602,38 @@ td strong { color: var(--text-pri); }
 const SECTIONS = [
   'home',
   'd1-b1', 'd1-b2', 'd1-b3',
-  'd2-b1', 'd2-b2', 'd2-b3'
+  'd2-b1', 'd2-b2', 'd2-b3',
+  'd3-b1', 'd3-b2', 'd3-b3',
+  'd4-b1', 'd4-b2', 'd4-b3',
+  'd5-b1', 'd5-b2'
 ];
 
 // Mapeamento ato → blocos (sem 'home')
 const DAY_SECTIONS = {
   '1': ['d1-b1', 'd1-b2', 'd1-b3'],
-  '2': ['d2-b1', 'd2-b2', 'd2-b3']
+  '2': ['d2-b1', 'd2-b2', 'd2-b3'],
+  '3': ['d3-b1', 'd3-b2', 'd3-b3'],
+  '4': ['d4-b1', 'd4-b2', 'd4-b3'],
+  '5': ['d5-b1', 'd5-b2']
 };
 
 // Breadcrumb por seção
 const TITLES = {
   'home':  'Início',
-  'd1-b1': 'Ato 1 / [Bloco 1]',
-  'd1-b2': 'Ato 1 / [Bloco 2]',
-  'd1-b3': 'Ato 1 / [Bloco 3]',
-  'd2-b1': 'Ato 2 / [Bloco 1]',
-  'd2-b2': 'Ato 2 / [Bloco 2]',
-  'd2-b3': 'Ato 2 / [Bloco 3]'
+  'd1-b1': 'Ato 1 / A Revolução da IA',
+  'd1-b2': 'Ato 1 / Evolução e Mercado',
+  'd1-b3': 'Ato 1 / IA e Profissões',
+  'd2-b1': 'Ato 2 / Como a IA Funciona',
+  'd2-b2': 'Ato 2 / Glossário',
+  'd2-b3': 'Ato 2 / Níveis de Uso',
+  'd3-b1': 'Ato 3 / Tipos de Prompt',
+  'd3-b2': 'Ato 3 / Framework de Prompt',
+  'd3-b3': 'Ato 3 / Técnicas Avançadas',
+  'd4-b1': 'Ato 4 / Casos por Área',
+  'd4-b2': 'Ato 4 / Assistentes Personalizados',
+  'd4-b3': 'Ato 4 / Contexto e RAG',
+  'd5-b1': 'Ato 5 / N8N e Automações',
+  'd5-b2': 'Ato 5 / Próximos Passos'
 };
 
 let currentIdx = 0;
