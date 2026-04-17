@@ -1137,6 +1137,179 @@ td strong { color: var(--text-pri); }
     </ul>
   </div>
 
+  <!-- ═══════════════ ATO 4 ══════════════════════════════════ -->
+
+  <!-- ATO 4 / BLOCO 1 — PERSONALIZÁVEL -->
+  <div class="section" data-section="d4-b1" data-day="4" data-block="1">
+    <div class="section-kicker">Ato 4 · Bloco 1</div>
+    <div class="section-title">IA na [SUBSTITUIR: SETOR].</div>
+    <div class="section-subtitle">Casos de uso reais para a sua área</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <p>Os casos abaixo foram selecionados especificamente para as áreas da <strong>[SUBSTITUIR: NOME_EMPRESA]</strong>. São tarefas que podem ser feitas hoje, com as ferramentas gratuitas que você já tem acesso.</p>
+
+    [SUBSTITUIR: CASOS_AREA_1]
+
+    [SUBSTITUIR: CASOS_AREA_2]
+
+    <div class="callout callout-tip">
+      <strong>Como escolher por onde começar</strong>
+      Escolha a tarefa que você mais odeia fazer manualmente. Provavelmente é repetitiva, tem um padrão claro e a IA pode assumir boa parte dela. Comece por aí.
+    </div>
+  </div>
+
+  <!-- ATO 4 / BLOCO 2 -->
+  <div class="section" data-section="d4-b2" data-day="4" data-block="2">
+    <div class="section-kicker">Ato 4 · Bloco 2</div>
+    <div class="section-title">Assistentes Personalizados.</div>
+    <div class="section-subtitle">Custom GPTs e Gems — IA que já conhece sua empresa</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <h2>O que são</h2>
+    <p>São versões do ChatGPT ou Gemini configuradas especificamente para uma função da sua empresa. Em vez de dar contexto toda vez, você configura uma vez e usa sempre.</p>
+
+    <div class="card card-accent">
+      <h3>A analogia certa</h3>
+      <p>É como contratar um funcionário virtual que já conhece a empresa, os produtos, o tom de voz e o que fazer — sem precisar explicar de novo toda vez. O custo: 30 minutos de configuração inicial.</p>
+    </div>
+
+    <h2>Como criar um Custom GPT (OpenAI)</h2>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Acesse chatgpt.com/create</h4>
+        <p>Você precisa de conta ChatGPT. A versão gratuita permite criar GPTs básicos.</p>
+      </li>
+      <li class="step">
+        <h4>Defina o objetivo e a persona</h4>
+        <p>Ex: "Você é um assistente de atendimento da [empresa]. Responda sempre no tom cordial da marca. Nunca prometa prazos sem confirmar com a equipe."</p>
+      </li>
+      <li class="step">
+        <h4>Escreva instruções detalhadas</h4>
+        <p>Tom, escopo do que pode responder, o que fazer quando não souber, formato padrão de resposta.</p>
+      </li>
+      <li class="step">
+        <h4>Anexe documentos da empresa</h4>
+        <p>Playbook, manual de atendimento, FAQ, tabela de preços. O GPT vai usar como base de conhecimento.</p>
+      </li>
+      <li class="step">
+        <h4>Teste com perguntas reais e publique</h4>
+        <p>Compartilhe o link internamente com o time. Só quem tem o link consegue acessar.</p>
+      </li>
+    </ol>
+
+    <h2>Como criar um Gem (Gemini)</h2>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Acesse gemini.google.com → Gerenciador de Gems</h4>
+        <p>Disponível em contas Google. Integra com Google Drive, Gmail e Workspace.</p>
+      </li>
+      <li class="step">
+        <h4>Preencha: Persona, Tarefa, Contexto, Formato</h4>
+        <p>Use a mesma lógica do PACEF. Mais contexto = resultado melhor.</p>
+      </li>
+      <li class="step">
+        <h4>Anexe documentos e teste</h4>
+        <p>Documentos do Google Drive podem ser conectados diretamente.</p>
+      </li>
+    </ol>
+
+    <h2>Ideias de assistentes para PMEs</h2>
+    <div class="card">
+      <h3>Assistente de Atendimento</h3>
+      <p>Responde dúvidas frequentes de clientes usando o FAQ e política da empresa. Nunca improvisa — sempre consulta a base de conhecimento.</p>
+    </div>
+    <div class="card">
+      <h3>Assistente Financeiro</h3>
+      <p>Classifica lançamentos, gera resumos mensais em linguagem simples, simula cenários de fluxo de caixa com base em dados fornecidos.</p>
+    </div>
+    <div class="card">
+      <h3>Assistente de RH</h3>
+      <p>Redige vagas, cria roteiros de entrevista, gera planos de onboarding e PDI com base na cultura e nos cargos da empresa.</p>
+    </div>
+    <div class="card">
+      <h3>Assistente Comercial</h3>
+      <p>Cria e-mails de prospecção, roteiros de ligação, scripts de follow-up e análise de objeções com base no produto e ICP da empresa.</p>
+    </div>
+  </div>
+
+  <!-- ATO 4 / BLOCO 3 -->
+  <div class="section" data-section="d4-b3" data-day="4" data-block="3">
+    <div class="section-kicker">Ato 4 · Bloco 3</div>
+    <div class="section-title">Contexto e RAG.</div>
+    <div class="section-subtitle">Quanto melhor o contexto, melhor a resposta</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <h2>Por que contexto importa</h2>
+    <p>Sem contexto → a IA responde como se fosse para qualquer empresa do planeta.<br>Com contexto → a IA responde como se conhecesse profundamente o seu negócio.</p>
+    <p>A diferença está no que você coloca <em>antes</em> da pergunta.</p>
+
+    <h2>Bloco de contexto padrão — use como base</h2>
+    <p>Crie um arquivo de texto com o contexto da sua empresa. Cole no início de cada conversa importante:</p>
+
+    <div class="prompt-block">
+      <span class="code-block-label">CONTEXTO PADRÃO — ADAPTE PARA SUA EMPRESA</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>Empresa: [nome da empresa]<br>Setor: [setor de atuação]<br>Tamanho: [número de funcionários]<br>Público atendido: [perfil dos clientes]<br>Principais serviços/produtos: [lista]<br>Tom de comunicação: [formal/informal/cordial]<br>Ferramentas que usamos: [lista]<br>O que não fazer: [restrições importantes]</p>
+    </div>
+
+    <h2>Três formas de dar contexto</h2>
+
+    <details class="toggle">
+      <summary>1. No próprio prompt — a forma mais simples</summary>
+      <div class="toggle-content">
+        <p>Cole o bloco de contexto no início do prompt. Funciona em qualquer ferramenta. Basta criar o texto uma vez e reutilizar.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>2. Via upload de documentos — para conteúdo extenso</summary>
+      <div class="toggle-content">
+        <p>ChatGPT e Gemini aceitam PDFs, planilhas e documentos Word. Cole o arquivo e peça para a IA usar "apenas o documento anexado como fonte". Ideal para manuais, playbooks e contratos.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>3. RAG — o próximo nível (ferramentas avançadas)</summary>
+      <div class="toggle-content">
+        <p><strong>RAG (Retrieval-Augmented Generation)</strong> é quando ferramentas como N8N ou LangChain indexam seus documentos e a IA busca neles antes de responder — de forma automática, sem você precisar fazer upload manualmente.</p>
+        <p>Evita que a IA invente políticas ou dados que não existem. É como dar uma biblioteca interna completa para o assistente.</p>
+      </div>
+    </details>
+
+    <h2>O limite mais importante: alucinação</h2>
+
+    <div class="callout callout-warn">
+      <strong>A IA inventa fatos com confiança</strong>
+      Quando a IA não sabe algo, ela não diz "não sei" — ela preenche o vazio com texto plausível que soa verdadeiro. Isso se chama alucinação. Nunca use dados, números ou referências geradas pela IA sem verificar nas fontes originais.
+    </div>
+
+    <h2>Quando confiar e quando verificar</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Confie</th><th>Verifique sempre</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Texto redigido sobre tema que você conhece</td>
+            <td>Dados numéricos, datas, nomes de pessoas</td>
+          </tr>
+          <tr>
+            <td>Estrutura de documento, formatação</td>
+            <td>Citações, referências legais, informações técnicas críticas</td>
+          </tr>
+          <tr>
+            <td>Brainstorming de ideias e opções</td>
+            <td>Qualquer coisa que vai para o cliente sem revisão</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </main>
 
 <!-- FOOTER NAV -->
