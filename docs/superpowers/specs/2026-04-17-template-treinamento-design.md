@@ -19,10 +19,29 @@ Ambos ficam em `projects/treinamentos/templates/`.
 
 ## Fontes de Conteúdo
 
-- `projects/treinamentos/content/base-curriculum.md` — 13 módulos (fonte principal)
-- `projects/treinamentos/templates/material-apoio-template.md` — versão MD atualizada
-- PDF `Compressed - Apresentação Rondave.pdf` — 64 slides da apresentação usada em sala
+- `projects/treinamentos/content/base-curriculum.md` — 13 módulos (fonte principal de texto)
+- `projects/treinamentos/templates/material-apoio-template.md` — versão MD com estrutura e placeholders atualizados (referência de organização, não substitui o HTML)
+- PDF `Compressed - Apresentação Rondave.pdf` — 64 slides da apresentação validada em sala (lidos na sessão de design; conteúdo já mapeado para os blocos abaixo)
 - Modelos de IA atualizados para abril de 2026: GPT-4o / o3 / GPT-5, Gemini 2.5 Pro, Claude Sonnet 4.6
+
+### Mapeamento: 13 módulos do currículo → 5 atos
+
+| Módulo (base-curriculum.md) | Ato / Bloco |
+|---|---|
+| M01 — O que é IA Generativa | Ato 1 B1 |
+| M02 — Evolução da IA (2023–2026) | Ato 1 B2 |
+| M03 — Adoção no Brasil (dados de mercado) | Ato 1 B2 |
+| M04 — IA e Profissões | Ato 1 B3 |
+| M05 — Como LLMs funcionam | Ato 2 B1 |
+| M06 — Glossário | Ato 2 B2 |
+| M07 — Níveis de Uso (1→4) | Ato 2 B3 |
+| M08 — Tipos de Prompt | Ato 3 B1 |
+| M09 — Engenharia de Prompt (PACEF/6 blocos) | Ato 3 B2 |
+| M10 — Técnicas Avançadas (pulos do gato) | Ato 3 B3 |
+| M11 — Casos de Uso por Área | Ato 4 B1 |
+| M12 — Assistentes Personalizados | Ato 4 B2 |
+| M13 — Contexto, RAG e Limites da IA | Ato 4 B3 |
+| (sem módulo próprio) — N8N Nível 4 + Roadmap | Ato 5 B1 + B2 |
 
 ---
 
@@ -126,8 +145,19 @@ Home (capa + instruções de uso do material)
 
 **B1 — Casos por Área** ← PERSONALIZÁVEL
 - Casos de uso por área da empresa cliente
+- Número de áreas: 2 por padrão (CASOS_AREA_1, CASOS_AREA_2), mas a skill pode adicionar CASOS_AREA_3 se necessário
+- Cada placeholder representa uma área inteira: subtítulo (nome da área) + lista de 3–5 casos como `<li>` dentro do `.card`
+- Exemplo de estrutura de uma área:
+  ```html
+  <div class="card">
+    <h3>Recepção / Atendimento</h3>
+    <ul>
+      <li>Confirmar consultas automaticamente por WhatsApp</li>
+      <li>Gerar mensagens de follow-up pós-consulta</li>
+    </ul>
+  </div>
+  ```
 - Placeholders: `[SUBSTITUIR: CASOS_AREA_1]`, `[SUBSTITUIR: CASOS_AREA_2]`
-- Estrutura fixa: nome da área como subtítulo + lista de 3–5 casos
 - Componente: `.card` por área
 
 **B2 — Assistentes Personalizados**
@@ -221,6 +251,15 @@ projects/treinamentos/templates/
 ```
 
 O arquivo original `template-material-apoio.html` permanece intocado (referência).
+
+### Definição de "template vazio" (empty.html)
+
+O `empty.html` preserva toda a estrutura do `filled.html` (CSS, JS, navegação, sidebar, header, section containers com `data-section`/`data-day`/`data-block`). O que muda:
+
+- Todo o conteúdo dentro dos `<section>` é removido (parágrafos, tabelas, listas, callouts, prompt-blocks, steppers)
+- Os 8 placeholders `[SUBSTITUIR: ...]` são mantidos nas posições corretas
+- Cada section fica com apenas o `<h2>` do título do bloco + os placeholders aplicáveis + um comentário HTML `<!-- conteúdo aqui -->`
+- Resultado: Eduardo pode preencher manualmente seção por seção sem precisar recriar a estrutura
 
 ---
 
