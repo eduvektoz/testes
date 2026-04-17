@@ -927,6 +927,216 @@ td strong { color: var(--text-pri); }
   </div>
 </div>
 
+
+  <!-- ═══════════════ ATO 3 ══════════════════════════════════ -->
+
+  <!-- ATO 3 / BLOCO 1 -->
+  <div class="section" data-section="d3-b1" data-day="3" data-block="1">
+    <div class="section-kicker">Ato 3 · Bloco 1</div>
+    <div class="section-title">Tipos de Prompt.</div>
+    <div class="section-subtitle">Três estratégias com resultados completamente diferentes</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <p>A mesma tarefa pode ser pedida de três formas — e o resultado muda completamente. Conhecer os tipos de prompt é o primeiro passo para usar IA de forma estratégica.</p>
+
+    <h2>Zero-shot — Instrução direta</h2>
+    <div class="card">
+      <p>Você pede a tarefa sem dar exemplos. A IA usa o que aprendeu no treinamento para responder.</p>
+      <p><strong>Quando usar:</strong> tarefas simples e bem definidas, quando você não tem exemplos prontos.</p>
+    </div>
+    <div class="prompt-block">
+      <span class="code-block-label">PROMPT — ZERO-SHOT</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>Escreva um e-mail de cobrança amigável para um cliente com fatura em atraso há 15 dias. Tom: profissional e cordial.</p>
+    </div>
+
+    <h2>Few-shot — Instrução com exemplos</h2>
+    <div class="card">
+      <p>Você mostra exemplos do que quer antes de pedir. A IA aprende o padrão e replica.</p>
+      <p><strong>Quando usar:</strong> quando você quer um estilo específico ou tem um padrão interno da empresa.</p>
+    </div>
+    <div class="prompt-block">
+      <span class="code-block-label">PROMPT — FEW-SHOT</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>Classifique os feedbacks abaixo como Positivo, Neutro ou Negativo.<br><br>Exemplos:<br>"Atendimento rápido e eficiente" → Positivo<br>"Demorou um pouco, mas resolveu" → Neutro<br>"Péssima experiência, não voltarei" → Negativo<br><br>Agora classifique:<br>1. "Gostei do atendimento, mas a fila estava grande"<br>2. "Resolveram meu problema em minutos"<br>3. "Nunca mais venho aqui"</p>
+    </div>
+
+    <h2>Chain-of-thought — Pense passo a passo</h2>
+    <div class="card">
+      <p>Você pede que a IA mostre o raciocínio antes de responder. Melhora muito a qualidade em tarefas complexas.</p>
+      <p><strong>Quando usar:</strong> análises, decisões, diagnósticos — qualquer tarefa onde o processo importa tanto quanto a resposta.</p>
+    </div>
+    <div class="prompt-block">
+      <span class="code-block-label">PROMPT — CHAIN-OF-THOUGHT</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>Analise a seguinte situação e pense passo a passo antes de dar sua recomendação:<br><br>Uma clínica tem 3 recepcionistas. Cada uma atende em média 40 ligações por dia. 30% das ligações são confirmações de consulta que poderiam ser automatizadas. O custo de uma ferramenta de automação é R$300/mês.<br><br>Qual é o impacto estimado em horas de trabalho economizadas por mês? Vale a pena implementar? Mostre seu raciocínio.</p>
+    </div>
+  </div>
+
+  <!-- ATO 3 / BLOCO 2 -->
+  <div class="section" data-section="d3-b2" data-day="3" data-block="2">
+    <div class="section-kicker">Ato 3 · Bloco 2</div>
+    <div class="section-title">Framework de Prompt.</div>
+    <div class="section-subtitle">O método de 6 blocos que transforma perguntas em resultados</div>
+    <span class="badge badge-time">25 minutos</span>
+    <hr>
+
+    <h2>Por que o prompt importa</h2>
+    <p>Um prompt mal estruturado = resposta genérica.<br>Um prompt bem estruturado = resposta que parece de um especialista.</p>
+    <p>A diferença está na estrutura, não na ferramenta.</p>
+
+    <h2>O Framework PACEF — 6 blocos</h2>
+    <ol class="stepper">
+      <li class="step">
+        <h4>P — Papel</h4>
+        <p>Defina quem a IA está sendo. Uma persona específica entrega resultados muito mais relevantes do que um modelo genérico.</p>
+        <p><em>"Você é um especialista em atendimento ao cliente com 10 anos de experiência em clínicas de saúde..."</em></p>
+      </li>
+      <li class="step">
+        <h4>A — Ação / Objetivo</h4>
+        <p>Declare o resultado esperado com clareza. Uma tarefa por prompt.</p>
+        <p><em>"Seu objetivo é criar um script de confirmação de consulta por WhatsApp..."</em></p>
+      </li>
+      <li class="step">
+        <h4>C — Contexto</h4>
+        <p>Dê o máximo de contexto relevante. Empresa, setor, público, produto, restrições.</p>
+        <p><em>"Contexto: clínica odontológica com 15 funcionários, atendemos planos e particular, pacientes têm perfil familiar..."</em></p>
+      </li>
+      <li class="step">
+        <h4>E — Exemplos</h4>
+        <p>Mostre o padrão que você quer. Um bom exemplo vale mais que três parágrafos de explicação.</p>
+        <p><em>"Exemplo de mensagem que aprovamos: 'Olá [Nome], lembramos que sua consulta é amanhã às 14h com o Dr. Silva...'"</em></p>
+      </li>
+      <li class="step">
+        <h4>F1 — Formato de Saída</h4>
+        <p>Especifique como quer receber a resposta. Lista, tabela, e-mail, roteiro, etc.</p>
+        <p><em>"Entregue como 3 variações de mensagem WhatsApp, cada uma com no máximo 4 linhas..."</em></p>
+      </li>
+      <li class="step">
+        <h4>F2 — Filtros / Restrições</h4>
+        <p>Diga o que evitar. Tom, linguagem, coisas que não devem aparecer.</p>
+        <p><em>"Tom: cordial e direto. Evite: linguagem muito formal, emojis em excesso, promessas que não podemos cumprir."</em></p>
+      </li>
+    </ol>
+
+    <h2>Prompt completo com PACEF</h2>
+    <div class="prompt-block">
+      <span class="code-block-label">PROMPT — PACEF COMPLETO</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>Você é um especialista em comunicação empresarial com foco em pequenas e médias empresas brasileiras. [PAPEL]<br><br>Seu objetivo é escrever um modelo de mensagem de cobrança por WhatsApp para clientes com pagamento em atraso. [OBJETIVO]<br><br>Contexto: empresa de serviços com ticket médio de R$500. Clientes são pessoas físicas. Relacionamento é informal mas profissional. A cobrança é o primeiro contato — não houve inadimplência antes. [CONTEXTO]<br><br>Formato: 3 versões da mensagem, numeradas, com até 5 linhas cada. [FORMATO]<br><br>Restrições: tom cordial, sem ameaças ou linguagem agressiva. Não use termos jurídicos. Inclua um link fictício para pagamento no final de cada versão. [RESTRIÇÕES]</p>
+    </div>
+
+    <hr>
+    <h2>Prompt personalizado — [SUBSTITUIR: SETOR]</h2>
+    <div class="prompt-block">
+      <span class="code-block-label">PROMPT — EXEMPLO DO SETOR</span>
+      <button class="code-block-copy" onclick="copyCode(this)">Copiar</button>
+      <p>[SUBSTITUIR: PROMPT_EXEMPLO]</p>
+    </div>
+  </div>
+
+  <!-- ATO 3 / BLOCO 3 -->
+  <div class="section" data-section="d3-b3" data-day="3" data-block="3">
+    <div class="section-kicker">Ato 3 · Bloco 3</div>
+    <div class="section-title">Técnicas Avançadas.</div>
+    <div class="section-subtitle">Os pulos do gato que transformam a IA em copiloto real</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <h2>Pulos do Gato</h2>
+    <p>Técnicas simples de adicionar ao prompt que mudam completamente a qualidade da resposta:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Técnica</th>
+            <th>Como usar no prompt</th>
+            <th>Para que serve</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Advogado do diabo</strong></td>
+            <td>"Liste primeiro os riscos e objeções antes de sugerir melhorias"</td>
+            <td>Evitar otimismo ingênuo — a IA tende a validar o que você apresenta</td>
+          </tr>
+          <tr>
+            <td><strong>Honestidade brutal</strong></td>
+            <td>"Seja brutalmente honesto. Se a ideia for ruim, diga diretamente"</td>
+            <td>A IA sem essa instrução tende a ser condescendente e não critica de verdade</td>
+          </tr>
+          <tr>
+            <td><strong>Perguntar antes de responder</strong></td>
+            <td>"Antes de sugerir soluções, faça até 5 perguntas para entender melhor o problema"</td>
+            <td>Evita respostas baseadas em suposições erradas</td>
+          </tr>
+          <tr>
+            <td><strong>Raciocínio passo a passo</strong></td>
+            <td>"Mostre seu raciocínio antes de chegar à conclusão"</td>
+            <td>Aumenta qualidade em tarefas analíticas — e facilita identificar erros</td>
+          </tr>
+          <tr>
+            <td><strong>Gerar alternativas</strong></td>
+            <td>"Gere 3 alternativas com prós e contras em tabela"</td>
+            <td>Evita ficar preso à primeira opção — expande o espaço de soluções</td>
+          </tr>
+          <tr>
+            <td><strong>Restrições explícitas</strong></td>
+            <td>"Não use linguagem motivacional. Não invente dados. Não repita a pergunta"</td>
+            <td>Elimina vícios de resposta que a IA tem por padrão</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Erros mais comuns</h2>
+    <ul>
+      <li>Pedir "melhorar" sem dizer para quem, com qual tom, qual objetivo</li>
+      <li>Misturar 4–5 tarefas diferentes em um único prompt</li>
+      <li>Não revisar o que a IA entrega — confiar cegamente</li>
+      <li>Desistir no primeiro resultado ruim em vez de ajustar o prompt</li>
+      <li>Não dar contexto da empresa — a IA responde como se fosse para qualquer empresa do mundo</li>
+    </ul>
+
+    <div class="callout callout-warn">
+      <strong>A regra de ouro</strong>
+      Quem usa IA toda hora fica bom em IA. Quem usa uma vez por semana não evolui. O segredo é volume de tentativas — não perfeição no primeiro prompt.
+    </div>
+
+    <hr>
+    <h2>Mão na Massa #2 — Reescrever com PACEF</h2>
+
+    <div class="callout callout-exercise">
+      <strong>Exercício — 10 minutos</strong>
+      Lembra do prompt que você escreveu no Ato 2? Vamos reescrevê-lo usando o framework PACEF.
+    </div>
+
+    <ul class="checklist">
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text">Abra a conversa que você fez no Ato 2 (ou comece uma nova)</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text">Reescreva o mesmo pedido usando os 6 blocos do PACEF</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text">Compare o resultado com o primeiro prompt — a diferença é visível?</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text">Adicione um "pulo do gato" (ex: "liste os riscos antes de recomendar") e veja o que muda</span>
+      </li>
+      <li onclick="toggleCheck(this)">
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text">Salve o prompt melhorado — ele já é um ativo reutilizável do seu trabalho</span>
+      </li>
+    </ul>
+  </div>
+
 </main>
 
 <!-- FOOTER NAV -->
