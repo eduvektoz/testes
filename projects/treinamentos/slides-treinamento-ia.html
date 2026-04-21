@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do Zero ao Avançado: IA para Empresas — Vektoz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #9333ea;
+  --cyan: #22d3ee;
+  --bg: #000;
+  --card: #0e0e10;
+  --card2: #161618;
+  --text: #fff;
+  --muted: #a1a1aa;
+  --faint: #3f3f46;
+  --border: rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.14);
+  --grad: linear-gradient(135deg,#9333ea,#22d3ee);
+  --grad-r: linear-gradient(to right,#9333ea,#22d3ee);
+  --font: 'Inter',system-ui,sans-serif;
+  --gp: 0 0 60px rgba(147,51,234,.25);
+  --gc: 0 0 60px rgba(34,211,238,.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font)}
+
+/* ── NOISE OVERLAY ── */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.4}
+
+/* ── PRESENTATION ── */
+.deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+
+/* ── SLIDE BASE ── */
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;padding:52px 72px 100px;opacity:0;pointer-events:none;transition:opacity .35s ease;overflow:hidden}
+.slide.active{opacity:1;pointer-events:auto}
+
+/* GRID BG */
+.slide::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(147,51,234,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(147,51,234,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:0}
+.slide>*{position:relative;z-index:1}
+
+/* ── GLOW BLOBS ── */
+.glow{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.glow-tl{width:500px;height:500px;top:-200px;left:-200px;background:rgba(147,51,234,.15)}
+.glow-br{width:400px;height:400px;bottom:-150px;right:-150px;background:rgba(34,211,238,.1)}
+.glow-tr{width:350px;height:350px;top:-100px;right:-100px;background:rgba(34,211,238,.12)}
+.glow-bl{width:450px;height:450px;bottom:-150px;left:-150px;background:rgba(147,51,234,.12)}
+.glow-center{width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(147,51,234,.08)}
+
+/* ── BLOCK BADGE ── */
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--cyan);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;width:fit-content}
+.badge-purple{color:var(--purple);background:rgba(147,51,234,.1);border-color:rgba(147,51,234,.25)}
+.badge-activity{color:#4ade80;background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.25)}
+
+/* ── GRADIENT TEXT ── */
+.gt{background:var(--grad-r);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── TYPOGRAPHY ── */
+.title-xl{font-size:clamp(40px,5.5vw,72px);font-weight:900;line-height:1;letter-spacing:-2px;margin-bottom:16px}
+.title-lg{font-size:clamp(32px,4vw,54px);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+.title-md{font-size:clamp(24px,3vw,40px);font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
+.subtitle{font-size:clamp(16px,2vw,22px);font-weight:500;color:var(--muted);line-height:1.4;margin-bottom:32px}
+.body-text{font-size:15px;color:var(--muted);line-height:1.65}
+.label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faint)}
+
+/* ── CARDS ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+.card-p{background:var(--card);border:1px solid rgba(147,51,234,.2);border-radius:16px;padding:24px;box-shadow:var(--gp)}
+.card-c{background:var(--card);border:1px solid rgba(34,211,238,.2);border-radius:16px;padding:24px;box-shadow:var(--gc)}
+
+/* ── GRID HELPERS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+.flex-row{display:flex;align-items:center;gap:12px}
+.flex-col{display:flex;flex-direction:column;gap:12px}
+
+/* ── STAT CARD ── */
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:8px}
+.stat-num{font-size:clamp(32px,4vw,52px);font-weight:900;line-height:1;letter-spacing:-1px}
+.stat-desc{font-size:13px;color:var(--muted);line-height:1.4}
+.stat-src{font-size:11px;color:var(--faint);font-weight:600;letter-spacing:.5px;margin-top:4px}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl thead tr{background:linear-gradient(to right,rgba(147,51,234,.25),rgba(34,211,238,.15))}
+.tbl th{padding:12px 16px;text-align:left;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);white-space:nowrap}
+.tbl td{padding:11px 16px;border-top:1px solid var(--border);color:var(--muted);vertical-align:top;font-size:13px;line-height:1.5}
+.tbl tr:hover td{background:rgba(255,255,255,.02)}
+.tbl td strong,.tbl td b{color:var(--text);font-weight:600}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{display:flex;align-items:flex-start;gap:16px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--grad);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.step-body{flex:1;padding-top:4px}
+.step-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ── FLOW (horizontal) ── */
+.flow{display:flex;align-items:center;gap:0}
+.flow-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.flow-dot{width:44px;height:44px;border-radius:50%;background:var(--card);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--cyan)}
+.flow-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.3}
+.flow-sub{font-size:11px;color:var(--muted)}
+.flow-arrow{color:var(--faint);font-size:18px;flex-shrink:0;margin:0 -4px;padding-bottom:22px}
+
+/* ── QUOTE ── */
+.quote-mark{font-size:120px;line-height:.7;font-weight:900;background:var(--grad-r);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.quote-text{font-size:clamp(18px,2.2vw,28px);font-weight:700;line-height:1.35;color:var(--text);max-width:820px;margin-bottom:20px}
+.quote-attr{font-size:13px;font-weight:600;color:var(--muted)}
+
+/* ── ACTIVITY SLIDE ── */
+.activity-wrap{background:rgba(74,222,128,.04);border:1px solid rgba(74,222,128,.2);border-radius:20px;padding:36px;max-width:760px}
+.activity-title{font-size:22px;font-weight:800;color:#4ade80;margin-bottom:6px}
+.activity-time{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(74,222,128,.6);margin-bottom:20px}
+.activity-body{font-size:15px;color:var(--muted);line-height:1.65}
+.activity-body li{margin-bottom:10px}
+
+/* ── CODE / PROMPT BLOCK ── */
+.prompt{background:#0a0a0c;border:1px solid rgba(147,51,234,.3);border-radius:12px;padding:24px;font-family:'SF Mono','Fira Code',monospace;font-size:13px;line-height:1.7;color:#e4e4e7}
+.prompt .k{color:var(--cyan);font-weight:700}
+.prompt .v{color:#c084fc}
+.prompt .c{color:var(--faint)}
+
+/* ── LEVEL BARS ── */
+.level-track{display:flex;flex-direction:column;gap:16px}
+.level-row{display:flex;align-items:center;gap:16px}
+.level-num{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;flex-shrink:0}
+.level-info{flex:1}
+.level-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px}
+.level-desc{font-size:12px;color:var(--muted)}
+.level-bar{height:4px;border-radius:2px;margin-top:8px;background:var(--faint)}
+.level-fill{height:100%;border-radius:2px;background:var(--grad)}
+
+/* ── BEFORE/AFTER ── */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ba-card{border-radius:16px;padding:24px}
+.ba-before{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2)}
+.ba-after{background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2)}
+.ba-label{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.ba-before .ba-label{color:#f87171}
+.ba-after .ba-label{color:var(--cyan)}
+.ba-text{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ── TIMELINE ── */
+.timeline{display:flex;align-items:flex-start;gap:0;width:100%}
+.tl-item{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;position:relative}
+.tl-item:not(:last-child)::after{content:'';position:absolute;top:18px;left:50%;width:100%;height:2px;background:linear-gradient(to right,var(--border2),var(--border))}
+.tl-dot{width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;position:relative;z-index:1}
+.tl-year{font-size:13px;font-weight:800;color:var(--text)}
+.tl-desc{font-size:11px;color:var(--muted);line-height:1.4;max-width:130px}
+
+/* ── ICON CIRCLE ── */
+.icon-circle{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ic-p{background:rgba(147,51,234,.15)}
+.ic-c{background:rgba(34,211,238,.12)}
+.ic-g{background:rgba(74,222,128,.12)}
+.ic-o{background:rgba(249,115,22,.12)}
+
+/* ── PILL LIST ── */
+.pill-list{display:flex;flex-wrap:wrap;gap:10px}
+.pill{background:var(--card2);border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:13px;font-weight:600;color:var(--muted)}
+.pill-p{border-color:rgba(147,51,234,.3);color:var(--purple)}
+.pill-c{border-color:rgba(34,211,238,.3);color:var(--cyan)}
+
+/* ── NAV BAR ── */
+.nav{position:fixed;bottom:0;left:0;right:0;height:52px;background:rgba(0,0,0,.85);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:16px;z-index:500}
+.nav-btn{width:32px;height:32px;border-radius:8px;background:var(--card2);border:1px solid var(--border);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.15s;flex-shrink:0}
+.nav-btn:hover{background:var(--card);color:var(--text);border-color:var(--border2)}
+.nav-block{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--faint);white-space:nowrap;flex-shrink:0}
+.nav-progress{flex:1;height:3px;background:var(--faint);border-radius:2px;overflow:hidden}
+.nav-fill{height:100%;background:var(--grad-r);border-radius:2px;transition:width .3s ease}
+.nav-counter{font-size:12px;font-weight:700;color:var(--muted);flex-shrink:0;min-width:50px;text-align:right}
+.slide-num{position:fixed;top:20px;right:28px;font-size:11px;font-weight:700;color:var(--faint);z-index:500;letter-spacing:1px}
+
+/* ── HERO SLIDE ── */
+.slide--hero{justify-content:center;align-items:flex-start}
+
+/* ── CYCLE VISUAL ── */
+.cycle{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;max-width:700px;margin:0 auto}
+.cycle-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;text-align:center;min-width:120px;flex:1}
+.cycle-icon{font-size:24px;margin-bottom:6px}
+.cycle-name{font-size:13px;font-weight:700;color:var(--text)}
+.cycle-desc{font-size:11px;color:var(--muted)}
+
+/* ── METRIC CARDS ── */
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.metric-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.metric-val{font-size:32px;font-weight:900;letter-spacing:-1px}
+.metric-label{font-size:12px;color:var(--muted);line-height:1.4}
+.metric-sector{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:20px 0}
+
+/* ── SLIDE-SPECIFIC ADJUSTMENTS ── */
+.slide--capa{justify-content:flex-end;padding-bottom:120px}
+.slide--center{justify-content:center;align-items:center;text-align:center}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.slide.active .anim{animation:fadeUp .4s ease forwards}
+.slide.active .anim-2{animation:fadeUp .5s .1s ease both}
+.slide.active .anim-3{animation:fadeUp .5s .2s ease both}
+.slide.active .anim-4{animation:fadeUp .5s .3s ease both}
+.slide.active .anim-5{animation:fadeUp .5s .4s ease both}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+<div class="slide-num" id="slideNum">01 / 51</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 01 — CAPA
+════════════════════════════════════════════ -->
+<div class="slide slide--capa active" data-block="CAPA" data-index="1">
+  <div class="glow glow-tl"></div>
+  <div class="glow glow-br"></div>
+  <div class="anim" style="margin-bottom:12px">
+    <div class="label">Vektoz Treinamentos</div>
+  </div>
+  <h1 class="title-xl anim-2" style="max-width:820px">
+    Do Zero ao<br><span class="gt">Avançado:</span><br>IA para Empresas
+  </h1>
+  <p class="subtitle anim-3" style="max-width:560px">
+    Da compreensão ao uso — com método, prática e resultados reais.
+  </p>
+  <div class="anim-4" style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:8px">
+      <div style="width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:16px">⚡</div>
+      <div>
+        <div style="font-size:12px;font-weight:800;color:var(--text)">[EMPRESA]</div>
+        <div style="font-size:11px;color:var(--muted)">[DATA] &nbsp;·&nbsp; [FORMATO]</div>
+      </div>
+    </div>
+    <div style="height:28px;width:1px;background:var(--border)"></div>
+    <div style="font-size:11px;color:var(--faint);font-weight:600">51 slides &nbsp;·&nbsp; ~5h30 &nbsp;·&nbsp; 12 blocos</div>
+  </div>
+  <div class="anim-5" style="margin-top:40px">
+    <img src="../../context/assets/Vektoz_Logos_Vector_SVG/Vektoz_Logo_Vector_NoBG.svg" alt="Vektoz" style="height:32px;filter:brightness(0) invert(1);opacity:.7" onerror="this.style.display='none'">
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 02 — POR QUE IA AGORA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 1 — CONTEXTO E URGÊNCIA" data-index="2">
+  <div class="glow glow-tl"></div>
+  <span class="badge">Bloco 1 — Contexto e Urgência</span>
+  <h2 class="title-md anim">Por que <span class="gt">IA agora?</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">O mercado não espera. Veja o que os dados dizem sobre esse momento.</p>
+  <div class="g4 anim-3">
+    <div class="stat-card">
+      <div class="stat-num gt">US$1,3T</div>
+      <div class="stat-desc">mercado global de IA generativa até 2032</div>
+      <div class="stat-src">Bloomberg · CAGR &gt;42%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num gt">72%</div>
+      <div class="stat-desc">das organizações já adotam IA em ao menos uma função</div>
+      <div class="stat-src">McKinsey 2024 · dobrou em 12 meses</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num gt">2,2×</div>
+      <div class="stat-desc">ganho de produtividade em tarefas intelectuais com LLM</div>
+      <div class="stat-src">MIT / BCG 2024</div>
+    </div>
+    <div class="stat-card" style="border-color:rgba(147,51,234,.25);box-shadow:var(--gp)">
+      <div class="stat-num" style="color:var(--purple)">[DADO]</div>
+      <div class="stat-desc">[dado de impacto específico do setor desta empresa]</div>
+      <div class="stat-src">[fonte] · [ano]</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 03 — LINHA DO TEMPO
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 1 — CONTEXTO E URGÊNCIA" data-index="3">
+  <div class="glow glow-tr"></div>
+  <span class="badge">Bloco 1 — Contexto e Urgência</span>
+  <h2 class="title-md anim">A linha do tempo <span class="gt">que você vive</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:36px">Cada onda tecnológica comprimiu a anterior. A próxima está comprimindo em meses.</p>
+  <div class="timeline anim-3">
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <div class="tl-year">2000s</div>
+      <div class="tl-desc">ERP & Sistemas Integrados<br><span style="color:var(--faint)">Automação de processos internos</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">2</div>
+      <div class="tl-year">2010s</div>
+      <div class="tl-desc">SaaS & Cloud<br><span style="color:var(--faint)">Software como serviço</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <div class="tl-year">2020–22</div>
+      <div class="tl-desc">RPA & Low-Code<br><span style="color:var(--faint)">Automação sem código</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--grad)">4</div>
+      <div class="tl-year">2023–24</div>
+      <div class="tl-desc">LLMs & IA Generativa<br><span style="color:var(--cyan)">ChatGPT, Claude, Gemini</span></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:linear-gradient(135deg,#9333ea,#ec4899)">★</div>
+      <div class="tl-year" style="color:var(--purple)">2025+</div>
+      <div class="tl-desc">Agentes de IA<br><span style="color:var(--purple)">Sistemas que agem por você</span></div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:36px;background:rgba(147,51,234,.08);border:1px solid rgba(147,51,234,.2);border-radius:12px;padding:16px 24px;display:flex;align-items:center;gap:12px;max-width:640px">
+    <span style="font-size:22px">⏱</span>
+    <div style="font-size:14px;color:var(--muted)">O que levou <strong style="color:var(--text)">10 anos</strong> para o SaaS substituir o ERP, os LLMs fizeram em <strong style="color:var(--purple)">18 meses</strong>.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 04 — ANTES VS AGORA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 1 — CONTEXTO E URGÊNCIA" data-index="4">
+  <div class="glow glow-bl"></div>
+  <span class="badge">Bloco 1 — Contexto e Urgência</span>
+  <h2 class="title-md anim">Antes vs Agora: <span class="gt">impacto prático</span></h2>
+  <div class="tbl-wrap anim-2" style="margin-top:16px">
+    <table class="tbl">
+      <thead><tr>
+        <th>Tarefa</th>
+        <th style="color:#f87171">Operação Tradicional</th>
+        <th style="color:var(--cyan)">Operação Aumentada com IA</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>Relatório mensal</b></td><td>3–4h analisando planilhas e escrevendo</td><td>Upload do arquivo → análise + rascunho em &lt;10 min</td></tr>
+        <tr><td><b>Contrato / proposta</b></td><td>1–2h adaptando template para cada cliente</td><td>Brief rápido → proposta personalizada em 15 min</td></tr>
+        <tr><td><b>Atendimento ao cliente</b></td><td>Resposta manual, 30–60 min por ticket</td><td>Rascunho gerado em 30 seg, humano revisa e envia</td></tr>
+        <tr><td><b>Briefing de campanha</b></td><td>Reunião de 1h + 1h documentando</td><td>Template + IA → documento em 20 min</td></tr>
+        <tr><td><b>Onboarding de novo colaborador</b></td><td>Manual de 30 pág. desatualizado</td><td>Assistente treinado responde perguntas em tempo real</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 05 — CITAÇÃO
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 1 — CONTEXTO E URGÊNCIA" data-index="5">
+  <div class="glow glow-center"></div>
+  <div class="quote-mark anim">"</div>
+  <p class="quote-text anim-2">IA não vai substituir você.<br>Pessoas que usam IA vão substituir<br>pessoas que não usam.</p>
+  <div class="quote-attr anim-3">— Harvard Business Review</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 06 — DEFINIÇÃO OPERACIONAL
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 2 — O QUE É IA" data-index="6">
+  <div class="glow glow-tr"></div>
+  <span class="badge badge-purple">Bloco 2 — O que é IA</span>
+  <h2 class="title-md anim">IA não pensa. <span class="gt">Ela prevê.</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:28px">Definição operacional — o que você precisa entender para usar bem.</p>
+  <div class="anim-3" style="background:rgba(147,51,234,.06);border:1px solid rgba(147,51,234,.2);border-radius:16px;padding:24px;max-width:700px;margin-bottom:28px">
+    <p style="font-size:17px;font-weight:600;color:var(--text);line-height:1.5">IA não é robô. Não pensa. <span style="color:var(--purple)">Prevê a resposta mais provável</span> com base em tudo que foi treinada — e faz isso em escala industrial.</p>
+  </div>
+  <div class="g3 anim-4">
+    <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+      <div class="icon-circle ic-p">✨</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px">IA Generativa</div>
+        <div style="font-size:13px;color:var(--muted)">Cria texto, imagem, código. ChatGPT, Claude, Gemini. <strong style="color:var(--purple)">Foco deste treinamento.</strong></div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+      <div class="icon-circle ic-c">📊</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px">IA Preditiva</div>
+        <div style="font-size:13px;color:var(--muted)">Prevê comportamentos com base em dados. Recomendações, churn, demanda.</div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+      <div class="icon-circle ic-o">⚙️</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px">IA de Automação</div>
+        <div style="font-size:13px;color:var(--muted)">Executa tarefas regidas por regras. RPA, workflows, integrações.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 07 — O QUE É UM LLM
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 2 — O QUE É IA" data-index="7">
+  <div class="glow glow-bl"></div>
+  <span class="badge badge-purple">Bloco 2 — O que é IA</span>
+  <h2 class="title-md anim">O que é um <span class="gt">LLM?</span></h2>
+  <div class="g2 anim-2" style="margin-top:20px;align-items:start">
+    <div>
+      <div class="card-p" style="margin-bottom:20px">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">Definição técnica (simplificada)</div>
+        <p style="font-size:16px;font-weight:600;color:var(--text);line-height:1.5">LLM = <span style="color:var(--purple)">previsor de próximas palavras</span> em escala industrial — treinado em bilhões de textos.</p>
+      </div>
+      <div class="card-p">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px">A analogia certa</div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.55">Pense como um <strong style="color:var(--text)">colega júnior brilhante</strong> — não como um banco de dados inteligente. Ele não busca informações: ele <em style="color:var(--purple)">gera</em> a resposta mais plausível com base no que aprendeu.</p>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="card" style="display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:20px">✅</span>
+        <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Ótimo em:</strong> redigir, resumir, analisar, estruturar, explicar, raciocinar.</div>
+      </div>
+      <div class="card" style="display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:20px">⚠️</span>
+        <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Cuidado com:</strong> dados numéricos precisos, fatos recentes, informações confidenciais.</div>
+      </div>
+      <div class="card" style="display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:20px">❌</span>
+        <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Não faz:</strong> acessar sistemas externos por padrão, aprender com sua conversa, "saber" a verdade absoluta.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 08 — COMO FUNCIONA (5 PASSOS)
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 2 — O QUE É IA" data-index="8">
+  <div class="glow glow-tl"></div>
+  <span class="badge badge-purple">Bloco 2 — O que é IA</span>
+  <h2 class="title-md anim">Como funciona: <span class="gt">5 passos</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:32px">"Autocomplete muito avançado que leu quase tudo que já foi escrito na internet."</p>
+  <div class="flow anim-3">
+    <div class="flow-item">
+      <div class="flow-dot">1</div>
+      <div class="flow-label">Você escreve</div>
+      <div class="flow-sub">o prompt</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot">2</div>
+      <div class="flow-label">Tokenização</div>
+      <div class="flow-sub">texto em tokens</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot">3</div>
+      <div class="flow-label">Cálculo</div>
+      <div class="flow-sub">probabilidade de cada próximo token</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot">4</div>
+      <div class="flow-label">Geração</div>
+      <div class="flow-sub">token a token, palavra por palavra</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot" style="color:var(--purple)">5</div>
+      <div class="flow-label">Contexto</div>
+      <div class="flow-sub">toda a conversa influencia a resposta</div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:36px;background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:16px 24px;display:flex;gap:16px;align-items:center;max-width:680px">
+    <span style="font-size:28px">💡</span>
+    <div style="font-size:14px;color:var(--muted)">Quanto <strong style="color:var(--text)">mais contexto</strong> você fornece no prompt, mais precisos ficam os tokens gerados. A qualidade do output começa no seu input.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 09 — ECOSSISTEMA DE IAs
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 2 — O QUE É IA" data-index="9">
+  <div class="glow glow-br"></div>
+  <span class="badge badge-purple">Bloco 2 — O que é IA</span>
+  <h2 class="title-md anim">O ecossistema <span class="gt">de IAs</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:20px">Não existe uma única IA para tudo. Cada modelo tem sua especialidade.</p>
+  <div class="tbl-wrap anim-3">
+    <table class="tbl">
+      <thead><tr>
+        <th>Modelo</th><th>Empresa</th><th>Forte em</th><th>Disponível via</th>
+      </tr></thead>
+      <tbody>
+        <tr><td><b>ChatGPT</b></td><td>OpenAI</td><td>Texto, código, análise, DALL-E (imagens)</td><td>chat.openai.com · API</td></tr>
+        <tr><td><b>Gemini</b></td><td>Google</td><td>Multimodalidade, PDFs longos, integração G Suite</td><td>gemini.google.com · Workspace</td></tr>
+        <tr><td><b>Claude</b></td><td>Anthropic</td><td>Textos longos, raciocínio, documentos, escrita refinada</td><td>claude.ai · API</td></tr>
+        <tr><td><b>Llama</b></td><td>Meta</td><td>Open source, customização local, privacidade</td><td>Ollama · Hugging Face</td></tr>
+        <tr><td><b>Copilot</b></td><td>Microsoft</td><td>Integração Office 365, Teams, e-mail</td><td>Microsoft 365</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="anim-4" style="margin-top:16px;font-size:13px;color:var(--faint);font-style:italic">Recomendação prática: comece com ChatGPT (mais universal) ou com o que sua empresa já tem licença.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 10 — GLOSSÁRIO ESSENCIAL
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 2 — O QUE É IA" data-index="10">
+  <div class="glow glow-tl"></div>
+  <span class="badge badge-purple">Bloco 2 — O que é IA</span>
+  <h2 class="title-md anim">Glossário <span class="gt">essencial</span></h2>
+  <div class="tbl-wrap anim-2" style="margin-top:16px">
+    <table class="tbl">
+      <thead><tr><th>Termo</th><th>Definição em 1 linha</th></tr></thead>
+      <tbody>
+        <tr><td><b>Prompt</b></td><td>A instrução que você escreve para a IA — é a entrada que define a qualidade da saída.</td></tr>
+        <tr><td><b>Token</b></td><td>A menor unidade de texto que o modelo processa. ~¾ de uma palavra em português.</td></tr>
+        <tr><td><b>Context Window</b></td><td>A quantidade de texto que o modelo consegue "ver" de uma vez. Limita conversas muito longas.</td></tr>
+        <tr><td><b>Temperatura</b></td><td>O nível de criatividade da resposta (0 = preciso/determinístico · 1 = criativo/variado).</td></tr>
+        <tr><td><b>Alucinação</b></td><td>Quando o modelo gera informação falsa com confiança. O maior risco para usuários iniciantes.</td></tr>
+        <tr><td><b>Agente</b></td><td>IA com objetivo próprio que usa ferramentas para agir no mundo — não só responder perguntas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 11 — OS 4 LIMITES ESTRUTURAIS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 2 — O QUE É IA" data-index="11">
+  <div class="glow glow-br"></div>
+  <span class="badge badge-purple">Bloco 2 — O que é IA</span>
+  <h2 class="title-md anim">O que a IA <span class="gt">não faz</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:20px">4 limites estruturais — e como mitigar cada um na prática.</p>
+  <div class="g2 anim-3">
+    <div class="card" style="border-left:3px solid #f87171">
+      <div style="font-size:14px;font-weight:800;color:#f87171;margin-bottom:8px">⚠ Alucinações</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px">O modelo inventa fatos com tom de certeza, especialmente datas, nomes e números.</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text)">Mitigação → sempre peça fontes; valide fatos críticos externamente.</div>
+    </div>
+    <div class="card" style="border-left:3px solid #fb923c">
+      <div style="font-size:14px;font-weight:800;color:#fb923c;margin-bottom:8px">🗓 Data Cutoff</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px">O modelo não sabe o que aconteceu depois da data de corte do seu treinamento.</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text)">Mitigação → use modelos com acesso à web ou forneça contexto atualizado.</div>
+    </div>
+    <div class="card" style="border-left:3px solid #facc15">
+      <div style="font-size:14px;font-weight:800;color:#facc15;margin-bottom:8px">🔒 Vazamento de Dados</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px">Prompts podem ser usados para treinamento. Nunca insira dados sensíveis em versões gratuitas.</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text)">Mitigação → use versões pagas (opt-out de treino) ou modelos privados/locais.</div>
+    </div>
+    <div class="card" style="border-left:3px solid #a78bfa">
+      <div style="font-size:14px;font-weight:800;color:#a78bfa;margin-bottom:8px">🌍 Viés Cultural</div>
+      <div style="font-size:13px;color:var(--muted);margin-bottom:10px">Modelos foram treinados majoritariamente em inglês — podem ter viés ocidental/americano.</div>
+      <div style="font-size:12px;font-weight:700;color:var(--text)">Mitigação → especifique o contexto brasileiro no prompt; revise sempre.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 12 — NÍVEIS DE MATURIDADE
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 3 — NIVELAMENTO DO TIME" data-index="12">
+  <div class="glow glow-tl"></div>
+  <span class="badge" style="color:#4ade80;background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.25)">Bloco 3 — Nivelamento do Time</span>
+  <h2 class="title-md anim">Onde você está <span class="gt">agora?</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Meta do treinamento: mover todos do N1 → N2. Preparar interessados para o N3.</p>
+  <div class="level-track anim-3">
+    <div class="level-row">
+      <div class="level-num" style="background:rgba(113,113,122,.2);color:var(--muted)">N1</div>
+      <div class="level-info">
+        <div class="level-name">Iniciante — Já ouvi falar</div>
+        <div class="level-desc">Nunca usou ou usou uma vez. Associa IA com ficção científica ou robôs.</div>
+        <div class="level-bar"><div class="level-fill" style="width:25%"></div></div>
+      </div>
+    </div>
+    <div class="level-row">
+      <div class="level-num" style="background:rgba(34,211,238,.15);color:var(--cyan)">N2</div>
+      <div class="level-info">
+        <div class="level-name">Usuário Regular — Uso às vezes</div>
+        <div class="level-desc">Usa ChatGPT ou similar para tarefas pontuais. Resultado inconsistente por falta de método.</div>
+        <div class="level-bar"><div class="level-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+    <div class="level-row">
+      <div class="level-num" style="background:rgba(147,51,234,.2);color:var(--purple)">N3</div>
+      <div class="level-info">
+        <div class="level-name">Avançado — Uso com método</div>
+        <div class="level-desc">Prompts estruturados, Custom GPTs, fluxos definidos. Extrai 3× mais valor do mesmo modelo.</div>
+        <div class="level-bar"><div class="level-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+    <div class="level-row">
+      <div class="level-num" style="background:var(--grad);color:#fff">N4</div>
+      <div class="level-info">
+        <div class="level-name">Automatizador — IA no fluxo</div>
+        <div class="level-desc">Integra IA em sistemas, cria agentes, automatiza processos fim a fim. Opera em escala.</div>
+        <div class="level-bar"><div class="level-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 13 — ATIVIDADE: MÃO NA MASSA
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 3 — NIVELAMENTO DO TIME" data-index="13">
+  <div class="glow glow-center"></div>
+  <span class="badge badge-activity anim" style="margin:0 auto 24px">Atividade 1 · 10 minutos</span>
+  <div class="activity-wrap anim-2">
+    <div class="activity-title">🖐 Mão na Massa</div>
+    <div class="activity-time">⏱ 10 minutos</div>
+    <div class="activity-body">
+      <ol style="padding-left:20px">
+        <li>Abra o <strong style="color:var(--text)">ChatGPT</strong>, <strong style="color:var(--text)">Gemini</strong> ou <strong style="color:var(--text)">Claude</strong> no seu celular ou computador.</li>
+        <li>Faça uma pergunta sobre algo do seu <strong style="color:var(--text)">trabalho diário</strong>. Pode ser qualquer coisa: resumir um texto, sugerir um e-mail, explicar um conceito.</li>
+        <li>Compartilhe com a turma: <strong style="color:#4ade80">o que pediu</strong> e <strong style="color:#4ade80">o que achou da resposta</strong>.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="anim-3" style="font-size:13px;color:var(--faint);margin-top:20px">Objetivo: sair da teoria e fazer o primeiro contato real.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 14 — PROMPT É A NOVA INTERFACE
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="14">
+  <div class="glow glow-tl"></div>
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="margin:0 auto 24px;color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-xl anim-2" style="max-width:700px">O prompt é a<br><span class="gt">nova interface.</span></h2>
+  <p class="anim-3" style="font-size:clamp(16px,2vw,22px);color:var(--muted);max-width:560px;line-height:1.5">Quem domina prompts extrai <strong style="color:var(--text)">3× mais valor</strong> do mesmo modelo — sem pagar mais nada.</p>
+  <div class="anim-4" style="margin-top:32px;display:flex;gap:20px;flex-wrap:wrap;justify-content:center">
+    <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:16px 24px;font-size:14px;color:#f87171;font-weight:600">Prompt ruim → output genérico</div>
+    <div style="font-size:24px;color:var(--faint);display:flex;align-items:center">→</div>
+    <div style="background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.2);border-radius:12px;padding:16px 24px;font-size:14px;color:var(--cyan);font-weight:600">Prompt estruturado → output estratégico</div>
+  </div>
+  <p class="anim-5" style="font-size:14px;color:var(--faint);margin-top:24px;font-style:italic">Lixo entra, lixo sai. A IA é tão boa quanto a instrução que você dá.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 15 — OS 3 NÍVEIS DE PROMPT
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="15">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-md anim-2">Os 3 níveis <span class="gt">de prompt</span></h2>
+  <div class="flex-col anim-3" style="gap:16px;margin-top:16px">
+    <div class="card" style="display:flex;gap:20px;align-items:flex-start">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(113,113,122,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">1</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:var(--muted);margin-bottom:4px">NÍVEL 1 — Pergunta direta</div>
+        <div class="prompt" style="padding:12px 16px;font-size:13px">"Escreva um e-mail de follow-up."</div>
+        <div style="font-size:12px;color:#f87171;margin-top:6px">→ Resultado: genérico, sem contexto, precisará de muita edição.</div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:20px;align-items:flex-start">
+      <div style="width:44px;height:44px;border-radius:12px;background:rgba(34,211,238,.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:var(--cyan)">2</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:var(--cyan);margin-bottom:4px">NÍVEL 2 — Com contexto</div>
+        <div class="prompt" style="padding:12px 16px;font-size:13px">"Escreva um e-mail de follow-up para um prospect que viu nossa proposta há 3 dias e não respondeu. Tom profissional, sem pressão."</div>
+        <div style="font-size:12px;color:var(--cyan);margin-top:6px">→ Resultado: útil, ainda precisa de alguns ajustes.</div>
+      </div>
+    </div>
+    <div class="card" style="display:flex;gap:20px;align-items:flex-start;border-color:rgba(147,51,234,.3)">
+      <div style="width:44px;height:44px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;font-weight:900">3</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:800;color:var(--purple);margin-bottom:4px">NÍVEL 3 — Com processo (papel + tarefa + dados + formato)</div>
+        <div class="prompt" style="padding:12px 16px;font-size:12px"><span class="k">Papel:</span> Você é especialista em vendas consultivas B2B.<br><span class="k">Contexto:</span> Enviamos proposta de R$8k para gestor de TI de uma clínica.<br><span class="k">Tarefa:</span> Escreva um follow-up que reforce o valor, não o preço.<br><span class="k">Formato:</span> E-mail de 4 linhas, assunto incluso, tom próximo.</div>
+        <div style="font-size:12px;color:var(--purple);margin-top:6px;font-weight:700">→ Resultado: pronto para enviar, estratégico, consistente.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 16 — FRAMEWORK DE 6 BLOCOS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="16">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-md anim-2">Framework de <span class="gt">6 Blocos</span></h2>
+  <div class="tbl-wrap anim-3" style="margin-top:16px">
+    <table class="tbl">
+      <thead><tr><th>#</th><th>Bloco</th><th>Pergunta guia</th><th>Exemplo prático</th></tr></thead>
+      <tbody>
+        <tr><td><b style="color:var(--cyan)">1</b></td><td><b>Papel</b></td><td style="color:var(--faint)">Quem a IA deve ser?</td><td>"Você é um analista financeiro sênior com 15 anos de experiência."</td></tr>
+        <tr><td><b style="color:var(--cyan)">2</b></td><td><b>Contexto</b></td><td style="color:var(--faint)">Qual é a situação?</td><td>"Estou preparando um relatório de resultado para a diretoria."</td></tr>
+        <tr><td><b style="color:var(--cyan)">3</b></td><td><b>Tarefa</b></td><td style="color:var(--faint)">O que exatamente preciso?</td><td>"Analise os dados abaixo e identifique as 3 principais anomalias."</td></tr>
+        <tr><td><b style="color:var(--cyan)">4</b></td><td><b>Formato</b></td><td style="color:var(--faint)">Como deve ser entregue?</td><td>"Responda em bullet points. Máximo 5 linhas por ponto."</td></tr>
+        <tr><td><b style="color:var(--cyan)">5</b></td><td><b>Restrições</b></td><td style="color:var(--faint)">O que NÃO fazer?</td><td>"Não use jargão técnico. Não cite percentuais sem base nos dados."</td></tr>
+        <tr><td><b style="color:var(--cyan)">6</b></td><td><b>Exemplo</b></td><td style="color:var(--faint)">Tem um modelo?</td><td>"Formato: [Anomalia] → [Impacto] → [Recomendação]"</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="anim-4" style="margin-top:16px;font-size:13px;color:var(--faint)">Não precisa usar todos os 6 sempre. Use os que fazem sentido para a tarefa.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 17 — PROMPT COMPLETO APLICADO
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="17">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-md anim-2">Prompt completo <span class="gt">aplicado ao setor</span></h2>
+  <div class="prompt anim-3" style="margin-top:16px;font-size:13px">
+    <span class="c">// Exemplo aplicado — [PERSONALIZAR COM O SETOR DA EMPRESA]</span><br><br>
+    <span class="k">PAPEL:</span> <span class="v">Você é um especialista em [setor da empresa] com foco em eficiência operacional.</span><br><br>
+    <span class="k">CONTEXTO:</span> <span class="v">Trabalho em uma [tipo da empresa] com [X] funcionários. Nosso maior gargalo é [dor principal do briefing].</span><br><br>
+    <span class="k">TAREFA:</span> <span class="v">Analise o texto abaixo e sugira 5 melhorias práticas que possam ser implementadas em menos de 30 dias, sem necessidade de novos sistemas ou investimentos.</span><br><br>
+    <span class="k">FORMATO:</span> <span class="v">Lista numerada. Para cada item: [Melhoria] → [Como implementar] → [Resultado esperado].</span><br><br>
+    <span class="k">RESTRIÇÃO:</span> <span class="v">Não sugira soluções que dependam de aprovação de diretoria ou mudança de sistema.</span><br><br>
+    <span class="k">DADOS:</span> <span class="v">[cole aqui o texto, relatório ou situação a analisar]</span>
+  </div>
+  <div class="anim-4" style="margin-top:14px;font-size:12px;color:var(--faint);font-style:italic">Substitua os colchetes pelos dados reais da empresa antes do treinamento.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 18 — OS 5 ERROS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="18">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-md anim-2">Os 5 erros que destroem <span class="gt">80% da qualidade</span></h2>
+  <div class="flex-col anim-3" style="gap:14px;margin-top:16px">
+    <div class="card" style="display:flex;gap:16px;align-items:center">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#f87171;flex-shrink:0">1</div>
+      <div><strong style="color:var(--text)">Pedir sem contexto</strong> — "Escreva um email" pode virar qualquer coisa. A IA não sabe nada sobre você.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#f87171;flex-shrink:0">2</div>
+      <div><strong style="color:var(--text)">Aceitar a primeira resposta</strong> — A primeira é o rascunho. O valor está na iteração. Sempre peça melhorias.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#f87171;flex-shrink:0">3</div>
+      <div><strong style="color:var(--text)">Não definir o formato</strong> — Sem especificar, a IA escolhe. Defina: bullet points, tabela, 3 parágrafos, 200 palavras.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(239,68,68,.15);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#f87171;flex-shrink:0">4</div>
+      <div><strong style="color:var(--text)">Confiar em números inventados</strong> — Alucinação é real. Nunca use dados numéricos gerados pela IA sem verificar.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-color:rgba(147,51,234,.3)">
+      <div style="width:36px;height:36px;border-radius:10px;background:rgba(147,51,234,.2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--purple);flex-shrink:0">5</div>
+      <div><strong style="color:var(--text)">Mega-prompt único e longo</strong> — Quebrar em etapas bate qualquer prompt monolítico. Divida tarefas complexas em passos.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 19 — O LOOP DE REFINAMENTO
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="19">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-md anim-2">O loop de <span class="gt">refinamento</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Prompt é diálogo, não disparo único. O valor real está no refinamento.</p>
+  <div class="g3 anim-3" style="align-items:stretch;margin-bottom:20px">
+    <div class="card" style="text-align:center;border-top:3px solid var(--cyan)">
+      <div style="font-size:28px;margin-bottom:8px">📝</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px">1. Encomendar</div>
+      <div style="font-size:12px;color:var(--muted)">Prompt inicial com os 6 blocos. Não precisa ser perfeito.</div>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid #f59e0b">
+      <div style="font-size:28px;margin-bottom:8px">🔍</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px">2. Criticar</div>
+      <div style="font-size:12px;color:var(--muted)">Peça à IA que critique a própria resposta. "O que está fraco aqui?"</div>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid #f87171">
+      <div style="font-size:28px;margin-bottom:8px">✂️</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px">3. Restringir</div>
+      <div style="font-size:12px;color:var(--muted)">Elimine o que não serve. "Remova X, enfatize Y, seja mais direto."</div>
+    </div>
+  </div>
+  <div class="g2 anim-4" style="max-width:540px">
+    <div class="card" style="text-align:center;border-top:3px solid var(--purple)">
+      <div style="font-size:28px;margin-bottom:8px">🔄</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px">4. Reiterar</div>
+      <div style="font-size:12px;color:var(--muted)">Repita até chegar na qualidade desejada. 2–3 voltas é a média.</div>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid #4ade80">
+      <div style="font-size:28px;margin-bottom:8px">💾</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:6px">5. Salvar</div>
+      <div style="font-size:12px;color:var(--muted)">Guarde o prompt final. Reutilize. Construa sua biblioteca pessoal.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 20 — CONTEXTO É TUDO
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="20">
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="color:#f59e0b;background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)">Bloco 4 — Engenharia de Prompt</span>
+  <h2 class="title-md anim-2">Contexto é <span class="gt">tudo</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">A mesma pergunta. Resultados completamente diferentes.</p>
+  <div class="ba-grid anim-3">
+    <div class="ba-card ba-before">
+      <div class="ba-label">❌ Sem contexto</div>
+      <div class="prompt" style="font-size:13px;background:rgba(0,0,0,.3);padding:14px">"Escreva uma mensagem de boas-vindas para novos clientes."</div>
+      <div style="margin-top:14px">
+        <div style="font-size:12px;font-weight:700;color:#f87171;margin-bottom:6px">OUTPUT:</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;font-style:italic">"Bem-vindo! Estamos felizes em tê-lo como cliente. Nossa equipe está à disposição para qualquer dúvida. Atenciosamente."</div>
+        <div style="font-size:11px;color:#f87171;margin-top:8px">→ Genérico, sem personalidade, precisará de muita edição.</div>
+      </div>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-label">✅ Com contexto</div>
+      <div class="prompt" style="font-size:12px;background:rgba(0,0,0,.3);padding:14px"><span class="k">Papel:</span> atendente de clínica odontológica premium.<br><span class="k">Contexto:</span> novo paciente agendou 1ª consulta de avaliação.<br><span class="k">Tom:</span> acolhedor, profissional, humano.<br><span class="k">Formato:</span> WhatsApp, máx 4 linhas.</div>
+      <div style="margin-top:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--cyan);margin-bottom:6px">OUTPUT:</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.5;font-style:italic">"Olá, [Nome]! 😊 Seja muito bem-vindo à Clínica Silva. Sua consulta de avaliação está confirmada para [data]. Qualquer dúvida, estou aqui. Te esperamos com carinho!"</div>
+        <div style="font-size:11px;color:var(--cyan);margin-top:8px">→ Pronto para enviar. Personalizado. Não precisa de edição.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 21 — ATIVIDADE: REESCREVA COM CONTEXTO
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 4 — ENGENHARIA DE PROMPT" data-index="21">
+  <div class="glow glow-center"></div>
+  <span class="badge badge-activity anim" style="margin:0 auto 24px">Atividade 2 · 15 minutos</span>
+  <div class="activity-wrap anim-2">
+    <div class="activity-title">✍️ Reescreva com Contexto</div>
+    <div class="activity-time">⏱ 15 minutos</div>
+    <div class="activity-body">
+      <ol style="padding-left:20px">
+        <li>Pegue um <strong style="color:var(--text)">e-mail, mensagem ou documento</strong> do seu trabalho diário — qualquer coisa que você precise comunicar.</li>
+        <li>Construa um prompt usando os <strong style="color:var(--text)">6 blocos do framework</strong>: Papel, Contexto, Tarefa, Formato, Restrições, Exemplo.</li>
+        <li>Cole no ChatGPT/Claude/Gemini, veja o resultado, e <strong style="color:#4ade80">faça ao menos 2 iterações</strong>.</li>
+        <li>Compare com o que você teria escrito sozinho. O que melhorou? O que ainda precisa ajustar?</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 22 — PULOS DO GATO (TÉCNICAS AVANÇADAS)
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 5 — TÉCNICAS AVANÇADAS" data-index="22">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#ef4444;background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25)">Bloco 5 — Técnicas Avançadas</span>
+  <h2 class="title-md anim-2">Pulos do gato: <span class="gt">7 técnicas</span></h2>
+  <div class="tbl-wrap anim-3" style="margin-top:12px">
+    <table class="tbl">
+      <thead><tr><th>Técnica</th><th>O que é</th><th>Quando usar</th></tr></thead>
+      <tbody>
+        <tr><td><b>Chain of Thought</b></td><td>"Pense passo a passo antes de responder."</td><td>Problemas complexos, análises, decisões</td></tr>
+        <tr><td><b>Few-shot</b></td><td>Dar 2–3 exemplos do output esperado antes de pedir.</td><td>Padronizar formato e estilo de resposta</td></tr>
+        <tr><td><b>Role Stacking</b></td><td>Combinar múltiplos papéis: "Você é marketeiro E advogado."</td><td>Análises multi-perspectiva</td></tr>
+        <tr><td><b>Iteração Dirigida</b></td><td>"Reescreva, mas mais direto e sem os parágrafos 2 e 4."</td><td>Refinar até a versão ideal</td></tr>
+        <tr><td><b>Persona Negativa</b></td><td>"Você NÃO é um assistente genérico. Você tem opinião."</td><td>Saídas mais ousadas e com ponto de vista</td></tr>
+        <tr><td><b>Output Estruturado</b></td><td>Pedir resposta em JSON, tabela ou template específico.</td><td>Integrar outputs em sistemas ou planilhas</td></tr>
+        <tr><td><b>Prompt de Sistema</b></td><td>Contexto fixo que persiste em toda a conversa.</td><td>Custom GPTs, sessões longas, padronização</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 23 — PROMPTS COM REFERÊNCIAS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 5 — TÉCNICAS AVANÇADAS" data-index="23">
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="color:#ef4444;background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25)">Bloco 5 — Técnicas Avançadas</span>
+  <h2 class="title-md anim-2">Prompts com <span class="gt">referências de pensamento</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Use personas reconhecidas para orientar o raciocínio — útil para análise estratégica e brainstorming.</p>
+  <div class="g3 anim-3">
+    <div class="card-p">
+      <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:8px">Análise de Risco</div>
+      <div class="prompt" style="font-size:12px;padding:12px">"Se você fosse <b style="color:var(--cyan)">Warren Buffett</b>, como avaliaria o risco desta decisão de investimento?"</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">→ Forçar perspectiva de longo prazo, conservadorismo e análise fundamentalista.</div>
+    </div>
+    <div class="card-p">
+      <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:8px">Comunicação e Propósito</div>
+      <div class="prompt" style="font-size:12px;padding:12px">"Se você fosse <b style="color:var(--cyan)">Simon Sinek</b>, como estruturaria essa apresentação para a diretoria?"</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">→ Framework Golden Circle: por quê → como → o quê.</div>
+    </div>
+    <div class="card-p">
+      <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:8px">Crítica e Inovação</div>
+      <div class="prompt" style="font-size:12px;padding:12px">"Como <b style="color:var(--cyan)">um advogado do diabo</b>, liste tudo que pode dar errado neste plano."</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">→ Antecipar riscos invisíveis antes de apresentar ao board.</div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:20px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--muted);max-width:680px">
+    💡 <strong style="color:var(--text)">Dica:</strong> Combine com Chain of Thought — "Pense como [persona], passo a passo, e explique seu raciocínio antes de concluir."
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 24 — ATIVIDADE: ANÁLISE COM DADOS REAIS
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 5 — TÉCNICAS AVANÇADAS" data-index="24">
+  <div class="glow glow-center"></div>
+  <span class="badge badge-activity anim" style="margin:0 auto 24px">Atividade 3 · 15 minutos</span>
+  <div class="activity-wrap anim-2">
+    <div class="activity-title">🔬 Analise com Dados Reais</div>
+    <div class="activity-time">⏱ 15 minutos</div>
+    <div class="activity-body">
+      <ol style="padding-left:20px">
+        <li>Escolha um <strong style="color:var(--text)">dado real do seu trabalho</strong>: uma planilha, um relatório, um contrato, um e-mail longo — qualquer texto ou número.</li>
+        <li>Construa um prompt de <strong style="color:var(--text)">Nível 3</strong> usando pelo menos 4 dos 6 blocos, com uma das técnicas avançadas (Chain of Thought, Persona, Role Stacking).</li>
+        <li>Peça uma <strong style="color:#4ade80">análise estruturada</strong> com problemas identificados, oportunidades e próximos passos.</li>
+      </ol>
+    </div>
+  </div>
+  <p class="anim-3" style="font-size:13px;color:var(--faint);margin-top:20px">Se não tiver dados à mão, use uma situação hipotética do seu setor.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 25 — CASOS DE USO POR ÁREA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 6 — CASOS POR ÁREA" data-index="25">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#22c55e;background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25)">Bloco 6 — Casos por Área</span>
+  <h2 class="title-md anim-2">Como cada área <span class="gt">usa IA</span></h2>
+  <div class="tbl-wrap anim-3" style="margin-top:12px">
+    <table class="tbl">
+      <thead><tr><th>Área</th><th>Casos de Uso</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>💼 Comercial</b></td>
+          <td>Follow-ups personalizados · Resumo de reunião + próximos passos · Proposta adaptada ao perfil do prospect · Script de objeções</td>
+        </tr>
+        <tr>
+          <td><b>👥 RH</b></td>
+          <td>Triagem de currículos · Geração de JDs (descrição de vagas) · Onboarding automatizado · Respostas a dúvidas frequentes de colaboradores</td>
+        </tr>
+        <tr>
+          <td><b>💰 Financeiro</b></td>
+          <td>Análise de planilhas em linguagem natural · Relatório narrativo de resultados · Detecção de anomalias · Resumo de contratos</td>
+        </tr>
+        <tr>
+          <td><b>📣 Marketing</b></td>
+          <td>Copy para e-mail e redes sociais · Briefing de campanha · Análise de concorrência · SEO e pautas de conteúdo</td>
+        </tr>
+        <tr>
+          <td><b>⚙️ Operacional</b></td>
+          <td>SOPs e checklists · Ata de reunião com responsáveis · Triagem de tickets · Documentação de processos internos</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="anim-4" style="margin-top:14px;font-size:13px;color:var(--faint);font-style:italic">Adapte a lista para mostrar apenas as áreas presentes no treinamento.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 26 — CASO DE USO DO SETOR
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 6 — CASOS POR ÁREA" data-index="26">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#22c55e;background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25)">Bloco 6 — Casos por Área</span>
+  <h2 class="title-md anim-2">Caso real: <span class="gt">[setor da empresa]</span></h2>
+  <div class="g2 anim-3" style="margin-top:20px;align-items:start">
+    <div class="flex-col">
+      <div class="card" style="border-left:3px solid #f87171">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:#f87171;margin-bottom:8px">PROBLEMA</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.5">[Descrever a dor principal identificada no briefing da empresa — ex: "Equipe gasta 4h/semana respondendo as mesmas dúvidas de clientes."]</p>
+      </div>
+      <div class="card" style="border-left:3px solid #f59e0b">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:#f59e0b;margin-bottom:8px">PROCESSO ATUAL</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.5">[Como é feito hoje — ex: "Resposta manual no WhatsApp, um a um, sem padrão de qualidade."]</p>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="card" style="border-left:3px solid var(--cyan)">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--cyan);margin-bottom:8px">COM IA</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.5">[Como a IA resolve — ex: "Custom GPT treinado com FAQ + histórico → rascunhos em 30 seg. Humano revisa e aprova."]</p>
+      </div>
+      <div class="card" style="border-left:3px solid #4ade80;background:rgba(74,222,128,.04)">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:#4ade80;margin-bottom:8px">RESULTADO ESPERADO</div>
+        <p style="font-size:14px;color:var(--text);line-height:1.5;font-weight:600">[Métrica — ex: "-70% de tempo no atendimento. Padrão de resposta consistente. Time libera 2h/dia para atividades estratégicas."]</p>
+      </div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:14px;font-size:12px;color:var(--faint);font-style:italic">Personalizar com o caso da empresa usando dados do briefing. Se houver case interno, priorizá-lo.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 27 — SINAIS QUE UMA TAREFA PODE SER COM IA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 6 — CASOS POR ÁREA" data-index="27">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#22c55e;background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25)">Bloco 6 — Casos por Área</span>
+  <h2 class="title-md anim-2">Quando a tarefa <span class="gt">pode ser com IA?</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Se você já pensou "alguém podia fazer isso pra mim" — a IA pode fazer isso.</p>
+  <div class="g2 anim-3" style="align-items:stretch">
+    <div class="flex-col">
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-size:24px">⏰</span>
+        <div><div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">Consome muito tempo</div><div style="font-size:13px;color:var(--muted)">Mais de 30 min em tarefa que poderia ser feita em 5. Pesquisa, redação, compilação.</div></div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-size:24px">🔁</span>
+        <div><div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">É repetitiva</div><div style="font-size:13px;color:var(--muted)">Você já fez isso antes exatamente igual. Relatório semanal, resposta padrão, planilha mensal.</div></div>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-size:24px">✍️</span>
+        <div><div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">Envolve escrita</div><div style="font-size:13px;color:var(--muted)">E-mails, propostas, atas, políticas, descrições, comunicados, briefings, roteiros.</div></div>
+      </div>
+      <div class="card" style="display:flex;gap:14px;align-items:flex-start">
+        <span style="font-size:24px">📊</span>
+        <div><div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:4px">Exige leitura de dados</div><div style="font-size:13px;color:var(--muted)">Interpretar planilhas, identificar padrões, comparar versões de documentos, resumir PDFs longos.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:20px;background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.2);border-radius:12px;padding:14px 20px;font-size:14px;color:var(--text);font-weight:600;max-width:680px">
+    💡 Regra prática: se você consegue explicar a tarefa para um estagiário em 5 minutos, a IA consegue fazer — ou pelo menos fazer o rascunho.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 28 — DEEP RESEARCH
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 7 — ARSENAL DE FERRAMENTAS" data-index="28">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#f97316;background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.25)">Bloco 7 — Arsenal de Ferramentas</span>
+  <h2 class="title-md anim-2"><span class="gt">Deep Research:</span> pesquisa em minutos</h2>
+  <div class="g2 anim-3" style="align-items:start;margin-top:16px">
+    <div>
+      <div class="card-c" style="margin-bottom:16px">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:8px">O que é</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.55">Recurso do ChatGPT e Gemini que cruza <strong style="color:var(--text)">múltiplas fontes da web</strong> em tempo real e entrega um relatório consolidado — com citações e análise.</p>
+      </div>
+      <div class="card-c">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:8px">Como usar</div>
+        <div class="steps" style="gap:10px">
+          <div class="step"><div class="step-num" style="width:26px;height:26px;font-size:11px">1</div><div class="step-desc">Clique em "Deep Research" no ChatGPT Plus ou Gemini Advanced</div></div>
+          <div class="step"><div class="step-num" style="width:26px;height:26px;font-size:11px">2</div><div class="step-desc">Descreva o que precisa pesquisar com contexto específico</div></div>
+          <div class="step"><div class="step-num" style="width:26px;height:26px;font-size:11px">3</div><div class="step-desc">Aguarde 2–5 min. Revise as fontes citadas no relatório.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="card" style="background:rgba(34,211,238,.04);border-color:rgba(34,211,238,.2)">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px">📊 Caso prático</div>
+        <div style="font-size:14px;color:var(--muted);line-height:1.5"><strong style="color:var(--text)">Problema:</strong> análise completa de 5 concorrentes para reunião de estratégia.<br><br><strong style="color:var(--text)">Com Deep Research:</strong> 10 minutos → relatório com posicionamento, preços, pontos fracos e oportunidades de cada um.<br><br><span style="color:var(--cyan);font-weight:700">Antes: 1 dia de pesquisa manual.</span></div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">⚠ Cuidado com</div>
+        <div style="font-size:13px;color:var(--muted)">Ainda pode alucinar. Verifique sempre os dados críticos nas fontes originais.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 29 — ANÁLISE DE PLANILHAS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 7 — ARSENAL DE FERRAMENTAS" data-index="29">
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="color:#f97316;background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.25)">Bloco 7 — Arsenal de Ferramentas</span>
+  <h2 class="title-md anim-2"><span class="gt">Excel & CSV:</span> análise sem fórmulas</h2>
+  <div class="g2 anim-3" style="align-items:start;margin-top:16px">
+    <div class="flex-col">
+      <div class="card-p">
+        <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:8px">O que você pode fazer</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">→</span> Fazer upload da planilha e perguntar em linguagem natural</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">→</span> "Qual vendedor teve melhor performance no Q3?"</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">→</span> "Encontre anomalias nos dados de despesas"</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">→</span> "Crie um resumo executivo destes dados para a diretoria"</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">→</span> "Gere um gráfico de linha mostrando a evolução mensal"</li>
+        </ul>
+      </div>
+      <div class="card" style="display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:20px">🛠</span>
+        <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Onde usar:</strong> ChatGPT Advanced Data Analysis (Plus), Gemini + Google Sheets, Claude (upload de CSV)</div>
+      </div>
+    </div>
+    <div class="card" style="background:rgba(249,115,22,.04);border-color:rgba(249,115,22,.2)">
+      <div style="font-size:13px;font-weight:700;color:#fb923c;margin-bottom:12px">📊 Exemplo real</div>
+      <div class="prompt" style="font-size:12px;padding:14px"><span class="k">Upload:</span> <span class="v">vendas_q1_q2.xlsx</span><br><br><span class="k">Prompt:</span> <span class="v">"Analise esses dados de vendas. Identifique: 1) top 3 produtos por receita, 2) regiões com queda acima de 10% comparado ao Q1, 3) sazonalidade evidente. Responda em tabela resumida + 3 insights para o gestor."</span></div>
+      <div style="margin-top:12px;font-size:13px;color:var(--muted)">Resultado: análise completa em &lt;2 minutos, sem uma fórmula Excel.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 30 — AUDITORIA DE PDFs
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 7 — ARSENAL DE FERRAMENTAS" data-index="30">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#f97316;background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.25)">Bloco 7 — Arsenal de Ferramentas</span>
+  <h2 class="title-md anim-2"><span class="gt">PDFs & Documentos:</span> auditoria instantânea</h2>
+  <div class="g2 anim-3" style="align-items:start;margin-top:16px">
+    <div class="flex-col">
+      <div class="card-c">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px">Casos de uso mais comuns</div>
+        <div class="steps" style="gap:12px">
+          <div class="step"><div class="step-num" style="width:28px;height:28px;font-size:12px">1</div><div class="step-body"><div class="step-title" style="font-size:13px">Contratos</div><div class="step-desc">Extraia cláusulas de risco, prazos, penalidades e obrigações em bullet points.</div></div></div>
+          <div class="step"><div class="step-num" style="width:28px;height:28px;font-size:12px">2</div><div class="step-body"><div class="step-title" style="font-size:13px">Laudos e Relatórios</div><div class="step-desc">Resumo executivo de documentos técnicos longos em linguagem acessível.</div></div></div>
+          <div class="step"><div class="step-num" style="width:28px;height:28px;font-size:12px">3</div><div class="step-body"><div class="step-title" style="font-size:13px">Editais e Normas</div><div class="step-desc">Extraia requisitos específicos, datas e critérios de qualificação.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="card" style="background:rgba(249,115,22,.04);border-color:rgba(249,115,22,.2)">
+        <div style="font-size:13px;font-weight:700;color:#fb923c;margin-bottom:10px">⚡ Resultado esperado</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="font-size:20px">📄</div>
+            <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Contrato de 40 páginas</strong><br>Análise de cláusulas críticas: 8 min → 45 seg</div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <div style="font-size:20px">📋</div>
+            <div style="font-size:13px;color:var(--muted)"><strong style="color:var(--text)">Laudo técnico de 80 pág.</strong><br>Resumo executivo + pontos de atenção em 2 min</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px">Onde usar</div>
+        <div style="font-size:13px;color:var(--muted)">Claude (melhor para documentos longos), ChatGPT Plus, Gemini Advanced. Todos suportam upload de PDF.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 31 — TRANSCRIÇÃO E ATA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 7 — ARSENAL DE FERRAMENTAS" data-index="31">
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="color:#f97316;background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.25)">Bloco 7 — Arsenal de Ferramentas</span>
+  <h2 class="title-md anim-2"><span class="gt">Reunião gravada</span> → ata em 1 minuto</h2>
+  <div class="g2 anim-3" style="align-items:start;margin-top:16px">
+    <div class="flex-col">
+      <div class="card-p">
+        <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:10px">O fluxo completo</div>
+        <div class="steps" style="gap:12px">
+          <div class="step"><div class="step-num" style="width:28px;height:28px;font-size:11px">1</div><div class="step-body"><div class="step-title" style="font-size:13px">Grave a reunião</div><div class="step-desc">Teams, Meet, Zoom ou celular. Qualquer gravação serve.</div></div></div>
+          <div class="step"><div class="step-num" style="width:28px;height:28px;font-size:11px">2</div><div class="step-body"><div class="step-title" style="font-size:13px">Transcreva</div><div class="step-desc">Whisper (OpenAI), Otter.ai, ou upload direto no ChatGPT/Gemini.</div></div></div>
+          <div class="step"><div class="step-num" style="width:28px;height:28px;font-size:11px">3</div><div class="step-body"><div class="step-title" style="font-size:13px">Gere a ata</div><div class="step-desc">"Com base nessa transcrição, gere uma ata com: decisões tomadas, próximos passos e responsáveis."</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="stat-card" style="border-color:rgba(249,115,22,.2)">
+        <div class="stat-num" style="color:#fb923c">45 min</div>
+        <div class="stat-desc">de reunião → ata estruturada</div>
+        <div class="stat-src">em menos de 1 minuto</div>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Formato da ata gerada</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">→</span> Resumo executivo (3–5 linhas)</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">→</span> Decisões tomadas</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">→</span> Próximos passos com responsáveis</li>
+          <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">→</span> Prazos identificados</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 32 — BRAINSTORMING E ADVOGADO DO DIABO
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 7 — ARSENAL DE FERRAMENTAS" data-index="32">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#f97316;background:rgba(249,115,22,.08);border-color:rgba(249,115,22,.25)">Bloco 7 — Arsenal de Ferramentas</span>
+  <h2 class="title-md anim-2">IA como <span class="gt">parceiro de raciocínio</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Não use a IA só para escrever — use para pensar melhor antes de decidir.</p>
+  <div class="g2 anim-3">
+    <div class="card-c">
+      <div style="font-size:22px;margin-bottom:10px">🧠</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">Brainstorming estruturado</div>
+      <div class="prompt" style="font-size:12px;padding:12px">"Você é um consultor de inovação. Gere 10 ideias para [problema] — das mais conservadoras às mais disruptivas. Para cada uma, aponte o principal obstáculo."</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">→ Em 2 min você tem mais perspectivas do que 1h de reunião de equipe.</div>
+    </div>
+    <div class="card-p">
+      <div style="font-size:22px;margin-bottom:10px">⚖️</div>
+      <div style="font-size:14px;font-weight:800;color:var(--text);margin-bottom:8px">Advogado do diabo</div>
+      <div class="prompt" style="font-size:12px;padding:12px">"Você é um crítico rigoroso. Liste tudo que pode dar errado neste plano — técnico, financeiro, humano e reputacional. Seja implacável."</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:10px">→ Antecipe objeções da diretoria antes de apresentar. Chegue blindado.</div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:20px;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--muted);max-width:680px">
+    🎯 <strong style="color:var(--text)">Uso avançado:</strong> peça à IA que simule a perspectiva de um stakeholder específico — CFO, cliente conservador, jornalista crítico. Força você a pensar além da bolha.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 33 — POR QUE MULTIMODALIDADE MUDA O JOGO
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 8 — GEMINI & MULTIMODALIDADE" data-index="33">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#8b5cf6;background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25)">Bloco 8 — Gemini & Multimodalidade</span>
+  <h2 class="title-md anim-2">Por que multimodalidade <span class="gt">muda o jogo?</span></h2>
+  <div class="g2 anim-3" style="align-items:center;margin-top:16px">
+    <div>
+      <div class="card" style="border-left:3px solid #8b5cf6;margin-bottom:16px">
+        <p style="font-size:16px;font-weight:700;color:var(--text);line-height:1.5"><span style="color:#a78bfa">80% das operações</span> acontecem fora do texto puro: dashboards, gravações, fotos, plantas, vídeos, planilhas escaneadas.</p>
+      </div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.6">Modelos de texto puro só processam o que você digita. Modelos multimodais entendem <strong style="color:var(--text)">imagem, áudio, vídeo e documentos</strong> — o que significa que 80% do seu trabalho passa a ser automatizável.</p>
+    </div>
+    <div class="g2" style="gap:14px">
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">🖼️</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Imagem</div>
+        <div style="font-size:11px;color:var(--muted)">fotos, prints, capturas de tela</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">🎙️</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Áudio</div>
+        <div style="font-size:11px;color:var(--muted)">reuniões, podcasts, calls</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">🎬</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Vídeo</div>
+        <div style="font-size:11px;color:var(--muted)">Gemini 1.5 Pro nativo</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-size:28px;margin-bottom:8px">📄</div>
+        <div style="font-size:13px;font-weight:700;color:var(--text)">Documentos</div>
+        <div style="font-size:11px;color:var(--muted)">PDFs, planilhas, slides</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 34 — CHATGPT VS GEMINI
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 8 — GEMINI & MULTIMODALIDADE" data-index="34">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#8b5cf6;background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25)">Bloco 8 — Gemini & Multimodalidade</span>
+  <h2 class="title-md anim-2">ChatGPT vs Gemini: <span class="gt">quando usar cada um</span></h2>
+  <div class="tbl-wrap anim-3" style="margin-top:16px">
+    <table class="tbl">
+      <thead><tr><th>Tarefa</th><th style="color:#10b981">ChatGPT (OpenAI)</th><th style="color:#a78bfa">Gemini (Google)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Texto puro</b> (redação, análise)</td><td>⭐⭐⭐⭐⭐ Excelente</td><td>⭐⭐⭐⭐ Muito bom</td></tr>
+        <tr><td><b>Imagem</b> (análise visual)</td><td>⭐⭐⭐⭐ GPT-4o</td><td>⭐⭐⭐⭐⭐ Nativo e fluido</td></tr>
+        <tr><td><b>Documentos longos</b> (1M+ tokens)</td><td>⭐⭐⭐ Limitado</td><td>⭐⭐⭐⭐⭐ Gemini 1.5 Pro</td></tr>
+        <tr><td><b>Planilhas e dados</b></td><td>⭐⭐⭐⭐⭐ Adv. Data Analysis</td><td>⭐⭐⭐⭐ Google Sheets nativo</td></tr>
+        <tr><td><b>Pesquisa ao vivo</b></td><td>⭐⭐⭐⭐ Search integrado</td><td>⭐⭐⭐⭐⭐ Integração Google</td></tr>
+        <tr><td><b>Vídeo</b></td><td>⭐⭐ Limitado</td><td>⭐⭐⭐⭐⭐ Nativo</td></tr>
+        <tr><td><b>G Suite / Office 365</b></td><td>⭐⭐⭐⭐ Copilot (Microsoft)</td><td>⭐⭐⭐⭐⭐ Workspace nativo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="anim-4" style="margin-top:12px;font-size:13px;color:var(--faint)">Dica prática: use ChatGPT para tarefas de texto e raciocínio complexo · Gemini para multimodal e integração Google.</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 35 — CASOS MULTIMODAIS REAIS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 8 — GEMINI & MULTIMODALIDADE" data-index="35">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#8b5cf6;background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25)">Bloco 8 — Gemini & Multimodalidade</span>
+  <h2 class="title-md anim-2">Casos multimodais <span class="gt">com resultado</span></h2>
+  <div class="g3 anim-3" style="margin-top:20px;align-items:stretch">
+    <div class="card" style="border-top:3px solid #f97316">
+      <div style="font-size:22px;margin-bottom:10px">📱</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Marketing</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px">100 screenshots de posts de concorrentes → análise de narrativas, padrões de engajamento e gaps não explorados.</div>
+      <div style="font-size:12px;font-weight:700;color:#fb923c">Antes: 2 dias. Com Gemini: 20 min.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--cyan)">
+      <div style="font-size:22px;margin-bottom:10px">📦</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Operações</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px">PDFs escaneados (nota fiscal, laudo, NF) → extração estruturada em JSON pronto para o ERP. -86% de custo vs. digitação manual.</div>
+      <div style="font-size:12px;font-weight:700;color:var(--cyan)">ROI imediato, zero integração complexa.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--purple)">
+      <div style="font-size:22px;margin-bottom:10px">🏭</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Qualidade</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:12px">Câmera de linha de produção integrada a visão computacional → +41% de defeitos interceptados antes do envio.</div>
+      <div style="font-size:12px;font-weight:700;color:var(--purple)">Redução de retrabalho e devolução.</div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:16px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--muted);max-width:720px">
+    💡 <strong style="color:var(--text)">Ponto-chave:</strong> você não precisa integrar via API para começar. Upload manual de imagens/PDFs no chat já resolve 80% dos casos práticos do dia a dia.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 36 — O QUE SÃO CUSTOM GPTs E GEMS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 9 — CUSTOM GPTs E GEMS" data-index="36">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#06b6d4;background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25)">Bloco 9 — Custom GPTs e Gems</span>
+  <h2 class="title-md anim-2">Configure uma vez. <span class="gt">Use para sempre.</span></h2>
+  <div class="g2 anim-3" style="align-items:start;margin-top:20px">
+    <div>
+      <div class="card-c" style="margin-bottom:16px">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:8px">O que são</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.55">Assistentes personalizados com um <strong style="color:var(--text)">prompt de sistema fixo</strong>, arquivos de referência e nome próprio. Você configura uma vez — elimina o contexto repetitivo para sempre.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">O problema que resolvem</div>
+        <div style="display:flex;gap:12px;margin-bottom:10px">
+          <span style="color:#f87171;font-size:20px">❌</span>
+          <div style="font-size:13px;color:var(--muted)">Toda vez que abre uma nova conversa, começa do zero. A IA não sabe quem é você, sua empresa, seu tom.</div>
+        </div>
+        <div style="display:flex;gap:12px">
+          <span style="color:#4ade80;font-size:20px">✅</span>
+          <div style="font-size:13px;color:var(--muted)">Com Custom GPT: abre e já sabe que você é [cargo], usa [ferramentas], escreve com [tom], trabalha em [empresa].</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">Exemplos de assistentes</div>
+      <div class="card" style="display:flex;gap:12px"><span style="font-size:18px">💼</span><div><div style="font-size:13px;font-weight:700;color:var(--text)">Assistente de Propostas</div><div style="font-size:12px;color:var(--muted)">Conhece seus serviços, preços e ICP. Gera propostas em 5 min.</div></div></div>
+      <div class="card" style="display:flex;gap:12px"><span style="font-size:18px">📣</span><div><div style="font-size:13px;font-weight:700;color:var(--text)">Redator de Marketing</div><div style="font-size:12px;color:var(--muted)">Conhece o tom de voz e o público. Sem ajustar estilo toda vez.</div></div></div>
+      <div class="card" style="display:flex;gap:12px"><span style="font-size:18px">📋</span><div><div style="font-size:13px;font-weight:700;color:var(--text)">Assistente de RH</div><div style="font-size:12px;color:var(--muted)">Conhece as políticas da empresa. Responde dúvidas de colaboradores.</div></div></div>
+      <div class="card" style="display:flex;gap:12px"><span style="font-size:18px">💰</span><div><div style="font-size:13px;font-weight:700;color:var(--text)">Analista Financeiro</div><div style="font-size:12px;color:var(--muted)">Contexto da empresa, indicadores-chave e formato padrão de relatório.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 37 — PASSO A PASSO: CRIAR SEU ASSISTENTE
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 9 — CUSTOM GPTs E GEMS" data-index="37">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#06b6d4;background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25)">Bloco 9 — Custom GPTs e Gems</span>
+  <h2 class="title-md anim-2">Passo a passo: <span class="gt">crie seu assistente</span></h2>
+  <div class="g2 anim-3" style="margin-top:16px;align-items:start">
+    <div>
+      <div style="font-size:13px;font-weight:800;color:var(--text);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">ChatGPT — Custom GPT</div>
+      <div class="steps" style="gap:12px">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Acesse o GPT Builder</div><div class="step-desc">chat.openai.com → "Explore GPTs" → "Create"</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Escreva o prompt de sistema</div><div class="step-desc">Use os 6 blocos: papel, contexto, formato, restrições…</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Faça upload de referências</div><div class="step-desc">FAQ, manual, tom de voz, exemplos de outputs.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Nomeie e salve</div><div class="step-desc">Fica na sua lista de GPTs. Compartilhável com o time.</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Teste com 3 situações reais</div><div class="step-desc">Ajuste o prompt até o resultado estar consistente.</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:800;color:var(--text);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">Google Gemini — Gem</div>
+      <div class="steps" style="gap:12px">
+        <div class="step"><div class="step-num" style="background:var(--grad)">1</div><div class="step-body"><div class="step-title">Acesse Gemini Gems</div><div class="step-desc">gemini.google.com → "Gems" no menu lateral</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--grad)">2</div><div class="step-body"><div class="step-title">Clique em "Novo Gem"</div><div class="step-desc">Dê um nome e escreva as instruções.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--grad)">3</div><div class="step-body"><div class="step-title">Defina comportamento</div><div class="step-desc">Tom, formato de resposta, contexto da empresa.</div></div></div>
+        <div class="step"><div class="step-num" style="background:var(--grad)">4</div><div class="step-body"><div class="step-title">Salve e use</div><div class="step-desc">Disponível em todas as plataformas Google.</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 38 — IDEIAS POR ÁREA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 9 — CUSTOM GPTs E GEMS" data-index="38">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#06b6d4;background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25)">Bloco 9 — Custom GPTs e Gems</span>
+  <h2 class="title-md anim-2">Ideias de assistentes <span class="gt">por área</span></h2>
+  <div class="g2 anim-3" style="margin-top:16px">
+    <div class="flex-col">
+      <div class="card-c">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px">💼 Comercial</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--muted)">→ Gerador de propostas personalizadas</li>
+          <li style="font-size:13px;color:var(--muted)">→ Preparador de reunião (pesquisa de empresa/contato)</li>
+          <li style="font-size:13px;color:var(--muted)">→ Gerador de scripts de prospecção por perfil</li>
+          <li style="font-size:13px;color:var(--muted)">→ Redator de e-mails de follow-up</li>
+        </ul>
+      </div>
+      <div class="card-c">
+        <div style="font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:10px">💰 Financeiro</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--muted)">→ Analista de relatórios mensais</li>
+          <li style="font-size:13px;color:var(--muted)">→ Gerador de narrativa para DRE</li>
+          <li style="font-size:13px;color:var(--muted)">→ Revisor de contratos (cláusulas de risco)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex-col">
+      <div class="card-p">
+        <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:10px">👥 RH</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--muted)">→ Gerador de JD (job descriptions)</li>
+          <li style="font-size:13px;color:var(--muted)">→ FAQ de onboarding para novos colaboradores</li>
+          <li style="font-size:13px;color:var(--muted)">→ Criador de planos de desenvolvimento individual</li>
+        </ul>
+      </div>
+      <div class="card-p">
+        <div style="font-size:13px;font-weight:700;color:var(--purple);margin-bottom:10px">📣 Marketing</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--muted)">→ Redator de conteúdo no tom da marca</li>
+          <li style="font-size:13px;color:var(--muted)">→ Criador de briefings de campanha</li>
+          <li style="font-size:13px;color:var(--muted)">→ Gerador de pautas para redes sociais</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 39 — ATIVIDADE: CRIE SEU CUSTOM GPT
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 9 — CUSTOM GPTs E GEMS" data-index="39">
+  <div class="glow glow-center"></div>
+  <span class="badge badge-activity anim" style="margin:0 auto 24px">Atividade 4 · 20 minutos</span>
+  <div class="activity-wrap anim-2" style="max-width:800px">
+    <div class="activity-title">🤖 Crie seu Custom GPT</div>
+    <div class="activity-time">⏱ 20 minutos</div>
+    <div class="activity-body">
+      <ol style="padding-left:20px">
+        <li><strong style="color:var(--text)">Escolha uma função</strong> do seu dia a dia que você repete: propostas, e-mails, análises, respostas a clientes.</li>
+        <li><strong style="color:var(--text)">Escreva o prompt de sistema</strong> usando os 6 blocos: quem ele é, o contexto da empresa, o que faz, como responde, o que evita.</li>
+        <li><strong style="color:var(--text)">Crie o GPT ou Gem</strong> na plataforma que você usa.</li>
+        <li>Teste com <strong style="color:#4ade80">3 situações reais</strong>. Ajuste o prompt até ficar consistente.</li>
+        <li>Salve o prompt final para reutilizar e <strong style="color:#4ade80">compartilhe com seu time.</strong></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 40 — O SALTO DE CATEGORIA (AGENTES)
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 10 — AGENTES DE IA" data-index="40">
+  <div class="glow glow-tl"></div>
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="margin:0 auto 24px;color:#ec4899;background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25)">Bloco 10 — Agentes de IA</span>
+  <h2 class="title-xl anim-2" style="max-width:700px">Chat pede instruções.<br><span class="gt">Agente tem objetivo.</span></h2>
+  <div class="anim-3" style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+    <div style="background:rgba(113,113,122,.1);border:1px solid var(--border);border-radius:14px;padding:20px 28px;text-align:center">
+      <div style="font-size:28px;margin-bottom:8px">💬</div>
+      <div style="font-size:15px;font-weight:800;color:var(--muted);margin-bottom:6px">Chat</div>
+      <div style="font-size:13px;color:var(--faint)">Você opera.<br>IA executa uma tarefa.<br>Próximo passo: você.</div>
+    </div>
+    <div style="display:flex;align-items:center;font-size:28px;color:var(--faint)">→</div>
+    <div style="background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.25);border-radius:14px;padding:20px 28px;text-align:center;box-shadow:0 0 40px rgba(236,72,153,.15)">
+      <div style="font-size:28px;margin-bottom:8px">🤖</div>
+      <div style="font-size:15px;font-weight:800;color:#f9a8d4;margin-bottom:6px">Agente</div>
+      <div style="font-size:13px;color:var(--muted)">Você supervisa.<br>IA executa múltiplos passos.<br>Usa ferramentas, decide, age.</div>
+    </div>
+  </div>
+  <p class="anim-4" style="font-size:15px;color:var(--muted);margin-top:28px;max-width:560px;line-height:1.5">A diferença não é de <em style="color:var(--text)">tecnologia</em> — é de <em style="color:#f9a8d4">autonomia</em>. O agente persegue um objetivo até concluir, sem precisar que você dirija cada passo.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 41 — ANATOMIA DE UM AGENTE
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 10 — AGENTES DE IA" data-index="41">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#ec4899;background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25)">Bloco 10 — Agentes de IA</span>
+  <h2 class="title-md anim-2">Anatomia de um <span class="gt">agente</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">4 componentes que separam um agente de um simples chatbot.</p>
+  <div class="g2 anim-3" style="align-items:stretch">
+    <div class="card" style="border-top:3px solid var(--purple)">
+      <div style="font-size:22px;margin-bottom:10px">🧠</div>
+      <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:8px">Modelo (O Cérebro)</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.55">O LLM que raciocina, planeja e decide. GPT-4o, Claude, Gemini. A qualidade do modelo define o teto do agente.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--cyan)">
+      <div style="font-size:22px;margin-bottom:10px">🔧</div>
+      <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:8px">Ferramentas (As Mãos)</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.55">O que o agente pode fazer no mundo real: buscar na web, enviar e-mail, acessar planilha, chamar API, criar arquivo.</p>
+    </div>
+    <div class="card" style="border-top:3px solid #f59e0b">
+      <div style="font-size:22px;margin-bottom:10px">💾</div>
+      <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:8px">Memória (O Histórico)</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.55"><strong style="color:var(--text)">Curto prazo:</strong> a conversa atual.<br><strong style="color:var(--text)">Longo prazo:</strong> base de conhecimento persistente entre sessões.</p>
+    </div>
+    <div class="card" style="border-top:3px solid #ec4899">
+      <div style="font-size:22px;margin-bottom:10px">🔄</div>
+      <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:8px">Loop de Reflexão</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.55">O que separa um agente de um script. O modelo avalia se o resultado foi bom, ajusta e tenta de novo até atingir o objetivo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 42 — O CICLO FUNDAMENTAL
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 10 — AGENTES DE IA" data-index="42">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#ec4899;background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25)">Bloco 10 — Agentes de IA</span>
+  <h2 class="title-md anim-2">O ciclo <span class="gt">fundamental</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:32px">Como um agente funciona — de ponta a ponta.</p>
+  <div class="flow anim-3" style="max-width:900px">
+    <div class="flow-item">
+      <div class="flow-dot">👁</div>
+      <div class="flow-label">Observar</div>
+      <div class="flow-sub">Lê o ambiente, os dados disponíveis e o objetivo</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot" style="color:var(--purple)">📋</div>
+      <div class="flow-label">Planejar</div>
+      <div class="flow-sub">Decompõe o objetivo em sub-tarefas sequenciais</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot" style="color:#f59e0b">⚡</div>
+      <div class="flow-label">Agir</div>
+      <div class="flow-sub">Usa ferramentas: busca, escreve, envia, calcula</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot" style="color:#f87171">🔍</div>
+      <div class="flow-label">Refletir</div>
+      <div class="flow-sub">Avalia se o resultado está correto ou precisa ajuste</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="flow-dot" style="color:#4ade80">✅</div>
+      <div class="flow-label">Aprender</div>
+      <div class="flow-sub">Ajusta a estratégia e itera até o objetivo ser atingido</div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:36px;background:rgba(236,72,153,.06);border:1px solid rgba(236,72,153,.2);border-radius:12px;padding:16px 24px;max-width:680px">
+    <div style="font-size:14px;color:var(--text);font-weight:600">Você define o objetivo e os limites. O agente define a rota. Você supervisiona, não opera.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 43 — EXEMPLOS REAIS COM MÉTRICAS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 10 — AGENTES DE IA" data-index="43">
+  <div class="glow glow-tr"></div>
+  <span class="badge anim" style="color:#ec4899;background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25)">Bloco 10 — Agentes de IA</span>
+  <h2 class="title-md anim-2">Agentes em produção: <span class="gt">resultados reais</span></h2>
+  <div class="metric-grid anim-3" style="margin-top:20px">
+    <div class="metric-card" style="border-top:3px solid var(--cyan)">
+      <div class="metric-val gt">+18%</div>
+      <div class="metric-label">Net Revenue Retention em Customer Success com agente de monitoramento proativo de saúde de conta.</div>
+      <div class="metric-sector" style="color:var(--cyan)">Customer Success</div>
+    </div>
+    <div class="metric-card" style="border-top:3px solid #f59e0b">
+      <div class="metric-val" style="color:#fbbf24">-34%</div>
+      <div class="metric-label">Tempo de ciclo de pedido em Supply Chain com agente de triagem, priorização e alocação de fornecedores.</div>
+      <div class="metric-sector" style="color:#f59e0b">Supply Chain / Operações</div>
+    </div>
+    <div class="metric-card" style="border-top:3px solid var(--purple)">
+      <div class="metric-val" style="color:var(--purple)">5×</div>
+      <div class="metric-label">Volume de contratos revisados com o mesmo time jurídico, via agente de análise e extração de cláusulas.</div>
+      <div class="metric-sector" style="color:var(--purple)">Jurídico / Compliance</div>
+    </div>
+  </div>
+  <div class="anim-4" style="margin-top:20px;background:rgba(236,72,153,.04);border:1px solid rgba(236,72,153,.15);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--muted);max-width:760px">
+    📌 <strong style="color:var(--text)">Personalizar:</strong> adicionar caso do setor da empresa usando os dados do briefing — se houver example interno, usar aqui.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 44 — QUANDO UM AGENTE VIRA PROJETO REAL
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 10 — AGENTES DE IA" data-index="44">
+  <div class="glow glow-bl"></div>
+  <span class="badge anim" style="color:#ec4899;background:rgba(236,72,153,.08);border-color:rgba(236,72,153,.25)">Bloco 10 — Agentes de IA</span>
+  <h2 class="title-md anim-2">Quando agente vira <span class="gt">projeto real</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:20px">Não é apertar um botão. É um projeto — com fases, responsáveis e critérios de sucesso.</p>
+  <div class="g2 anim-3" style="align-items:start">
+    <div class="flex-col">
+      <div style="font-size:13px;font-weight:700;color:var(--text);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">As 5 fases</div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Diagnóstico</div><div class="step-desc">Mapear o processo, o volume, as integrações e o ROI esperado.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Prompts e lógica</div><div class="step-desc">Definir o objetivo, as ferramentas e as regras de decisão do agente.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Integração</div><div class="step-desc">Conectar o agente aos sistemas existentes (CRM, ERP, WhatsApp, e-mail).</div></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Segurança e auditoria</div><div class="step-desc">Logs, human in the loop, limites de ação, proteção de dados.</div></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Treinamento do time</div><div class="step-desc">Como supervisionar, corrigir e escalar o agente em produção.</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="background:rgba(236,72,153,.04);border-color:rgba(236,72,153,.2);margin-bottom:16px">
+        <div style="font-size:13px;font-weight:700;color:#f9a8d4;margin-bottom:8px">Sinais de que está pronto para agente</div>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:6px">
+          <li style="font-size:13px;color:var(--muted)">→ Processo repetido &gt;50× por mês</li>
+          <li style="font-size:13px;color:var(--muted)">→ Lógica de decisão documentável</li>
+          <li style="font-size:13px;color:var(--muted)">→ Dados estruturados disponíveis</li>
+          <li style="font-size:13px;color:var(--muted)">→ Erro tem impacto gerenciável</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px">Tempo médio de implantação</div>
+        <div style="font-size:13px;color:var(--muted)">Agente simples (1 processo): 2–4 semanas<br>Agente complexo (multi-sistema): 6–12 semanas</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 45 — GOVERNANÇA E SEGURANÇA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 11 — GOVERNANÇA E SEGURANÇA" data-index="45">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#94a3b8;background:rgba(148,163,184,.08);border-color:rgba(148,163,184,.2)">Bloco 11 — Governança e Segurança</span>
+  <h2 class="title-md anim-2">Governança que <span class="gt">destrava, não trava</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:20px">5 pontos que jurídico, TI e C-level vão exigir — e como endereçar cada um.</p>
+  <div class="flex-col anim-3" style="gap:14px">
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start">
+      <div class="icon-circle ic-p" style="flex-shrink:0">🔐</div>
+      <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px">Classificação de Dados</div><div style="font-size:13px;color:var(--muted)">Defina o que pode ir para IA externa (público, interno), o que exige IA privada e o que nunca pode ser processado externamente.</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start">
+      <div class="icon-circle ic-c" style="flex-shrink:0">⚖️</div>
+      <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px">LGPD & Não-treino</div><div style="font-size:13px;color:var(--muted)">ChatGPT Teams, Claude for Work e Gemini Business têm opt-out de treinamento por padrão. Versões gratuitas, não. Configure as licenças corretas.</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start">
+      <div class="icon-circle ic-g" style="flex-shrink:0">📋</div>
+      <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px">Logs & Auditoria</div><div style="font-size:13px;color:var(--muted)">Toda decisão tomada ou assistida por IA deve ser rastreável. Log de prompts críticos + outputs para compliance.</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start">
+      <div class="icon-circle ic-o" style="flex-shrink:0">👤</div>
+      <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px">Human in the Loop</div><div style="font-size:13px;color:var(--muted)">Ações de alto impacto (disparo de contratos, comunicação crítica, decisão financeira) sempre passam por revisão humana. Não automatize sem validação.</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:flex-start">
+      <div class="icon-circle ic-p" style="flex-shrink:0">🔄</div>
+      <div><div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:3px">Revisão Trimestral</div><div style="font-size:13px;color:var(--muted)">O ecossistema de IA muda rápido. Revise políticas, ferramentas autorizadas e casos de uso a cada 90 dias.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 46 — ONDE VOCÊ ESTÁ AGORA
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 12 — PLANO DE AÇÃO" data-index="46">
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="color:#10b981;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)">Bloco 12 — Plano de Ação</span>
+  <h2 class="title-md anim-2">Onde você está. <span class="gt">Onde quer chegar.</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Revisitar os níveis com os olhos de quem acabou de passar 5 horas aprendendo.</p>
+  <div class="level-track anim-3">
+    <div class="level-row">
+      <div class="level-num" style="background:rgba(113,113,122,.2);color:var(--muted)">N1</div>
+      <div class="level-info">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="level-name">Iniciante</div>
+          <div style="font-size:12px;color:var(--faint)">Ponto de partida de muita gente aqui hoje</div>
+        </div>
+        <div class="level-bar"><div class="level-fill" style="width:25%"></div></div>
+      </div>
+    </div>
+    <div class="level-row">
+      <div class="level-num" style="background:rgba(16,185,129,.2);color:#4ade80">N2</div>
+      <div class="level-info">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="level-name">Usuário Regular</div>
+          <div style="font-size:12px;font-weight:700;color:#4ade80">← Meta deste treinamento</div>
+        </div>
+        <div class="level-bar"><div class="level-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+    <div class="level-row">
+      <div class="level-num" style="background:rgba(147,51,234,.2);color:var(--purple)">N3</div>
+      <div class="level-info">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="level-name">Avançado</div>
+          <div style="font-size:12px;color:var(--faint)">Próximas 4 semanas com prática consistente</div>
+        </div>
+        <div class="level-bar"><div class="level-fill" style="width:75%"></div></div>
+      </div>
+    </div>
+    <div class="level-row">
+      <div class="level-num" style="background:var(--grad);color:#fff">N4</div>
+      <div class="level-info">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="level-name">Automatizador</div>
+          <div style="font-size:12px;color:var(--faint)">Com apoio da Vektoz: Horizon 3 (90 dias)</div>
+        </div>
+        <div class="level-bar"><div class="level-fill" style="width:100%"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 47 — ATIVIDADE: MAPEAMENTO PESSOAL
+════════════════════════════════════════════ -->
+<div class="slide slide--center" data-block="BLOCO 12 — PLANO DE AÇÃO" data-index="47">
+  <div class="glow glow-center"></div>
+  <span class="badge badge-activity anim" style="margin:0 auto 24px">Atividade 5 · 10 minutos</span>
+  <div class="activity-wrap anim-2" style="max-width:780px">
+    <div class="activity-title">🗺️ Mapeamento Pessoal</div>
+    <div class="activity-time">⏱ 10 minutos</div>
+    <div class="activity-body">
+      <p style="margin-bottom:16px;color:var(--muted)">Responda individualmente — sem julgamento, sem respostas certas ou erradas:</p>
+      <ol style="padding-left:20px">
+        <li><strong style="color:var(--text)">Quais 2 tarefas repetitivas</strong> você executa toda semana e que consomem mais tempo do que deveriam?</li>
+        <li><strong style="color:var(--text)">Qual momento do seu trabalho</strong> gera mais retrabalho, erros ou inconsistência?</li>
+        <li><strong style="color:var(--text)">Em que situação</strong> você precisaria de uma consultoria externa — e que a IA poderia resolver internamente?</li>
+      </ol>
+      <p style="margin-top:16px;color:var(--muted)">→ Essas 3 respostas são o <strong style="color:#4ade80">seu plano de IA pessoal</strong>. Anote. Vai guiar as próximas 4 semanas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 48 — PLANO DE AÇÃO: PRÓXIMAS 4 SEMANAS
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 12 — PLANO DE AÇÃO" data-index="48">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#10b981;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)">Bloco 12 — Plano de Ação</span>
+  <h2 class="title-md anim-2">Próximas <span class="gt">4 semanas</span></h2>
+  <div class="g2 anim-3" style="margin-top:16px;align-items:stretch">
+    <div class="card" style="border-top:3px solid var(--cyan)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--cyan);margin-bottom:10px">SEMANA 1 — FUNDAÇÃO</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">□</span> Conta criada no ChatGPT ou Gemini (versão paga ativada)</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">□</span> 3 tarefas mapeadas do mapeamento pessoal</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--cyan)">□</span> Primeiro prompt com os 6 blocos escrito e salvo</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid var(--purple)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--purple);margin-bottom:10px">SEMANA 2 — HÁBITO</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">□</span> Usar IA ao menos 1× por dia para uma tarefa real</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">□</span> Biblioteca de prompts iniciada (mínimo 5)</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:var(--purple)">□</span> 1 aprendizado compartilhado com o time</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid #f59e0b">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:#f59e0b;margin-bottom:10px">SEMANA 3 — EXPANSÃO</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:#f59e0b">□</span> Custom GPT ou Gem criado para sua função principal</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:#f59e0b">□</span> 1 automação simples testada (zapier, make ou n8n)</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:#f59e0b">□</span> Time já usa o assistente criado</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:3px solid #4ade80;background:rgba(74,222,128,.03)">
+      <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:#4ade80;margin-bottom:10px">SEMANA 4 — RESULTADO</div>
+      <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:8px">
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:#4ade80">□</span> Tempo economizado medido (horas/semana)</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:#4ade80">□</span> Processo mais impactado documentado</li>
+        <li style="font-size:13px;color:var(--muted);display:flex;gap:8px"><span style="color:#4ade80">□</span> Próximo passo definido (N3 ou agente?)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 49 — ROADMAP 30/60/90 (C-LEVEL)
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 12 — PLANO DE AÇÃO" data-index="49">
+  <div class="glow glow-br"></div>
+  <span class="badge anim" style="color:#10b981;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)">Bloco 12 — Plano de Ação</span>
+  <h2 class="title-md anim-2">Roadmap <span class="gt">30 / 60 / 90 dias</span></h2>
+  <p class="body-text anim-2" style="margin-bottom:24px">Visão para lideranças: os 3 horizontes de implementação.</p>
+  <div class="g3 anim-3" style="align-items:stretch">
+    <div class="card" style="border-top:3px solid var(--cyan)">
+      <div style="font-size:36px;font-weight:900;color:var(--cyan);margin-bottom:4px">30</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faint);margin-bottom:14px">Dias · Fundação</div>
+      <div class="flex-col" style="gap:10px">
+        <div style="font-size:13px;color:var(--muted)">📌 Contas e licenças ativas para todo o time</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Política de uso de IA definida (classificação de dados)</div>
+        <div style="font-size:13px;color:var(--muted)">📌 2–3 pilotos por área mapeados e iniciados</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Primeiros prompts padronizados por área</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--purple)">
+      <div style="font-size:36px;font-weight:900;color:var(--purple);margin-bottom:4px">60</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faint);margin-bottom:14px">Dias · Escala</div>
+      <div class="flex-col" style="gap:10px">
+        <div style="font-size:13px;color:var(--muted)">📌 Biblioteca de prompts por área publicada</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Custom GPTs de equipe criados e em uso</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Workflows parcialmente automatizados (Zapier/Make)</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Métricas de produtividade coletadas e analisadas</div>
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid #ec4899">
+      <div style="font-size:36px;font-weight:900;color:#ec4899;margin-bottom:4px">90</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faint);margin-bottom:14px">Dias · Agente</div>
+      <div class="flex-col" style="gap:10px">
+        <div style="font-size:13px;color:var(--muted)">📌 1 processo totalmente automatizado via agente</div>
+        <div style="font-size:13px;color:var(--muted)">📌 ROI documentado e apresentado para board</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Plano de expansão para outros processos</div>
+        <div style="font-size:13px;color:var(--muted)">📌 Revisão de política e governança trimestral</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 50 — O QUE VOCÊ APRENDEU HOJE
+════════════════════════════════════════════ -->
+<div class="slide" data-block="BLOCO 12 — PLANO DE AÇÃO" data-index="50">
+  <div class="glow glow-tl"></div>
+  <span class="badge anim" style="color:#10b981;background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)">Bloco 12 — Plano de Ação</span>
+  <h2 class="title-md anim-2">5 convicções que você <span class="gt">sai daqui</span></h2>
+  <div class="flex-col anim-3" style="gap:14px;margin-top:20px">
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-left:3px solid var(--cyan)">
+      <div style="font-size:22px;font-weight:900;color:var(--cyan);min-width:32px;text-align:center">1</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text)">LLM é previsor — não robô, não oráculo. Entender isso muda como você usa.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-left:3px solid #f59e0b">
+      <div style="font-size:22px;font-weight:900;color:#f59e0b;min-width:32px;text-align:center">2</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text)">Prompt é a nova interface. Quem domina prompts extrai 3× mais valor do mesmo modelo.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-left:3px solid #8b5cf6">
+      <div style="font-size:22px;font-weight:900;color:#8b5cf6;min-width:32px;text-align:center">3</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text)">Multimodal é o padrão — texto, imagem, áudio, vídeo e documento: seu trabalho inteiro já pode ser automatizado.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-left:3px solid #ec4899">
+      <div style="font-size:22px;font-weight:900;color:#ec4899;min-width:32px;text-align:center">4</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text)">Do chat ao agente é salto de categoria — autonomia muda a equação de produtividade.</div>
+    </div>
+    <div class="card" style="display:flex;gap:16px;align-items:center;border-left:3px solid #4ade80;background:rgba(74,222,128,.03)">
+      <div style="font-size:22px;font-weight:900;color:#4ade80;min-width:32px;text-align:center">5</div>
+      <div style="font-size:15px;font-weight:600;color:var(--text)">Implantação vale mais que tecnologia — a IA que funciona no dia a dia da empresa vale mais do que a mais sofisticada.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 51 — ENCERRAMENTO + VEKTOZ
+════════════════════════════════════════════ -->
+<div class="slide" data-block="ENCERRAMENTO" data-index="51">
+  <div class="glow glow-tl"></div>
+  <div class="glow glow-br"></div>
+  <div class="anim" style="margin-bottom:8px">
+    <img src="../../context/assets/Vektoz_Logos_Vector_SVG/Vektoz_Logo_Vector_NoBG.svg" alt="Vektoz" style="height:36px;filter:brightness(0) invert(1);opacity:.9;margin-bottom:20px" onerror="this.style.display='none'">
+  </div>
+  <h2 class="title-lg anim-2" style="max-width:640px">E agora, <span class="gt">qual é o próximo passo?</span></h2>
+  <p class="subtitle anim-3" style="max-width:520px">Escolha o caminho certo para o estágio da sua empresa.</p>
+  <div class="g3 anim-4" style="margin-top:8px;max-width:860px">
+    <div class="card-c" style="text-align:center;padding:28px 20px">
+      <div style="font-size:32px;margin-bottom:12px">🔍</div>
+      <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:8px">AI Audit</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:12px">Diagnóstico</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.5">Mapeamos seus processos e identificamos onde a IA gera mais ROI com menos risco.</div>
+    </div>
+    <div class="card-p" style="text-align:center;padding:28px 20px">
+      <div style="font-size:32px;margin-bottom:12px">⚡</div>
+      <div style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:8px">AI Immersion</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:12px">Capacitação</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.5">Treinamento customizado para seu time — do nível básico à implantação real.</div>
+    </div>
+    <div class="card" style="text-align:center;padding:28px 20px;background:var(--grad);border:none">
+      <div style="font-size:32px;margin-bottom:12px">🤖</div>
+      <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:8px">Agent Studio</div>
+      <div style="font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:12px">Implantação</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.8);line-height:1.5">Desenvolvemos e implantamos agentes de IA nos seus processos — com garantia de resultado.</div>
+    </div>
+  </div>
+  <div class="anim-5" style="margin-top:28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+    <div style="font-size:14px;color:var(--muted)">Entre em contato:</div>
+    <div style="font-size:14px;font-weight:700;color:var(--cyan)">vektoz.com.br</div>
+    <div style="font-size:13px;color:var(--faint)">|</div>
+    <div style="font-size:14px;font-weight:700;color:var(--purple)">eduardo@vektoz.com.br</div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- ═══ NAV BAR ═══ -->
+<nav class="nav" id="nav">
+  <button class="nav-btn" id="prevBtn" onclick="navigate(-1)">←</button>
+  <div class="nav-block" id="navBlock">CAPA</div>
+  <div class="nav-progress"><div class="nav-fill" id="navFill" style="width:2%"></div></div>
+  <div class="nav-counter" id="navCounter">1 / 51</div>
+  <button class="nav-btn" id="nextBtn" onclick="navigate(1)">→</button>
+</nav>
+
+<script>
+// Placeholder — remaining slides loaded dynamically
+const TOTAL = 51;
+let current = 1;
+
+function getSlide(i) {
+  return document.querySelector(`.slide[data-index="${i}"]`);
+}
+
+function navigate(dir) {
+  const next = current + dir;
+  if (next < 1 || next > TOTAL) return;
+  const cur = getSlide(current);
+  const nxt = getSlide(next);
+  if (cur) cur.classList.remove('active');
+  if (nxt) { nxt.classList.add('active'); current = next; }
+  updateNav();
+}
+
+function goTo(i) {
+  const cur = getSlide(current);
+  const nxt = getSlide(i);
+  if (!nxt) return;
+  if (cur) cur.classList.remove('active');
+  nxt.classList.add('active');
+  current = i;
+  updateNav();
+}
+
+function updateNav() {
+  const slide = getSlide(current);
+  const block = slide ? (slide.dataset.block || '') : '';
+  document.getElementById('navBlock').textContent = block;
+  document.getElementById('navCounter').textContent = `${current} / ${TOTAL}`;
+  document.getElementById('navFill').style.width = `${(current / TOTAL) * 100}%`;
+  document.getElementById('slideNum').textContent = String(current).padStart(2,'0') + ' / ' + TOTAL;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); navigate(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(-1); }
+  if (e.key === 'Home') goTo(1);
+  if (e.key === 'End') goTo(TOTAL);
+});
+
+// Touch swipe
+let touchX = 0;
+document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+});
+
+updateNav();
+</script>
+</body>
+</html>

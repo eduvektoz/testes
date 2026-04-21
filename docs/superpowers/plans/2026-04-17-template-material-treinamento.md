@@ -10,6 +10,8 @@
 
 **Spec:** `docs/superpowers/specs/2026-04-17-template-treinamento-design.md`
 
+**Git strategy:** Commits diretos na branch atual (`master`). Um commit por task. Não é necessário PR — o trabalho é local e revisado pelo Eduardo após conclusão.
+
 ---
 
 ## File Map

@@ -111,6 +111,47 @@ Exemplo para isca sobre atendimento WhatsApp:
 
 Erros reais cometidos e corrigidos. Seguir sempre.
 
+### O conteúdo é para o lead, não para a Vektoz
+
+O leitor da isca é o ICP — dono ou gestor de PME brasileira. Nunca inserir exemplos, templates, fluxos ou linguagem que só fariam sentido para:
+- Um concorrente da Vektoz (agência, consultor, quem vende IA)
+- Um time comercial estruturado com múltiplos vendedores
+- Um processo de escala que exige operação média/grande
+
+Perguntar antes de finalizar cada seção: "Isso ensina o dono de clínica/imobiliária/escola a resolver a dor dele — ou ensina alguém a vender IA como a Vektoz faz?"
+
+Se a resposta for a segunda: reescrever a seção inteira.
+
+### Modelos de precificação em templates
+
+Nunca usar `setup + mensalidade` como exemplo de campo de investimento em templates. Esse é o modelo de precificação da Vektoz, não do ICP.
+
+O ICP (clínica, imobiliária, escola, serviço local) tem seus próprios modelos: por consulta, por imóvel, por aluno, por projeto, por honorário. Usar campos genéricos como `[investimento total]` ou `[valor da proposta]` quando o modelo de precificação do lead não estiver explícito no contexto.
+
+### Linguagem de equipe vs. linguagem de dono
+
+O ICP tem 5–40 funcionários. Na maioria dos casos, o próprio dono faz vendas ou tem 1–2 pessoas no comercial. Nunca usar linguagem de processo escalável (ex: "o vendedor clica no Skill", "crie um Skill por segmento para sua equipe") quando o contexto indica que o leitor é o próprio dono fazendo a tarefa.
+
+Substituir "o vendedor" por "você" quando o leitor presumido é o dono.
+
+### CTA final — princípios de copy
+
+**O CTA vende a dor, não o produto.**
+O ICP não quer IA, automação ou processo. Ele quer reduzir custos, recuperar tempo, fechar mais negócios e parar de perder receita. O CTA deve falar o idioma do resultado, não da solução técnica.
+
+**Estrutura obrigatória:**
+1. Reconhecer o que o lead aprendeu no guia — e imediatamente relativizar: "isso é só o começo"
+2. Nomear dores adicionais com exemplos concretos e reconhecíveis pelo ICP — atendimento, follow-up, cobrança, agendamento, CRM, pré-qualificação. Quanto mais específico, mais o lead se reconhece
+3. Nunca introduzir a lista com pergunta retórica ("Quer exemplos?") — enfraquece o punch. Entrar direto nos exemplos
+4. Nomear o custo invisível: receita perdida, custo escondido, tempo drenado, oportunidade jogada fora
+5. Posicionar a Vektoz como quem resolve — sem jargão técnico, sem promessa vaga
+6. CTA direto para agendamento
+
+**O que nunca fazer:**
+- Vender IA, automação ou tecnologia
+- Usar frases genéricas como "todo mês aceito um pequeno grupo"
+- CTA desconectado do tema da isca
+
 ### Coerência com o post do LinkedIn
 
 O ângulo da isca deve ser **100% coerente com o ângulo do post**. Se o post fala sobre "não gastar dinheiro com designer", a isca entrega exatamente isso — não um ângulo diferente sobre "como a ferramenta funciona".

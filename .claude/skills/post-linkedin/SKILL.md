@@ -24,25 +24,31 @@ Nunca: jargão de IA, linguagem de consultoria, linguagem de pitch.
 1. Primeira linha é tudo — precisa parar o scroll. Teste: leria sem contexto?
 2. Frases com no máximo 12 palavras — se ficou grande, quebra em duas
 3. Sem adjetivos vazios — "incrível", "revolucionário", "poderoso" → DELETE
-4. Números reais ou não usa — "dezenas de leads" não convence. "847 leads" convence.
+4. Números reais ou não usa — "dezenas de leads" não convence. "847 leads" convence. Se Eduardo não tiver número real, escrever `[NÚMERO REAL]` no lugar e listar ao final quais dados precisam ser preenchidos antes de publicar.
 5. Maiúsculas para dar peso — use com moderação, só no dado mais importante
 6. Bullets com travessão (—) ou seta (→) — nunca com emoji no meio do conteúdo
-7. Emoji só no início de linha — ♻️ no reposta, ✅ no resultado, nunca no meio da frase
+7. Emoji só no início de linha — ♻️ no reposta, ✅ no resultado, nunca no meio da frase. Exceção: PS2 pode ter emoji ao final da linha.
 8. O entregável deve parecer valioso — detalhamento longo antes do CTA aumenta conversão
 9. PS sempre — adiciona prova, credibilidade ou dado extra sem quebrar o ritmo do post
 10. Imagem baseada no entregável — a sugestão de imagem deve refletir o que o lead vai receber na isca, não ferramentas genéricas. Se o entregável é um guia de processo, a imagem é conceitual (diagrama, fluxo, tipografia). Se é um template de N8N, a imagem mostra o N8N. Nunca sugerir logos de ferramentas que não estão no material prometido.
 11. PS2 sempre com "Conecte-se comigo" — nunca "me segue", nunca "me acompanha"
+
+## Input
+
+- **Tema**: obrigatório. Se não fornecido, perguntar antes de escrever.
+- **Keyword do CTA**: se não fornecida, sugerir uma com base no tema e prosseguir sem bloquear.
+- **Entregável**: se não especificado, mapear a partir do tema e informar ao apresentar o post.
 
 ## Processo de criação
 
 1. Definir tema + dor central
 2. Escolher palavra-chave do CTA
 3. Mapear o entregável (o que vai na DM — precisa ser real e instalável)
-4. Escrever hook (3 variações, escolher o mais agressivo)
+4. Escrever hook (3 variações, escolher o que cria mais urgência ou desconforto imediato sem revelar a solução)
 5. Escrever corpo seguindo a estrutura
 6. Revisar: cada frase passa no teste "isso é específico ou genérico?"
 7. Definir reposta e PS
-8. Apresentar o post e, imediatamente após, sugerir a imagem (ver seção abaixo)
+8. Apresentar o post em texto corrido, sem bloco de código. Imediatamente após, sugerir a imagem. Se houver `[NÚMERO REAL]` no texto, listar ao final quais dados precisam ser preenchidos antes de publicar.
 
 ---
 
@@ -78,46 +84,9 @@ Adaptar o prompt com os elementos específicos do post que foi criado.
 
 ---
 
-## Temas validados para próximos posts
-
-Mapeamento de ângulos com alto potencial baseado no padrão CRM:
-
-| Tema | Dor central | Palavra-chave DM | Entregável |
-|---|---|---|---|
-| IA + Comercial (PRÓXIMO) | Empresário quer vender mais com IA | "VENDAS" ou "CLAUDE" | Guia de agente comercial com Claude |
-| IA + Atendimento | WhatsApp sem resposta, atendente sobrecarregado | "ATENDIMENTO" | Template de agente no N8N + prompt |
-| IA + Jurídico | Advogado perde tempo em petição padrão | "PETIÇÃO" | Prompt + agente de geração de peças |
-| IA + Clínicas | Agenda manual, faltas, sem follow-up | "AGENDA" | Automação de confirmação + reagendamento |
-| IA + Contabilidade | Cliente sem resposta, envio de doc no zero | "CONTÁBIL" | Workflow de cobrança e entrega de doc |
-| IA + Precificação | Proposta demorada, vendedor sem autonomia | "PROPOSTA" | Gerador de proposta com IA |
-
----
-
-## Próximo post: CLAUDE + COMERCIAL
-
-**Ângulo**: O empresário não quer IA — ele quer **vender mais**. A IA é o meio.
-
-**Hook sugerido**:
-
-> Seu time de vendas está perdendo deal agora. Não por falta de esforço — por falta de informação na hora certa.
-
-ou:
-
-> A IA não vai substituir seu vendedor. Ela vai fazer seu vendedor fechar 3x mais.
-
-**O que o post deve entregar:**
-- Como o Claude funciona como "cérebro comercial" do vendedor
-- O que o agente faz: pesquisa o lead, monta briefing, sugere abordagem, gera proposta
-- Prova: case real da Nexus Mind
-- Entregável: prompt pronto + estrutura do agente comercial com Claude
-
-**CTA sugerido**: Comenta "CLAUDE" que te mando o prompt + estrutura na DM.
-
----
-
 ## Formato 1 — Mecanismo + Capacidades
 
-Quando usar: o mecanismo é o diferencial. O lead já sabe que tem o problema.
+Quando usar: Eduardo fornece um mecanismo, ferramenta ou capacidade como tema. Usar como padrão quando o input não deixar claro qual formato aplicar.
 Referência: Post CRM (358 reações | 1.648 comentários | 60.064 impressões)
 
 ### Estrutura
@@ -140,7 +109,7 @@ Referência: Post CRM (358 reações | 1.648 comentários | 60.064 impressões)
 
 ## Formato 2 — Prova + Desejo
 
-Quando usar: o lead não sabe a gravidade do problema.
+Quando usar: Eduardo fornece um case real, dado revelador ou story com números próprios. Não usar sem esses elementos — sem dado real, o formato perde credibilidade.
 Referência: Post ATENDIMENTO (validado em produção)
 
 ### Estrutura

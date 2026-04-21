@@ -1,0 +1,2139 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style rel="stylesheet" type="text/css">@charset "utf-8";
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2"); unicode-range: U+370-3FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2"); unicode-range: U+1F00-1FFF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2"); unicode-range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2"); unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2"); unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; src: url("/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2"); unicode-range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2"); unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2"); unicode-range: U+370-3FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2"); unicode-range: U+1F00-1FFF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; src: url("/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2"); unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2"); unicode-range: U+1F00-1FFF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2"); unicode-range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2"); unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2"); unicode-range: U+370-3FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; src: url("/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2"); unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2"); unicode-range: U+370-3FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2"); unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2"); unicode-range: U+1F00-1FFF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2"); unicode-range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; src: url("/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2"); unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2"); unicode-range: U+370-3FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2"); unicode-range: U+1F00-1FFF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2"); unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2"); unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 800; src: url("/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2"); unicode-range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/cyrillic/wght/normal.woff2"); unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/greek-ext/wght/normal.woff2"); unicode-range: U+1F00-1FFF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/greek/wght/normal.woff2"); unicode-range: U+370-3FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/latin/wght/normal.woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/latin-ext/wght/normal.woff2"); unicode-range: U+100-2AF, U+304, U+308, U+329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/cyrillic-ext/wght/normal.woff2"); unicode-range: U+460-52F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; font-display: swap; }
+
+@font-face { font-family: Inter; font-style: normal; font-weight: 900; src: url("/cf-fonts/v/inter/5.0.16/vietnamese/wght/normal.woff2"); unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB; font-display: swap; }</style><style rel="stylesheet" type="text/css">@charset "utf-8";
+
+:root { --bg: #E8E4DC; --bg-alt: #F5F2ED; --card: #D8D4CC; --accent: #FF4D00; --accent-hover: #E64500; --text-pri: #1A1A1A; --text-sec: rgba(0,0,0,0.65); --text-ter: rgba(0,0,0,0.50); --text-ghost: rgba(0,0,0,0.30); --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.20); --font: 'Inter', sans-serif; --radius: 12px; --radius-sm: 8px; --radius-pill: 100px; --max-w: min(720px, 90vw); --safe: clamp(16px, 5vw, 40px); }
+
+*, ::before, ::after { box-sizing: border-box; margin: 0px; padding: 0px; }
+
+html { font-size: 16px; scroll-behavior: smooth; text-size-adjust: 100%; }
+
+body { font-family: var(--font); background: var(--bg); color: var(--text-pri); line-height: 1.6; min-height: 100dvh; overflow-x: hidden; }
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--accent); text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+.header { position: sticky; top: 0px; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 var(--safe); }
+
+.header-inner { max-width: 100%; margin: 0px auto; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+
+.header-brand { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-ter); transition: opacity 0.2s; }
+
+.header-brand span { color: var(--accent); }
+
+.header-breadcrumb { display: none; font-size: 12px; font-weight: 600; color: var(--text-ter); letter-spacing: 0.5px; }
+
+.header-day-toggle { display: flex; gap: 2px; background: var(--card); border-radius: var(--radius-pill); padding: 3px; }
+
+.header-brand { display: block; }
+
+.header-day-btn { font-family: var(--font); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border: none; background: transparent; color: var(--text-ter); padding: 6px 14px; border-radius: var(--radius-pill); cursor: pointer; transition: 0.2s; }
+
+.header-day-btn.active { background: var(--text-pri); color: var(--bg); }
+
+.header-day-btn[data-day="home"].active { background: var(--accent); color: rgb(255, 255, 255); }
+
+.progress-bar { position: sticky; top: 56px; z-index: 99; background: var(--bg); padding: 0 var(--safe); border-bottom: 1px solid var(--border); }
+
+.progress-inner { max-width: 100%; margin: 0px auto; display: flex; align-items: center; gap: 8px; height: 44px; }
+
+.progress-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-ghost); white-space: nowrap; }
+
+.progress-track { flex: 1 1 0%; height: 4px; background: var(--card); border-radius: 2px; overflow: hidden; }
+
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s; width: 0%; }
+
+.progress-steps { display: flex; gap: 4px; }
+
+.progress-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--card); border: 2px solid var(--card); transition: 0.2s; cursor: pointer; }
+
+.progress-dot.done { background: var(--accent); border-color: var(--accent); }
+
+.progress-dot.current { background: transparent; border-color: var(--accent); }
+
+.main { max-width: 100%; margin: 0px auto; padding: 32px var(--safe) 120px; min-height: calc(-100px + 100dvh); }
+
+.section { display: none; animation: 0.3s ease 0s 1 normal none running fadeIn; }
+
+.section.active { display: block; }
+
+@keyframes fadeIn { 
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0px); }
+}
+
+.section-kicker { font-size: 10px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+.section-title { font-size: clamp(32px, 7vw, 48px); font-weight: 900; line-height: 1; letter-spacing: -1px; margin-bottom: 8px; }
+
+.section-subtitle { font-size: clamp(16px, 4vw, 22px); font-weight: 700; line-height: 1.1; color: var(--text-sec); text-transform: uppercase; margin-bottom: 24px; }
+
+h2 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-top: 40px; margin-bottom: 12px; }
+
+h3 { font-size: 17px; font-weight: 700; line-height: 1.3; margin-top: 28px; margin-bottom: 8px; }
+
+p { margin-bottom: 16px; color: var(--text-sec); font-size: 15px; line-height: 1.65; }
+
+ul, ol { margin-bottom: 16px; padding-left: 20px; }
+
+li { margin-bottom: 8px; color: var(--text-sec); font-size: 15px; line-height: 1.55; }
+
+li strong { color: var(--text-pri); }
+
+hr { border: none; height: 3px; background: var(--accent); width: 40px; margin: 32px 0px; border-radius: 2px; }
+
+details.toggle { background: var(--card); border-radius: var(--radius); margin-bottom: 20px; overflow: hidden; }
+
+details.toggle summary { padding: 16px 20px; font-weight: 700; font-size: 15px; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; color: var(--text-pri); }
+
+details.toggle summary::-webkit-details-marker { display: none; }
+
+details.toggle summary::before { content: "▸"; font-size: 14px; color: var(--accent); transition: transform 0.2s; }
+
+details.toggle[open] summary::before { transform: rotate(90deg); }
+
+details.toggle .toggle-content { padding: 0px 20px 20px; }
+
+.card { background: var(--card); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+
+.card h3 { margin-top: 0px; }
+
+.card h4 { margin-top: 0px; }
+
+.card-accent { background: var(--bg-alt); border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 4px solid var(--accent); }
+
+code { font-family: "SF Mono", "Fira Code", monospace; font-size: 0.88em; background: rgba(0, 0, 0, 0.06); padding: 2px 6px; border-radius: 4px; }
+
+.code-block code, .prompt-block code { background: none; padding: 0px; border-radius: 0px; }
+
+.callout { border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; font-size: 14px; line-height: 1.55; }
+
+.callout-tip { background: rgba(0, 212, 255, 0.08); border: 1px solid rgba(0, 212, 255, 0.2); }
+
+.callout-warn { background: rgba(255, 77, 0, 0.08); border: 1px solid rgba(255, 77, 0, 0.2); }
+
+.callout-exercise { background: rgba(0, 255, 136, 0.08); border: 1px solid rgba(0, 255, 136, 0.2); }
+
+.callout > strong:first-child { display: block; margin-bottom: 4px; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+.code-block { position: relative; background: rgb(26, 26, 26); color: rgb(232, 228, 220); border-radius: var(--radius); padding: 36px 20px 20px; margin-bottom: 20px; font-family: "SF Mono", "Fira Code", monospace; font-size: 13px; line-height: 1.6; overflow-x: auto; }
+
+.code-block .code-text { display: block; white-space: pre-wrap; word-break: break-word; }
+
+.code-block-label { position: absolute; top: 8px; left: 16px; font-family: var(--font); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.3); }
+
+.code-block-copy { position: absolute; top: 8px; right: 8px; font-family: var(--font); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; padding: 4px 10px; cursor: pointer; transition: 0.2s; }
+
+.code-block-copy:hover { background: var(--accent); color: rgb(255, 255, 255); border-color: var(--accent); }
+
+.prompt-block { background: var(--bg-alt); border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-bottom-color: ; border-bottom-style: ; border-bottom-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 36px 20px 20px; margin-bottom: 20px; position: relative; }
+
+.prompt-block p { color: var(--text-pri); font-size: 14px; font-style: italic; margin-bottom: 0px; }
+
+.prompt-block .code-block-copy { background: rgba(0, 0, 0, 0.05); color: var(--text-ter); border-color: var(--border); }
+
+.prompt-block .code-block-copy:hover { background: var(--accent); color: rgb(255, 255, 255); border-color: var(--accent); }
+
+.stepper { list-style: none; padding: 0px; margin: 0px 0px 20px; counter-reset: step-counter 0; }
+
+.stepper .step { position: relative; padding-left: 48px; padding-bottom: 32px; }
+
+.stepper .step:last-child { padding-bottom: 0px; }
+
+.stepper .step::before { content: ""; position: absolute; top: 32px; bottom: 0px; left: 15px; width: 2px; background: var(--border-strong); }
+
+.stepper .step:last-child::before { display: none; }
+
+.stepper .step::after { counter-increment: step-counter 1; content: counter(step-counter); position: absolute; top: 0px; left: 0px; width: 32px; height: 32px; background: var(--accent); color: rgb(255, 255, 255); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+
+.stepper .step h4 { margin: 0px 0px 6px; font-size: 15px; font-weight: 700; padding-top: 4px; }
+
+.stepper .step p { margin: 0px 0px 8px; color: var(--text-sec); font-size: 14px; }
+
+.stepper .step .code-block { margin: 10px 0px 0px; }
+
+.skills-ecosystem { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0px; }
+
+.skills-ecosystem-tag { background: var(--card); border: 1px solid var(--border-strong); border-radius: 6px; padding: 6px 12px; font-size: 0.82rem; font-weight: 600; color: var(--text); }
+
+.checklist { list-style: none; padding: 0px; margin-bottom: 20px; }
+
+.checklist li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0px; border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; }
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist-box { width: 22px; height: 22px; min-width: 22px; border: 2px solid var(--border-strong); border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: 0.2s; margin-top: 1px; font-size: 12px; color: transparent; }
+
+.checklist li.checked .checklist-box { background: var(--accent); border-color: var(--accent); color: rgb(255, 255, 255); }
+
+.checklist li.checked .checklist-text { text-decoration: line-through; color: var(--text-ghost); }
+
+.checklist-text { font-size: 15px; line-height: 1.5; color: var(--text-sec); transition: 0.2s; }
+
+.table-wrap { overflow-x: auto; margin-bottom: 20px; border-radius: var(--radius); border: 1px solid var(--border); }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+th { background: var(--card); font-weight: 700; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-ter); text-align: left; padding: 10px 16px; }
+
+td { padding: 12px 16px; border-top: 1px solid var(--border); color: var(--text-sec); vertical-align: top; }
+
+td strong { color: var(--text-pri); }
+
+.badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--accent); color: rgb(255, 255, 255); }
+
+.badge-outline { background: transparent; border: 1px solid var(--border-strong); color: var(--text-ter); }
+
+.badge-time { background: rgba(0, 0, 0, 0.06); color: var(--text-ter); font-size: 10px; padding: 4px 10px; }
+
+.footer-nav { position: fixed; bottom: 0px; left: 0px; right: 0px; z-index: 100; background: var(--bg); border-top: 1px solid var(--border); padding: 12px var(--safe); }
+
+.footer-nav-inner { max-width: 100%; margin: 0px auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.nav-btn { font-family: var(--font); font-size: 13px; font-weight: 700; border: none; border-radius: var(--radius-sm); padding: 12px 24px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
+
+.nav-btn-prev { background: var(--card); color: var(--text-sec); }
+
+.nav-btn-prev:hover { background: var(--border-strong); }
+
+.nav-btn-next { background: var(--accent); color: rgb(255, 255, 255); margin-left: auto; }
+
+.nav-btn-next:hover { background: var(--accent-hover); }
+
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.nav-current { font-size: 11px; font-weight: 600; color: var(--text-ghost); letter-spacing: 1px; }
+
+.hero { text-align: center; padding: 48px 0px 32px; }
+
+.hero-badge { margin-bottom: 24px; }
+
+.hero-title { font-size: clamp(36px, 9vw, 56px); font-weight: 900; line-height: 0.95; letter-spacing: -2px; margin-bottom: 12px; }
+
+.hero-title span { color: var(--accent); }
+
+.hero-subtitle { font-size: clamp(14px, 3.5vw, 18px); color: var(--text-sec); font-weight: 500; max-width: 480px; margin: 0px auto 32px; line-height: 1.5; }
+
+.hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: rgb(255, 255, 255); font-family: var(--font); font-size: 15px; font-weight: 700; padding: 14px 32px; border-radius: var(--radius-pill); border: none; cursor: pointer; transition: 0.2s; }
+
+.hero-cta:hover { background: var(--accent-hover); transform: translateY(-1px); text-decoration: none; }
+
+.day-cards { display: grid; gap: 16px; margin-top: 40px; }
+
+.day-card { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: left; cursor: pointer; transition: 0.2s; }
+
+.day-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.day-card-num { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+.day-card-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+
+.day-card-desc { font-size: 14px; color: var(--text-sec); line-height: 1.5; margin-bottom: 12px; }
+
+.day-card-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.sidebar { display: none; }
+
+@media (min-width: 900px) {
+  :root { --sidebar-w: 280px; }
+  .sidebar { display: flex; flex-direction: column; position: fixed; top: 0px; left: 0px; width: var(--sidebar-w); height: 100dvh; background: var(--bg-alt); border-right: 1px solid var(--border); overflow: hidden auto; z-index: 200; padding: 0px; }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-brand { position: sticky; top: 0px; z-index: 1; background: var(--bg-alt); padding: 20px 24px 16px; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-ter); border-bottom: 1px solid var(--border); }
+  .sidebar-brand span { color: var(--accent); }
+  .sidebar-group { padding: 16px 0px 4px; }
+  .sidebar-group-title { padding: 0px 24px 8px; font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text-ghost); }
+  .sidebar-item { display: flex; align-items: center; gap: 10px; padding: 9px 24px; font-size: 13px; font-weight: 500; color: var(--text-sec); cursor: pointer; transition: 0.15s; border-left: 3px solid transparent; }
+  .sidebar-item:hover { background: var(--card); color: var(--text-pri); }
+  .sidebar-item.active { background: rgba(255, 77, 0, 0.06); color: var(--accent); font-weight: 700; border-left-color: var(--accent); }
+  .sidebar-item-num { font-size: 10px; font-weight: 700; color: var(--text-ghost); min-width: 20px; }
+  .sidebar-item.active .sidebar-item-num { color: var(--accent); }
+  .sidebar-item.locked { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  .sidebar-item-badge { margin-left: auto; font-size: 9px; font-weight: 600; color: var(--text-ghost); letter-spacing: 0.5px; }
+  .header { left: var(--sidebar-w); right: 0px; border-bottom: 1px solid var(--border); padding: 0px clamp(32px, 4vw, 64px); }
+  .header-inner { max-width: none; height: 44px; }
+  .header-brand { display: none; }
+  .header-breadcrumb { display: block; }
+  .progress-bar { left: var(--sidebar-w); right: 0px; top: 44px; border-bottom: none; padding: 0px clamp(32px, 4vw, 64px) 8px; }
+  .progress-inner { max-width: none; height: 28px; }
+  .progress-track { height: 3px; }
+  .main { margin-left: var(--sidebar-w); max-width: none; padding: 40px clamp(32px, 4vw, 64px) 100px; }
+  .footer-nav { left: var(--sidebar-w); right: 0px; padding: 10px clamp(32px, 4vw, 64px); border-top: 1px solid var(--border); }
+  .footer-nav-inner { max-width: none; }
+  .hero { padding: 56px 0px 40px; }
+  .hero-title { font-size: 56px; }
+  .day-cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1200px) {
+  :root { --sidebar-w: 300px; }
+  .sidebar-item { padding: 10px 28px; }
+  .sidebar-group-title { padding: 0px 28px 8px; }
+  .sidebar-brand { padding: 24px 28px 18px; }
+}
+
+@media (min-width: 481px) and (max-width: 899px) {
+  .day-cards { grid-template-columns: 1fr 1fr; }
+  .hero-title { font-size: 48px; }
+}
+
+@media (max-width: 480px) {
+  .header-inner { height: 48px; }
+  .progress-inner { height: 36px; }
+  .progress-label { display: none; }
+  .nav-btn { padding: 10px 16px; font-size: 12px; }
+  .footer-nav { padding: 8px var(--safe); }
+  .main { padding-bottom: 80px; }
+}</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operação Claude Code — Material de Apoio</title>
+<meta name="description" content="Material de apoio da Operação Claude Code. 1 dia para colocar times de I.A funcionando na sua operação.">
+
+
+
+
+</head>
+<body>
+
+<!-- SIDEBAR (desktop only) -->
+<aside class="sidebar" id="sidebar" style="">
+  <div class="sidebar-brand" style="">Operação <span>Claude Code</span></div>
+
+  <div class="sidebar-group">
+    <div class="sidebar-item" data-target="home">
+      <span class="sidebar-item-num">●</span>
+      Início
+    </div>
+  </div>
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Ato 1 — Claude 10x</div>
+    <div class="sidebar-item active" data-target="d1-b1">
+      <span class="sidebar-item-num">01</span>
+      O que é o Claude?
+      <span class="sidebar-item-badge">20 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d1-b2">
+      <span class="sidebar-item-num">02</span>
+      Precificação e Tokens
+      <span class="sidebar-item-badge">15 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d1-b3">
+      <span class="sidebar-item-num">03</span>
+      Cowork: Plugins e Conectores
+      <span class="sidebar-item-badge">30 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d1-b3b">
+      <span class="sidebar-item-num">04</span>
+      Cowork: Demos ao Vivo
+      <span class="sidebar-item-badge">30 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d1-b4">
+      <span class="sidebar-item-num">05</span>
+      Claude Code
+      <span class="sidebar-item-badge">30 min</span>
+    </div>
+  </div>
+
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">Ato 2 — Skills e Agentes</div>
+    <div class="sidebar-item" data-target="d2-b1">
+      <span class="sidebar-item-num">01</span>
+      O que é uma Skill?
+      <span class="sidebar-item-badge">15 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b4c">
+      <span class="sidebar-item-num">02</span>
+      Garimpando Skills
+      <span class="sidebar-item-badge">20 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b2">
+      <span class="sidebar-item-num">03</span>
+      Criando sua Skill
+      <span class="sidebar-item-badge">30 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b4">
+      <span class="sidebar-item-num">04</span>
+      Skills como Negócio
+      <span class="sidebar-item-badge">30 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b4b">
+      <span class="sidebar-item-num">05</span>
+      Skills vs Agentes
+      <span class="sidebar-item-badge">20 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b5">
+      <span class="sidebar-item-num">06</span>
+      Squads
+      <span class="sidebar-item-badge">30 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b6">
+      <span class="sidebar-item-num">07</span>
+      Squad Builder
+      <span class="sidebar-item-badge">10 min</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b7">
+      <span class="sidebar-item-num">FAQ</span>
+      Perguntas frequentes
+      <span class="sidebar-item-badge">Consulta</span>
+    </div>
+    <div class="sidebar-item" data-target="d2-b8">
+      <span class="sidebar-item-num">+</span>
+      Troubleshooting
+      <span class="sidebar-item-badge">Consulta</span>
+    </div>
+  </div>
+</aside>
+
+<!-- HEADER -->
+<header class="header" style="">
+  <div class="header-inner">
+    <div class="header-brand">Operação <span>Claude Code</span></div>
+    <div class="header-breadcrumb" id="headerBreadcrumb">Ato 1 / O que é o Claude?</div>
+    <div class="header-day-toggle">
+      <button class="header-day-btn" data-day="home">Início</button>
+      <button class="header-day-btn active" data-day="1">Ato 1</button>
+      <button class="header-day-btn" data-day="2">Ato 2</button>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar" style="">
+  <div class="progress-inner">
+    <span class="progress-label" id="progressLabel">Ato 1 · Bloco 1 de 5</span>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width: 20%;"></div>
+    </div>
+    <div class="progress-steps" id="progressSteps"><div class="progress-dot current"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HOME -->
+  <div class="section" data-section="home" data-day="home">
+    <div class="hero">
+      <div class="hero-badge"><span class="badge">1 Dia de Imersão</span></div>
+      <h1 class="hero-title">Operação<br><span>Claude Code.</span></h1>
+      <p class="hero-subtitle">1 dia para colocar times de I.A funcionando na sua operação.</p>
+      <button class="hero-cta">Começar agora →</button>
+    </div>
+
+    <div style="text-align:center; margin: 24px 0 8px;">
+      <p style="font-size:14px; color: var(--text-sec);"><strong>11 de Abril 2026</strong> · 09h às 17h</p>
+      <p style="font-size:13px; color: var(--text-ter);">Mentor: <strong>Thales Laray</strong> — Fundador da Escola de Automação e I.A. do Brasil</p>
+    </div>
+
+    <div class="callout callout-tip" style="text-align:left; margin-top:32px;">
+      <strong>📖 Como usar este material</strong>
+      <ul style="margin-top:8px; margin-bottom:0;">
+        <li>Use os botões <strong>Ato 1</strong> e <strong>Ato 2</strong> no topo (ou a barra lateral no desktop) para navegar entre os blocos.</li>
+        <li>Blocos com <strong>PROMPT</strong> têm botão <strong>Copiar</strong> — cole direto no Claude.</li>
+        <li>Durante a <strong>manhã</strong>: você assiste às demonstrações. Não precisa fazer junto — só acompanhe.</li>
+        <li>Durante a <strong>tarde</strong>: mão na massa. Abra o Claude e siga junto quando o Thales pedir.</li>
+        <li>Este material é seu <strong>guia de referência</strong> — volte sempre que precisar, mesmo depois da imersão.</li>
+      </ul>
+    </div>
+
+    <div class="day-cards">
+      <div class="day-card">
+        <div class="day-card-num">Ato 1 — Manhã</div>
+        <div class="day-card-title">Claude 10x</div>
+        <div class="day-card-desc">O que é o Claude, precificação, Cowork na prática, Claude Code e a diferença entre Skills e Agentes.</div>
+        <div class="day-card-meta">
+          <span class="badge badge-outline">09h–12h</span>
+          <span class="badge badge-outline">5 blocos</span>
+        </div>
+      </div>
+      <div class="day-card" style="cursor:pointer;">
+        <div class="day-card-num">Ato 2 — Tarde</div>
+        <div class="day-card-title">Skills e Agentes: A Base do Seu Time</div>
+        <div class="day-card-desc">Crie skills, conecte MCPs, monte agentes e orquestre seu time de I.A.</div>
+        <div class="day-card-meta">
+          <span class="badge badge-outline">14h–17h</span>
+          <span class="badge badge-outline">6 blocos + FAQ</span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <h2>Pré-requisitos</h2>
+    <ul class="checklist" id="checklistPrereqs">
+      <li>
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text"><strong>Conta Claude Pro</strong> — Crie em claude.ai (~R$115/mês). Necessário para Cowork, Code e Claude Code</span>
+      </li>
+      <li>
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text"><strong>Claude Desktop App</strong> — Baixe em claude.ai/download (Mac ou Windows)</span>
+      </li>
+      <li>
+        <span class="checklist-box">✓</span>
+        <span class="checklist-text"><strong>Computador com internet</strong> — Mac, Windows ou Linux</span>
+      </li>
+    </ul>
+    <div class="callout callout-tip">
+      <strong>💡 Dica</strong>
+      O plano Pro (~R$115/mês) dá acesso a tudo: Chat, Cowork, Código no desktop e Claude Code no terminal. Os planos Max só aumentam os limites de uso.
+    </div>
+  </div>
+
+  <!-- ATO 1 BLOCOS -->
+
+  <!-- ATO 1 / BLOCO 1 -->
+  <div class="section active" data-section="d1-b1" data-day="1" data-block="1">
+    <div class="section-kicker">Ato 1 · Bloco 1</div>
+    <div class="section-title">O que é o Claude?</div>
+    <div class="section-subtitle">Não é um chatbot — é uma I.A que entende, decide e executa</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <h2>Claude não é um chatbot</h2>
+    <p>O Claude é uma I.A da Anthropic que <strong>entende contexto, toma decisões e executa</strong>. Diferente de chatbots comuns, ele não apenas responde perguntas — ele colabora com você em tarefas complexas, cria documentos, analisa dados e constrói ferramentas.</p>
+
+    <h2>Onde o Claude vive</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Interface</th><th>O que faz</th><th>Para quem</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Claude.ai (web)</strong></td><td>Versão completa no navegador</td><td>Acesso rápido de qualquer computador</td></tr>
+          <tr><td><strong>Claude Desktop App</strong></td><td>Chat, Cowork e Código — tudo visual, sem terminal</td><td>Uso diário no desktop</td></tr>
+          <tr><td><strong>Claude Code (terminal)</strong></td><td>Controle total via linha de comando</td><td>Quem quer o máximo de poder</td></tr>
+          <tr><td><strong>Claude Mobile</strong></td><td>Chat por voz e texto no celular</td><td>Produtividade em qualquer lugar</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Os 3 modos</h2>
+
+    <div class="card card-accent">
+      <h3>Chat</h3>
+      <p>Conversas rápidas, brainstorming, perguntas. Como falar com um colega. Inclui voice mode e captura de tela.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Cowork</h3>
+      <p>Tarefas complexas e autônomas. O Claude trabalha <strong>sozinho</strong> — pesquisa, analisa documentos, gera relatórios, cria apresentações. Você delega e ele entrega.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Code</h3>
+      <p>O próximo nível. Skills customizadas, agentes, times de I.A, apps, dashboards e MCPs ilimitados. Tudo pelo terminal.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Modo</th><th>Quando usar</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Chat</strong></td><td>Para entender — perguntas, brainstorm, ideias</td><td>"Me explica o que é ROI"</td></tr>
+          <tr><td><strong>Cowork</strong></td><td>Para conectar — análises, relatórios, plugins</td><td>"Analise meus concorrentes e gere um relatório"</td></tr>
+          <tr><td><strong>Code</strong></td><td>Para construir — skills, agentes, automações</td><td>"Cria um agente de atendimento para meu negócio"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Regra simples</strong>
+      Chat para entender. Cowork para conectar. Code para construir.
+    </div>
+  </div>
+
+  <!-- ATO 1 / BLOCO 2 -->
+  <div class="section" data-section="d1-b2" data-day="1" data-block="2">
+    <div class="section-kicker">Ato 1 · Bloco 2</div>
+    <div class="section-title">Precificação e Tokens.</div>
+    <div class="section-subtitle">Quanto custa ter um time de I.A?</div>
+    <span class="badge badge-time">15 minutos</span>
+    <hr>
+
+    <h2>Planos do Claude</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Plano</th><th>Preço</th><th>Chat</th><th>Cowork</th><th>Code</th><th>Terminal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Free</strong></td><td>Grátis</td><td>Limitado</td><td>✗</td><td>✗</td><td>✗</td></tr>
+          <tr><td><strong>Pro</strong></td><td>~R$115/mês</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td><strong>Max 5x</strong></td><td>~R$575/mês</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><td><strong>Max 20x</strong></td><td>~R$1.150/mês</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>A comparação que ninguém faz</h2>
+    <p>Um funcionário no regime CLT custa no mínimo <strong>R$1.500/mês</strong> (salário + encargos), trabalha 8h por dia, 5 dias por semana, e precisa de semanas de treinamento.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Funcionário CLT</th><th>Claude Max 5x</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Custo mensal</strong></td><td>R$1.500 a R$5.000+</td><td>R$575</td></tr>
+          <tr><td><strong>Horário</strong></td><td>8h/dia, seg a sex</td><td>24h/dia, 7 dias</td></tr>
+          <tr><td><strong>Treinamento</strong></td><td>Semanas ou meses</td><td>Segundos (via skill)</td></tr>
+          <tr><td><strong>Férias / faltas</strong></td><td>30 dias + encargos</td><td>Nunca para</td></tr>
+          <tr><td><strong>Escala</strong></td><td>Contratar mais = mais custo</td><td>Mais agentes = mesmo custo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Honestidade</strong>
+      O plano Pro (R$115/mês) é ótimo para começar e aprender, mas tem limite de uso real que <strong>varia conforme o modelo usado</strong>. A Anthropic não publica números fixos — o limite depende de 3 fatores: qual modelo (Haiku gasta pouco, Opus gasta muito), o tamanho dos seus prompts, e a demanda no servidor no momento. Para substituir operacional de verdade, o <strong>Max 5x (R$575/mês)</strong> é o plano recomendado. Ainda assim: R$575 vs R$1.500+ de CLT. A conta fecha.
+    </div>
+
+    <h2>O que cabe na mensalidade?</h2>
+    <p>Nos planos Pro e Max, você paga uma <strong>mensalidade fixa</strong> — não é cobrado por tarefa individual. O que muda entre os planos é o limite de uso:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Plano</th><th>Preço</th><th>Limite</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Pro</strong></td><td>~R$115/mês</td><td>Uso moderado — ideal para aprender e testar. Espere bater o limite se usar intensivamente por mais de 1-2 horas seguidas.</td></tr>
+          <tr><td><strong>Max 5x</strong></td><td>~R$575/mês</td><td>5x o limite do Pro — uso profissional diário, rodar agentes, criação intensiva.</td></tr>
+          <tr><td><strong>Max 20x</strong></td><td>~R$1.150/mês</td><td>20x o limite do Pro — operações pesadas, agências, múltiplos squads simultâneos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Os 3 modelos do Claude</h2>
+    <p>Dentro de qualquer plano, você escolhe qual modelo usar. Cada um tem um nível de inteligência e um consumo de tokens diferente:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Modelo</th><th>Pra que serve</th><th>Consumo de tokens</th><th>Quando usar</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Haiku</strong></td><td>Tarefas simples e rápidas</td><td>Baixo — cabe muito mais na janela</td><td>Resumos, formatação, tarefas repetitivas</td></tr>
+          <tr><td><strong>Sonnet</strong></td><td>Uso geral — equilíbrio entre qualidade e custo</td><td>Médio</td><td>Dia a dia: criar skills, gerar conteúdo, análises</td></tr>
+          <tr><td><strong>Opus</strong></td><td>Raciocínio complexo e profundo</td><td>Alto — consome 5-10x mais que Haiku</td><td>Estratégia, orquestração de times, decisões críticas</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Dica de economia</strong>
+      Use <strong>Sonnet</strong> como padrão no dia a dia. Reserve o <strong>Opus</strong> para tarefas que realmente precisam de raciocínio profundo (ele estoura o limite rápido). Use <strong>Haiku</strong> para tarefas simples e repetitivas — ele rende muito mais. E use <code>/cost</code> no Claude Code para monitorar seu consumo.
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Importante sobre limites</strong>
+      A Anthropic ajusta os limites dinamicamente conforme a demanda dos servidores. Não existe um número fixo publicado. Se você atingir o limite, ele reseta em ~3 a 5 horas. Trocar para um modelo mais leve (Haiku) enquanto espera é uma boa estratégia.
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Dica</strong>
+      Comece com o Pro para aprender e testar. Quando perceber que está batendo no limite com frequência, migre para o Max 5x. Use <code>/cost</code> no Claude Code para monitorar seu consumo.
+    </div>
+  </div>
+
+  <!-- ATO 1 / BLOCO 3 — Cowork: Plugins e Conectores -->
+  <div class="section" data-section="d1-b3" data-day="1" data-block="3">
+    <div class="section-kicker">Ato 1 · Bloco 3</div>
+    <div class="section-title">Cowork: Plugins e Conectores.</div>
+    <div class="section-subtitle">O Claude vira funcionário quando ativa o Cowork</div>
+    <span class="badge badge-time">30 minutos</span>
+    <hr>
+
+    <h2>O que é o Cowork?</h2>
+    <p>O Cowork transforma o Claude de um chat em um <strong>funcionário</strong>. Ele acessa plugins, lê e cria arquivos, pesquisa na web e executa ações — tudo sozinho, sem precisar da sua intervenção a cada passo.</p>
+
+    <h2>Como ativar</h2>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Abra o Claude Desktop App</h4>
+        <p>Baixe em <a href="https://claude.ai/download" target="_blank">claude.ai/download</a> se ainda não tem.</p>
+      </li>
+      <li class="step">
+        <h4>Clique na aba Cowork</h4>
+        <p>Está no topo do app, ao lado de Chat e Code.</p>
+      </li>
+      <li class="step">
+        <h4>Conceda acesso a pastas</h4>
+        <p>O Claude precisa acessar pastas no seu computador para ler e salvar arquivos. Escolha uma pasta de trabalho.</p>
+      </li>
+    </ol>
+
+    <h2>11 plugins oficiais</h2>
+    <p>A Anthropic lançou <strong>11 plugins oficiais open-source</strong> em janeiro de 2026 — cada um focado em um departamento (Marketing, Sales, Legal, Finance, etc.). Além disso, a comunidade cria plugins customizados. Instale diretamente no Cowork ou via terminal.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Plugin</th><th>O que faz</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Marketing</strong></td><td>Brand voice, análise competitiva, planejamento de campanha, criação de conteúdo</td></tr>
+          <tr><td><strong>Sales</strong></td><td>Pipeline, prospecção, follow-up, scripts de vendas</td></tr>
+          <tr><td><strong>Finance</strong></td><td>Análise financeira, orçamentos, relatórios</td></tr>
+          <tr><td><strong>Legal</strong></td><td>Análise de cláusulas, contratos, compliance</td></tr>
+          <tr><td><strong>Data</strong></td><td>Conecta em fontes de dados (CSV, Excel) e faz análise</td></tr>
+          <tr><td><strong>Design</strong></td><td>Design systems, componentes visuais, acessibilidade</td></tr>
+          <tr><td><strong>HR</strong></td><td>Recrutamento, onboarding, políticas de RH</td></tr>
+          <tr><td><strong>Ops</strong></td><td>Processos operacionais, checklists, workflows</td></tr>
+          <tr><td><strong>PM</strong></td><td>Gestão de projetos, roadmaps, priorização</td></tr>
+          <tr><td><strong>Dev</strong></td><td>Code review, documentação técnica, debugging</td></tr>
+          <tr><td><strong>Customer Support</strong></td><td>Atendimento ao cliente, templates de resposta, FAQ</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px; color:var(--text-sec);">Esses são os 11 plugins oficiais da Anthropic. Além deles, a comunidade cria plugins customizados que você pode instalar via terminal (<code>claude plugins add [nome]</code>).</p>
+
+    <hr>
+
+    <h2>Conectores (MCPs) — o crachá do funcionário</h2>
+    <p>Além dos plugins, existe outro conceito importante: <strong>conectores</strong>. A Anthropic também chama de <strong>MCP</strong> (Model Context Protocol) — é o mesmo.</p>
+
+    <div class="card card-accent">
+      <h3>Analogia simples</h3>
+      <p>Seu funcionário novo é inteligente, mas no primeiro dia não tem acesso a nada. Não entra no sistema, não vê a planilha, não abre o Drive. <strong>O conector é o crachá</strong> — dá acesso às ferramentas que ele precisa pra trabalhar de verdade.</p>
+    </div>
+
+    <h3>Antes e depois</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Claude sem conectores</th><th>Claude com conectores</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dados</strong></td><td>Só o que você cola na conversa</td><td>Acessa planilhas, sites, bancos de dados em tempo real</td></tr>
+          <tr><td><strong>Internet</strong></td><td>Limitado</td><td>Pesquisa, lê páginas, extrai informações</td></tr>
+          <tr><td><strong>Criação</strong></td><td>Gera texto na conversa</td><td>Cria arquivos no Google Drive, posts no Instagram, tasks no Notion</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Exemplos práticos</h3>
+    <ul>
+      <li><strong>Windsor AI</strong> — conecta suas campanhas Meta e Google Ads para análise segura</li>
+      <li><strong>Google Workspace</strong> — lê e cria Docs, Sheets, Gmail, Calendar</li>
+      <li><strong>Perplexity</strong> — pesquisa na web em tempo real com fontes</li>
+      <li><strong>Notion</strong> — acessa sua base de conhecimento, cria páginas, atualiza tasks</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <strong>💡 Instalação é simples</strong>
+      Você não precisa configurar nada tecnicamente. Basta pedir ao Claude: <em>"instala o conector do [nome] pra mim"</em> e ele guia você pela configuração, pedindo as chaves de API necessárias. Uma vez instalado, o conector funciona tanto no Cowork quanto no Claude Code.
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>➡️ Próximo bloco: Demos ao Vivo</strong>
+      Agora que você entendeu o que é o Cowork, plugins e conectores, vamos ver tudo isso em ação. No próximo bloco você acompanha 2 demos reais: análise de campanhas Meta e criação de páginas com plugins de design.
+    </div>
+  </div>
+
+  <!-- ATO 1 / BLOCO 4 — Cowork: Demos ao Vivo -->
+  <div class="section" data-section="d1-b3b" data-day="1" data-block="3b">
+    <div class="section-kicker">Ato 1 · Bloco 4</div>
+    <div class="section-title">Cowork: Demos ao Vivo.</div>
+    <div class="section-subtitle">Ver tudo funcionando em campanhas Meta e criação de páginas</div>
+    <span class="badge badge-time">30 minutos</span>
+    <hr>
+
+    <p>Nos próximos 2 blocos, você vai ver o Cowork em ação com <strong>2 demos reais</strong>: analisando campanhas do Meta de forma segura, e criando páginas profissionais do zero.</p>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Alerta importante — Meta/Business Manager</strong>
+      <strong>NÃO conecte o Claude diretamente no Meta Ads ou Business Manager.</strong> Contas estão sendo banidas permanentemente por uso de integrações genéricas. O Meta tem limite de 200 chamadas de API por hora — um agente autônomo queima isso em minutos.<br><br>
+      <strong>Alternativa segura:</strong> use o <strong>Windsor AI</strong> (disponível nos conectores do Claude). Ele conecta seus dados do Meta <strong>somente para leitura</strong> — analisa campanhas sem permitir ações autônomas.
+    </div>
+
+    <hr>
+
+    <h2>Demo 1 — Análise de Campanhas Meta (via Windsor AI)</h2>
+    <p>Nesta demo, o Claude se conecta nos seus dados do Meta Ads de <strong>forma segura</strong> através do Windsor AI — sem risco de banimento. Ele puxa os dados reais das campanhas e gera um dashboard interativo direto na conversa.</p>
+
+    <h3>O que é o Windsor AI?</h3>
+    <p>É uma plataforma de integração de dados (<a href="https://windsor.ai/" target="_blank">windsor.ai</a>) que funciona como <strong>intermediário de leitura</strong> entre o Claude e suas plataformas de anúncios (Meta, Google Ads, TikTok, etc.). Ele conecta 325+ fontes de dados e <strong>só lê</strong> — nunca edita, cria ou modifica nada nas suas contas. Isso é o que o torna seguro.</p>
+
+    <div class="callout callout-tip">
+      <strong>💡 Importante sobre permissões</strong>
+      Durante a autorização, o Meta vai mostrar permissões como "gerenciar seus anúncios". Embora a palavra "gerenciar" assuste, o Windsor AI <strong>não cria, edita nem publica anúncios</strong>. Essas permissões são exigidas pela API do Meta para qualquer ferramenta de leitura de dados — é padrão do mercado.
+    </div>
+
+    <h3>Etapa 1 — Conecte o Meta Ads no Windsor AI</h3>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Crie sua conta no Windsor AI</h4>
+        <p>Acesse <a href="https://onboard.windsor.ai/" target="_blank"><strong>onboard.windsor.ai</strong></a> e crie uma conta gratuita (30 dias de trial, sem cartão).</p>
+      </li>
+      <li class="step">
+        <h4>Conecte o Facebook Ads</h4>
+        <p>No painel, vá em <strong>Data Sources</strong> → procure <strong>Facebook Ads</strong> → clique em <strong>"Grant Facebook Ads Access"</strong>. Você será redirecionado para o Meta — faça login e autorize.</p>
+      </li>
+      <li class="step">
+        <h4>Selecione as contas de anúncio</h4>
+        <p>Após autorizar, suas contas de anúncio aparecem no dashboard. Selecione quais quer conectar.</p>
+      </li>
+    </ol>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Pré-requisitos no Meta</strong>
+      Você precisa ter no mínimo o papel de <strong>Analista</strong> (ou "View Performance") na conta de anúncios. Acesso apenas à Página não é suficiente. Se não vê suas contas, peça ao admin do Business Manager para te dar acesso.
+    </div>
+
+    <h3>Etapa 2 — Conecte o Windsor AI no Claude</h3>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Abra o conector oficial no Claude</h4>
+        <p>Acesse <a href="https://claude.ai/directory/360c0c31-4bb6-42ca-8e50-5da0a100a68e" target="_blank"><strong>este link direto</strong></a> (conector oficial Windsor AI no Claude) e clique em <strong>Connect</strong>.</p>
+      </li>
+      <li class="step">
+        <h4>Autorize com sua conta Windsor</h4>
+        <p>Faça login com a mesma conta Windsor AI que você criou na Etapa 1.</p>
+      </li>
+      <li class="step">
+        <h4>Configure as permissões</h4>
+        <p>O Windsor MCP aparece nos seus conectores. Recomendamos marcar <strong>"Always allow"</strong> para não precisar aprovar cada consulta.</p>
+      </li>
+      <li class="step">
+        <h4>Pronto — abra um novo chat e pergunte</h4>
+        <p>Crie uma nova conversa no Claude (Chat ou Cowork) e pergunte sobre seus dados. O Claude acessa automaticamente.</p>
+      </li>
+    </ol>
+
+    <div class="prompt-block">
+      <span class="code-block-label">Prompt — Análise de campanhas Meta</span>
+      <button class="code-block-copy">Copiar</button>
+      <p><code class="code-text">Conecte no Windsor AI e puxe os dados das minhas campanhas Meta Ads dos últimos 30 dias.
+
+Analise:
+- Performance geral: gasto total, impressões, cliques, conversões
+- ROAS e CPA por campanha
+- Quais campanhas estão performando melhor e quais estão queimando orçamento
+- Tendência de custo por lead ao longo das semanas
+
+Gere um dashboard visual com gráficos comparativos e recomendações de otimização.</code></p>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Por que isso é diferente</strong>
+      Antes: você exportava CSV do Meta, abria no Google Sheets, fazia gráficos manuais, e perdia 2 horas. Agora: um prompt, 30 segundos, dashboard pronto com insights. E seu Business Manager continua 100% seguro.
+    </div>
+
+    <hr>
+
+    <h2>Demo 2 — Criação de Páginas com Plugins</h2>
+    <p>Nesta demo, o Claude cria páginas profissionais completas usando os plugins de <strong>Marketing</strong> (copy e estratégia) e <strong>Design</strong> (visual e código). Dois exemplos: criar do zero e melhorar algo existente.</p>
+
+    <h3>O que são os plugins de Marketing e Design?</h3>
+    <p>São dois dos 11 plugins oficiais da Anthropic. Quando ativados no Cowork, funcionam como dois especialistas trabalhando juntos:</p>
+    <ul>
+      <li><strong>Plugin de Marketing:</strong> pesquisa mercado, define posicionamento, escreve copy de conversão, cria estratégia de conteúdo</li>
+      <li><strong>Plugin de Design:</strong> extrai design systems de sites existentes, cria páginas em HTML/CSS, gera layouts profissionais, aplica identidade visual</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <strong>💡 Como ativar os plugins</strong>
+      No Cowork, os plugins já vêm disponíveis. Basta mencioná-los no prompt ("use o plugin de marketing e design") que o Claude ativa automaticamente. Não precisa instalar nada.
+    </div>
+
+    <hr>
+
+    <h3>Exemplo 1 — Criar uma página do zero</h3>
+    <p>Cenário: você tem um negócio (ou cliente) e precisa de uma página de vendas. Não tem nada — só o nome e a ideia.</p>
+
+    <div class="prompt-block">
+      <span class="code-block-label">Prompt — Página do zero</span>
+      <button class="code-block-copy">Copiar</button>
+      <p><code class="code-text">Crie uma página para vender café premium do Caparaó, use o plugin de marketing e design.</code></p>
+    </div>
+
+    <p><strong>O que acontece:</strong></p>
+    <ol>
+      <li>O plugin de Marketing pesquisa o mercado de cafés especiais, define o posicionamento e escreve a copy (headline, benefícios, FAQ, CTA)</li>
+      <li>O plugin de Design cria o layout visual completo — paleta de cores, tipografia, seções, responsivo</li>
+      <li>O Claude gera imagens de exemplo em alta qualidade para ilustrar o produto</li>
+      <li>Resultado: arquivo HTML pronto para abrir no navegador</li>
+    </ol>
+
+    <div class="callout callout-tip">
+      <strong>💡 Dica</strong>
+      Quanto mais contexto você der no prompt (público, tom, diferenciais), melhor o resultado. Se tiver um site de referência que gosta do visual, adicione: "use como referência visual o site [URL]".
+    </div>
+
+    <hr>
+
+    <h3>Exemplo 2 — Melhorar um site existente</h3>
+    <p>Cenário: você (ou seu cliente) já tem um site, mas está desatualizado, com design antigo e copy fraca. Quer uma versão melhor sem começar do zero.</p>
+
+    <div class="prompt-block">
+      <span class="code-block-label">Prompt — Melhorar site existente</span>
+      <button class="code-block-copy">Copiar</button>
+      <p><code class="code-text">Analise esse site e me ajude a criar uma versão melhor dele. Use os plugins de marketing e design para isso. Crie imagens em alta qualidade de exemplo para o que não existir.
+
+https://bellavitaclinica.com.br/</code></p>
+    </div>
+
+    <p><strong>O que acontece:</strong></p>
+    <ol>
+      <li>O Claude acessa o site e extrai tudo: conteúdo, profissionais, especialidades, contato, cores, fontes</li>
+      <li>O plugin de Marketing analisa a copy atual e reescreve com framework de conversão (problema → solução → prova → CTA)</li>
+      <li>O plugin de Design extrai o design system original e cria uma versão melhorada — moderna, responsiva, profissional</li>
+      <li>Onde faltam imagens, o Claude gera exemplos em alta qualidade</li>
+      <li>Resultado: página completa mantendo as informações reais do negócio, mas com design e copy de outro nível</li>
+    </ol>
+
+    <div class="callout callout-tip">
+      <strong>💡 Próximo passo</strong>
+      Teste com o seu próprio site (ou de um cliente). Copie o prompt acima, troque a URL e rode no Cowork. O resultado sai em minutos e você pode iterar: "mude a cor do CTA", "adicione uma seção de depoimentos", "troque o headline por algo mais direto".
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Adapte para o seu negócio</strong>
+      Substitua a URL pela do seu site (ou do seu cliente). O Claude analisa qualquer site público. Quanto mais conteúdo o site original tiver, melhor o resultado — porque o Claude tem mais material para trabalhar.
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 O Cowork cria arquivos reais</strong>
+      Além de páginas HTML, o Cowork gera: Excel (.xlsx) com fórmulas e gráficos, Word (.docx) formatados, PowerPoint (.pptx) com slides completos e PDF prontos para enviar. Tudo salvo na pasta que você autorizou.
+    </div>
+  </div>
+
+  <!-- ATO 1 / BLOCO 5 — Claude Code -->
+  <div class="section" data-section="d1-b4" data-day="1" data-block="4">
+    <div class="section-kicker">Ato 1 · Bloco 5</div>
+    <div class="section-title">Claude Code.</div>
+    <div class="section-subtitle">O próximo nível — e não é bicho de 7 cabeças</div>
+    <span class="badge badge-time">30 minutos</span>
+    <hr>
+
+    <h2>O que o Code faz que o Cowork não faz</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Funcionalidade</th><th>Cowork</th><th>Code (terminal)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Chat e plugins</strong></td><td>✓</td><td>✓</td></tr>
+          <tr><td><strong>Skills customizadas</strong></td><td>Instalar e usar</td><td>Criar, instalar e compartilhar</td></tr>
+          <tr><td><strong>MCPs ilimitados</strong></td><td>Conectores oficiais</td><td>✓ Qualquer MCP</td></tr>
+          <tr><td><strong>Agentes autônomos</strong></td><td>✗</td><td>✓</td></tr>
+          <tr><td><strong>Times de I.A (squads)</strong></td><td>✗</td><td>✓</td></tr>
+          <tr><td><strong>Apps e dashboards</strong></td><td>✗</td><td>✓</td></tr>
+          <tr><td><strong>Hooks (automações)</strong></td><td>✗</td><td>✓</td></tr>
+          <tr><td><strong>Subagentes</strong></td><td>✗</td><td>✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Por que NÃO é bicho de 7 cabeças</h2>
+    <p>Você instrui em <strong>português</strong>. Não precisa programar. As skills são <strong>texto</strong>. Se você sabe escrever um manual de procedimentos, você sabe criar uma skill.</p>
+
+    <h2>Instalação</h2>
+
+    <h3>Mac / Linux</h3>
+    <p style="font-size:13px; color:var(--text-sec); margin-bottom:8px;">Abra o app <strong>Terminal</strong> (no Mac: aperte <code>Cmd + Espaço</code>, digite "Terminal" e aperte Enter).</p>
+    <div class="code-block">
+      <span class="code-block-label">Terminal</span>
+      <button class="code-block-copy">Copiar</button>
+<code class="code-text">curl -fsSL https://claude.ai/install.sh | bash</code>
+    </div>
+    <p style="font-size:13px; color:var(--text-sec);">Após instalar, <strong>feche e reabra o terminal</strong> antes de continuar.</p>
+
+    <h3>Windows</h3>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Pré-requisito: Git for Windows</strong>
+      O Claude Code usa o Git Bash internamente para rodar comandos. Instale o <a href="https://git-scm.com/downloads/win" target="_blank"><strong>Git for Windows</strong></a> <strong>antes</strong> de rodar qualquer comando abaixo. Sem ele, a instalação não funciona.
+    </div>
+
+    <p style="font-size:13px; color:var(--text-sec); margin-bottom:8px;">Com o Git instalado, abra o <strong>PowerShell</strong> (menu Iniciar → digite "PowerShell" → Enter). Não precisa rodar como administrador — o Claude Code instala no diretório do seu usuário.</p>
+    <div class="code-block">
+      <span class="code-block-label">PowerShell</span>
+      <button class="code-block-copy">Copiar</button>
+<code class="code-text">irm https://claude.ai/install.ps1 | iex</code>
+    </div>
+
+    <p style="font-size:13px; color:var(--text-sec); margin: 18px 0 8px;">Prefere o <strong>Prompt de Comando (CMD)</strong>? Pra abrir: aperte <code>Windows + R</code>, digite <code>cmd</code> e pressione Enter. O prompt vai mostrar <code>C:\Users\seunome&gt;</code> (sem <code>PS</code> na frente — se aparecer <code>PS</code>, é PowerShell, feche e abra de novo).</p>
+    <div class="code-block">
+      <span class="code-block-label">CMD</span>
+      <button class="code-block-copy">Copiar</button>
+<code class="code-text">curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code>
+    </div>
+
+    <p style="font-size:13px; color:var(--text-sec); margin: 18px 0 8px;">Ou via <strong>WinGet</strong> (gerenciador oficial de pacotes do Windows):</p>
+    <div class="code-block">
+      <span class="code-block-label">WinGet</span>
+      <button class="code-block-copy">Copiar</button>
+<code class="code-text">winget install Anthropic.ClaudeCode</code>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 PowerShell ou CMD? Como saber qual você abriu</strong>
+      Se o prompt mostra <code>PS C:\&gt;</code> você está no <strong>PowerShell</strong>. Se mostra só <code>C:\&gt;</code> você está no <strong>CMD</strong>. Se ao rodar o comando você ver o erro <code>The token '&amp;&amp;' is not a valid statement separator</code>, é porque colou o comando do CMD num PowerShell — use o comando correto pro shell que abriu.
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>🔄 Atualização automática</strong>
+      Instalações via PowerShell e CMD <strong>se atualizam sozinhas em background</strong>. Se instalou via WinGet, rode <code>winget upgrade Anthropic.ClaudeCode</code> periodicamente pra pegar as últimas versões.
+    </div>
+
+    <h2>Primeira execução</h2>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Abra o terminal e digite <code>claude</code></h4>
+        <p><strong>Mac:</strong> abra o Terminal (Cmd+Espaço → digite "Terminal" → Enter). <strong>Windows:</strong> abra o PowerShell (menu Iniciar → digite "PowerShell" → Enter).</p>
+      </li>
+      <li class="step">
+        <h4>Faça login</h4>
+        <p>Escolha "Use Claude.ai account" — assim ele usa o mesmo plano Pro que você já tem.</p>
+      </li>
+      <li class="step">
+        <h4>Pronto</h4>
+        <p>O Claude Code está funcionando. Teste com qualquer pergunta.</p>
+      </li>
+    </ol>
+
+    <h2>Comandos essenciais</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Comando</th><th>O que faz</th></tr></thead>
+        <tbody>
+          <tr><td><code>/help</code></td><td>Lista todos os comandos disponíveis</td></tr>
+          <tr><td><code>/cost</code></td><td>Mostra quanto você já gastou na sessão</td></tr>
+          <tr><td><code>/compact</code></td><td>Compacta o contexto — útil quando o Claude fica lento</td></tr>
+          <tr><td><code>/memory</code></td><td>Gerencia a memória do projeto (CLAUDE.md)</td></tr>
+          <tr><td><code>/clear</code></td><td>Limpa a conversa e recomeça do zero</td></tr>
+          <tr><td><code>/quit</code></td><td>Sai do Claude Code</td></tr>
+          <tr><td><code>Ctrl+C</code></td><td>Cancela a ação atual</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Modos de permissão</h2>
+    <p>Alterne entre modos com <code>Shift+Tab</code> dentro do Claude Code.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Modo</th><th>O que faz</th><th>Quando usar</th></tr></thead>
+        <tbody>
+          <tr><td><strong>default</strong></td><td>Pergunta antes de cada ação</td><td>Quando está aprendendo ou em tarefas sensíveis</td></tr>
+          <tr><td><strong>acceptEdits</strong></td><td>Edita arquivos sozinho, mas pede permissão para comandos shell</td><td>Produtividade diária com segurança</td></tr>
+          <tr><td><strong>plan</strong></td><td>Modo análise: mostra o plano e pede confirmação antes de executar</td><td>Code review, decisões de arquitetura</td></tr>
+          <tr><td><strong>auto</strong></td><td>Um classificador de I.A decide o que é seguro executar</td><td>Uso avançado (requer plano Team/Enterprise ou API)</td></tr>
+          <tr><td><strong>bypassPermissions</strong></td><td>Executa TUDO sem pedir permissão (flag <code>--dangerously-skip-permissions</code>)</td><td>Projetos isolados onde você confia 100% — use com cuidado</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Sobre o modo bypassPermissions</strong>
+      Também chamado de "YOLO mode" pela comunidade. O nome oficial tem "dangerously" (perigosamente) de propósito. O Claude pode deletar arquivos, rodar comandos destrutivos — use apenas em projetos de teste isolados.
+    </div>
+
+    <h3>Qual terminal usar?</h3>
+    <p>Use o terminal que já vem no seu computador — não precisa instalar nada extra:</p>
+    <ul>
+      <li><strong>Mac:</strong> Terminal (já vem instalado). Abra com Cmd+Espaço → digite "Terminal"</li>
+      <li><strong>Windows:</strong> PowerShell (já vem instalado). Menu Iniciar → digite "PowerShell"</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <strong>💡 Não se prenda à instalação</strong>
+      Se você está com dificuldade na instalação, saiba que é receita de bolo. Você vai receber o material completo — não se prenda a isso agora. O importante é entender o conceito.
+    </div>
+  </div>
+
+  <!-- ATO 2 BLOCOS -->
+
+  <!-- ATO 2 / BLOCO 1 -->
+  <div class="section" data-section="d2-b1" data-day="2" data-block="1">
+    <div class="section-kicker">Ato 2 · Bloco 1</div>
+    <div class="section-title">O que é uma Skill?</div>
+    <div class="section-subtitle">Um arquivo de texto que ensina o Claude a executar uma tarefa</div>
+    <span class="badge badge-time">15 minutos</span>
+    <hr>
+
+    <h2>O conceito</h2>
+
+    <div class="card card-accent">
+      <h3>Em uma frase</h3>
+      <p style="font-size:17px;line-height:1.5">Uma skill é um <strong>manual de instruções</strong> que você dá ao Claude pra ele virar um especialista em alguma coisa específica.</p>
+    </div>
+
+    <p>Pensa em quando você contrata um funcionário novo. Você explica: o que é o trabalho, como fazer cada tarefa, o tom da empresa, o que ele nunca pode fazer, como é um bom resultado. Depois disso, ele começa a trabalhar.</p>
+
+    <p>A skill é <strong>exatamente essa explicação — só que pro Claude</strong>. Você escreve uma vez, e ele passa a executar do mesmo jeito toda vez, seguindo as regras, sem esquecer nada.</p>
+
+    <div class="callout callout-tip">
+      <strong>💡 Sem código, sem programação</strong>
+      É linguagem natural — o mesmo jeito que você explicaria pra uma pessoa. Se você sabe escrever um manual de procedimentos, você sabe criar uma skill.
+    </div>
+
+    <hr>
+
+    <h2>Uma skill pra cada profissão</h2>
+    <p>Qualquer pessoa que tem um processo repetitivo pode virar skill. Os exemplos abaixo são reais — pessoas como você, resolvendo problemas como os seus:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Profissão</th><th>O que a skill faz</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Consultor de RH</strong></td><td>Gera descrições de vaga, faz triagem de currículos, cria perguntas de entrevista para o cargo</td></tr>
+          <tr><td><strong>Gestor de tráfego</strong></td><td>Analisa relatório de campanhas, aponta causas de CPL alto, sugere otimizações</td></tr>
+          <tr><td><strong>Social media</strong></td><td>Gera carrossel no estilo da marca, adapta conteúdo para Reels e Stories</td></tr>
+          <tr><td><strong>Agência de marketing</strong></td><td>Monta briefing de campanha, cria copy completa, valida consistência de marca</td></tr>
+          <tr><td><strong>Closer / vendedor</strong></td><td>Qualifica lead com base em respostas, gera proposta personalizada, monta script de objeção</td></tr>
+          <tr><td><strong>Professor / infoprodutor</strong></td><td>Estrutura módulos de curso, gera aulas em roteiro, cria avaliações</td></tr>
+          <tr><td><strong>Consultor / mentor</strong></td><td>Faz diagnóstico do cliente, gera plano de ação, acompanha evolução</td></tr>
+          <tr><td><strong>Advogado</strong></td><td>Analisa contrato, aponta cláusulas críticas, gera modelos padronizados</td></tr>
+          <tr><td><strong>Nutricionista</strong></td><td>Cria plano alimentar baseado em avaliação, adapta para restrições do paciente</td></tr>
+          <tr><td><strong>Designer</strong></td><td>Extrai design system, gera brand book, mantém consistência visual</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-exercise">
+      <strong>🎯 Pergunta pra você</strong>
+      Qual é o processo mais repetitivo do seu trabalho? Aquele que você faz toda semana, sempre do mesmo jeito, seguindo as mesmas regras. Esse processo pode virar uma skill — e a partir do momento que vira, ele roda por você.
+    </div>
+
+    <hr>
+
+    <h2>Por que muda o jogo</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0">
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">SEM SKILL</div>
+        <p style="margin:0;font-size:14px;line-height:1.6">Toda vez que você precisa de algo, explica tudo de novo pro Claude. Contexto, regras, formato, tom. É como treinar um estagiário diferente toda semana.</p>
+      </div>
+      <div class="card card-accent">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">COM SKILL</div>
+        <p style="margin:0;font-size:14px;line-height:1.6">Você diz "gera uma proposta pro cliente X" e ele já sabe formato, tom, regras e exemplos. É ter um funcionário que já conhece o processo.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Padrão aberto</strong>
+      A Anthropic criou o formato de skills e liberou como padrão aberto. Uma skill criada no Claude funciona em outras ferramentas (Cursor, VS Code, Copilot, Gemini CLI). Cria uma vez, usa em qualquer lugar.
+    </div>
+  </div>
+
+  <!-- ATO 2 / BLOCO 3 — Criando sua Skill (era bloco 2) -->
+  <div class="section" data-section="d2-b2" data-day="2" data-block="2">
+    <div class="section-kicker">Ato 2 · Bloco 3</div>
+    <div class="section-title">Criando sua Skill.</div>
+    <div class="section-subtitle">Do Skill Creator ao arquivo funcionando</div>
+    <span class="badge badge-time">30 minutos</span>
+    <hr>
+
+    <h2>Passo 0 — Mapeia o seu processo</h2>
+    <p>Antes de abrir qualquer ferramenta, pare e responda essas 3 perguntas sobre a skill que você quer criar:</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0">
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">PERGUNTA 1</div>
+        <h4 style="margin:0 0 8px">Que tarefa?</h4>
+        <p style="margin:0;font-size:13px;line-height:1.55">Qual tarefa você faz repetidamente e quer automatizar? Seja específico. "Marketing" é vago. "Analisar relatório mensal de campanhas Meta Ads" é específico.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">PERGUNTA 2</div>
+        <h4 style="margin:0 0 8px">Qual seu método?</h4>
+        <p style="margin:0;font-size:13px;line-height:1.55">Existe um passo a passo que você já segue? Quais são as regras que você nunca quebra? O que faz a diferença entre um bom e um mau resultado?</p>
+      </div>
+      <div class="card">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">PERGUNTA 3</div>
+        <h4 style="margin:0 0 8px">Como é um bom resultado?</h4>
+        <p style="margin:0;font-size:13px;line-height:1.55">Você consegue mostrar exemplos reais do que é um bom trabalho? Tem arquivos, prints, documentos salvos? Esses exemplos vão treinar a skill.</p>
+      </div>
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ O pulo do gato</strong>
+      Criar skill sem mapear processo = skill genérica que você esquece em 2 dias. Criar skill depois de mapear processo = sua metodologia rodando no automático. A ferramenta é a parte fácil. O mapeamento é onde está o valor.
+    </div>
+
+    <hr>
+
+    <h2>Instale o Skill Creator (uma vez só)</h2>
+    <p>O <strong>Skill Creator</strong> é uma skill oficial da Anthropic que cria outras skills pra você. É uma meta-skill: instalada uma vez, ela te ajuda a criar todas as suas skills via conversa no Claude Code.</p>
+
+    <p>Boa notícia: o <strong>marketplace oficial da Anthropic</strong> (<code>claude-plugins-official</code>) já vem disponível automaticamente quando você abre o Claude Code. Você não precisa adicionar nada — basta rodar o comando de instalação direto:</p>
+
+    <div class="code-block">
+      <span class="code-block-label">Dentro do Claude Code — instalar Skill Creator</span>
+      <button class="code-block-copy">Copiar</button>
+<code class="code-text">/plugin install skill-creator@claude-plugins-official</code>
+    </div>
+
+    <p>Depois, recarregue os plugins pra ativar:</p>
+
+    <div class="code-block">
+      <span class="code-block-label">Dentro do Claude Code</span>
+      <button class="code-block-copy">Copiar</button>
+<code class="code-text">/reload-plugins</code>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Dica: explore o marketplace visualmente</strong>
+      Em vez de digitar o comando, você pode abrir o gerenciador interativo com <code>/plugin</code> — ele mostra 4 abas: <strong>Discover</strong> (buscar), <strong>Installed</strong> (instalados), <strong>Marketplaces</strong> (fontes) e <strong>Errors</strong>. Use Tab pra navegar.
+    </div>
+
+    <hr>
+
+    <h2>Crie sua skill</h2>
+    <p>Depois de instalado, o Skill Creator ativa automaticamente quando você pede pro Claude criar uma skill. Basta abrir o Claude Code e usar um dos prompts abaixo:</p>
+
+    <div class="prompt-block">
+      <span class="code-block-label">Prompt — Criar skill do zero</span>
+      <button class="code-block-copy">Copiar</button>
+      <p><code class="code-text">Quero criar uma skill. Use o skill-creator pra me ajudar.
+
+A skill deve: [descreva em uma frase o que ela faz]
+
+Me faça as perguntas necessárias pra construir uma skill completa e profissional.</code></p>
+    </div>
+
+    <p>O Skill Creator vai:</p>
+    <ol class="stepper">
+      <li class="step">
+        <h4>Fazer perguntas de refinamento</h4>
+        <p>Tom de voz, formato, regras, exemplos do que é um bom resultado. 4-6 perguntas no total.</p>
+      </li>
+      <li class="step">
+        <h4>Gerar o SKILL.md completo</h4>
+        <p>Com descrição, instruções e formato de saída — tudo no padrão oficial.</p>
+      </li>
+      <li class="step">
+        <h4>Instalar no lugar certo</h4>
+        <p>Salva em <code>~/.claude/skills/nome-da-skill/</code> pra ficar disponível em todos os projetos.</p>
+      </li>
+      <li class="step">
+        <h4>Testar com você</h4>
+        <p>Sugere 2-3 prompts pra você testar a skill e ver se está funcionando como esperado.</p>
+      </li>
+    </ol>
+
+    <details class="toggle">
+      <summary>Exemplo completo: criando uma skill de auditoria de landing page</summary>
+      <div class="toggle-content">
+        <p><strong>Você:</strong> "Quero criar uma skill que faz auditoria completa de landing page. Use o skill-creator."</p>
+        <p><strong>Claude:</strong> "Qual tipo de página? Vendas, captura, infoproduto, SaaS, serviço local?"</p>
+        <p><strong>Você:</strong> "Principalmente página de vendas de infoproduto e serviço local. Ticket R$500 a R$3.000."</p>
+        <p><strong>Claude:</strong> "Que dimensões você quer avaliar? Performance, SEO, copy, design, conversão?"</p>
+        <p><strong>Você:</strong> "Todas. Quero um relatório completo que eu possa mandar pro cliente."</p>
+        <p><strong>Claude:</strong> "Tem algum framework de referência?"</p>
+        <p><strong>Você:</strong> "Sim — CRO básico (acima da dobra, prova social, CTA claro, urgência real). Quero nota 0-10 por categoria e lista priorizada de ações."</p>
+        <p><strong>Claude:</strong> Gera a skill completa e salva em <code>~/.claude/skills/auditoria-lp/</code>.</p>
+
+        <p style="margin-top:16px; color: var(--text-pri);"><strong>Daí em diante</strong>, em qualquer projeto, você pede:</p>
+        <p style="background:var(--card);padding:12px;border-radius:8px;font-style:italic;margin:8px 0"><em>"Auditoria completa dessa página: https://exemplo.com/produto"</em></p>
+
+        <p style="margin-top:12px"><strong>E o que acontece por trás:</strong></p>
+        <ol style="margin:8px 0 0 20px">
+          <li>Claude <strong>acessa a URL</strong> e captura o HTML</li>
+          <li>Roda <strong>Lighthouse</strong> pra pegar Core Web Vitals</li>
+          <li>Extrai estrutura da página — hero, seções, CTAs, depoimentos, FAQ</li>
+          <li>Analisa copy contra o framework CRO</li>
+          <li>Avalia design, contraste, mobile-friendly</li>
+          <li>Avalia SEO on-page (title, meta, headings, alt text)</li>
+          <li>Gera <strong>relatório em arquivo</strong> com notas 0-10, problemas encontrados e lista priorizada de ações</li>
+          <li>Salva em <code>~/Documents/auditorias/cliente-data/</code> pronto pra enviar</li>
+        </ol>
+
+        <p style="margin-top:16px; color: var(--text-pri);"><strong>Valor percebido:</strong> o que antes era uma consultoria de R$1.500-R$3.000 vira um relatório entregue em 5 minutos. Você mantém o preço (ou reduz), mas multiplica quantos clientes consegue atender.</p>
+      </div>
+    </details>
+
+    <hr>
+
+    <h2>Skill Claude Code vs GPT Personalizado</h2>
+    <p>Muita gente confunde skill com "GPT personalizado" (tipo custom GPTs do ChatGPT). <strong>Não é a mesma coisa.</strong> A diferença fica clara quando você vê o que cada um consegue fazer:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Capacidade</th><th>GPT Personalizado</th><th>Skill Claude Code</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Gerar texto no padrão que você definiu</strong></td><td>✅</td><td>✅</td></tr>
+          <tr><td><strong>Acessar URLs e extrair conteúdo real</strong></td><td>Limitado</td><td>✅ Nativo</td></tr>
+          <tr><td><strong>Rodar ferramentas externas</strong> (Lighthouse, Puppeteer, scrapers)</td><td>❌</td><td>✅</td></tr>
+          <tr><td><strong>Ler arquivos do seu computador</strong></td><td>Upload manual</td><td>✅ Direto</td></tr>
+          <tr><td><strong>Criar arquivos no seu computador</strong> (.docx, .xlsx, .pdf, .html)</td><td>❌</td><td>✅</td></tr>
+          <tr><td><strong>Executar código</strong> para processar dados</td><td>Limitado</td><td>✅</td></tr>
+          <tr><td><strong>Chamar APIs externas</strong> (Windsor, Notion, CRM)</td><td>Configuração manual</td><td>✅ Via MCP</td></tr>
+          <tr><td><strong>Orquestrar outras skills</strong> em sequência</td><td>❌</td><td>✅</td></tr>
+          <tr><td><strong>Entregar resultado em arquivo</strong>, não só texto na tela</td><td>❌</td><td>✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 A regra simples</strong>
+      Se a sua "skill" só gera texto diferente toda vez que você pede, você está criando um GPT personalizado disfarçado. Uma skill de verdade <strong>acessa algo, processa algo, e entrega um artefato</strong> — um arquivo, um relatório, um deliverable real que o cliente paga pra receber.
+    </div>
+
+    <hr>
+
+    <h2>Regra dos 3 testes</h2>
+    <p>Depois de criar, <strong>não confie de primeira</strong>. Teste com 3 inputs diferentes antes de considerar pronta:</p>
+
+    <ol class="stepper">
+      <li class="step">
+        <h4>Teste 1: caso ideal</h4>
+        <p>Peça algo que a skill foi feita para fazer. Se não funcionar aqui, nem precisa continuar.</p>
+      </li>
+      <li class="step">
+        <h4>Teste 2: caso adjacente</h4>
+        <p>Peça algo parecido, mas diferente. Veja se a skill adapta bem ou se trava.</p>
+      </li>
+      <li class="step">
+        <h4>Teste 3: caso difícil</h4>
+        <p>Peça algo no limite — input incompleto, contexto diferente. Veja como ela lida com situações não ideais.</p>
+      </li>
+    </ol>
+
+    <p>Se passar nos 3 testes, está pronta. Se falhar em algum, volte no Skill Creator e peça pra ajustar: <em>"a skill falhou quando eu pedi X. Ajusta pra funcionar nesse caso também."</em></p>
+
+    <hr>
+
+    <h2>Troubleshooting rápido</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Problema</th><th>Solução</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Skill não ativa quando eu peço</strong></td><td>Melhore a descrição — adicione mais palavras-chave que você usaria ao pedir</td></tr>
+          <tr><td><strong>Skill sumiu da lista</strong></td><td>Feche e abra o Claude. Skills são carregadas na inicialização</td></tr>
+          <tr><td><strong>Ativou a skill errada</strong></td><td>Duas skills têm descrições parecidas. Torne-as mais distintas — cada uma com palavras únicas</td></tr>
+          <tr><td><strong>Resultado está ruim</strong></td><td>Refine as instruções. Adicione mais exemplos, regras e anti-padrões ao texto da skill</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Atalho que salva: Esc Esc (dois Escapes seguidos)</strong>
+      No terminal, se o Claude tomou um caminho errado ou está fazendo algo que você não queria, aperte <strong>Esc duas vezes</strong>. Ele cancela a ação atual e volta ao último checkpoint. É o "desfazer" do Super Mário — salva sua vida em criação e refinamento de skills.
+    </div>
+  </div>
+
+  <!-- ATO 2 / BLOCO 4 -->
+  <div class="section" data-section="d2-b4" data-day="2" data-block="4">
+    <div class="section-kicker">Ato 2 · Bloco 4</div>
+    <div class="section-title">Skills como Negócio.</div>
+    <div class="section-subtitle">Como monetizar o que você acabou de aprender</div>
+    <span class="badge badge-time">30 minutos</span>
+    <hr>
+
+    <h2>De conhecimento a produto</h2>
+    <p>Até hoje, quem tinha uma metodologia boa só tinha duas opções: <strong>vender curso</strong> (e torcer pra pessoa aplicar) ou <strong>vender serviço</strong> (e vender seu tempo). Skills criam uma terceira via: empacotar sua metodologia como produto digital que o cliente usa sozinho.</p>
+
+    <div class="card card-accent">
+      <h3>Exemplo real</h3>
+      <p>Um consultor de tráfego pago tem um método proprietário de análise de campanha. Ele passou 5 anos refinando esse método. Antes, ele tinha 2 opções: vender curso de R$1.997 (e os alunos não aplicavam) ou prestar consultoria de R$15.000 por cliente (e não escalava).</p>
+      <p style="margin-top:12px"><strong>Agora:</strong> ele empacota o método em uma skill, vende por R$497 com assinatura mensal de R$97 para atualizações. Escala sem vender tempo.</p>
+    </div>
+
+    <h2>Os 5 modelos de distribuição de skills</h2>
+
+    <div class="card">
+      <h3>1. Venda única</h3>
+      <p>Você cria a skill, vende por um preço único (R$197-R$1.997 dependendo do valor que entrega). Cliente instala e usa quanto quiser. Ideal para skills muito específicas ou processos raros.</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:8px"><strong>Exemplo:</strong> Skill de auditoria de contratos de prestação de serviço — R$497.</p>
+    </div>
+
+    <div class="card">
+      <h3>2. Bônus de curso</h3>
+      <p>Você já vende um curso. Em vez de só entregar o conhecimento, entrega também a skill que aplica o conhecimento. O curso ensina o método, a skill executa o método. Aumenta valor percebido e reduz reembolso (porque o cliente tem o resultado, não só o conhecimento).</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:8px"><strong>Exemplo:</strong> Curso de copywriting R$997 + skill de geração de copy incluída.</p>
+    </div>
+
+    <div class="card">
+      <h3>3. Assinatura mensal (SaaS sem código)</h3>
+      <p>Você vende acesso contínuo à skill com atualizações. Recurring revenue. Cliente paga por mês para ter acesso à skill + novos updates + suporte. É como transformar seu método em um SaaS sem precisar desenvolver software.</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:8px"><strong>Exemplo:</strong> R$97/mês por acesso à skill de análise de campanhas Meta + atualizações mensais.</p>
+    </div>
+
+    <div class="card">
+      <h3>4. Implementação + setup</h3>
+      <p>Você cobra para criar uma skill customizada para o processo específico de um cliente. Essa é a versão "feito pra você" do serviço. Ticket alto (R$5K-R$50K+) porque é customizado. Ideal para agências e consultores de alto nível.</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:8px"><strong>Exemplo:</strong> R$15.000 para mapear processo de uma agência e criar 5 skills customizadas.</p>
+    </div>
+
+    <div class="card">
+      <h3>5. Diferencial de consultoria</h3>
+      <p>Você não vende a skill — você usa a skill para entregar mais rápido e com mais qualidade do que a concorrência. A skill vira seu diferencial competitivo invisível. Você cobra o mesmo (ou mais), mas entrega em metade do tempo.</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-top:8px"><strong>Exemplo:</strong> Consultor entrega análise de marketing em 2 dias em vez de 2 semanas. Mesmo preço, mais clientes por mês.</p>
+    </div>
+
+
+    <div class="callout callout-exercise">
+      <strong>🎯 Qual modelo faz sentido pra voce?</strong>
+      Nao precisa escolher so um. Muitos criadores comecam com "diferencial de consultoria" (usam internamente), depois empacotam como "bonus de curso" quando ganham trafego, e evoluem pra "assinatura mensal" quando o modelo fica maduro. Cada modelo atende um momento diferente do negocio.
+    </div>
+  </div>
+
+  <!-- ATO 2 / BLOCO 2 — Garimpando Skills Prontas (era bloco 5) -->
+  <div class="section" data-section="d2-b4c" data-day="2" data-block="4c">
+    <div class="section-kicker">Ato 2 · Bloco 2</div>
+    <div class="section-title">Garimpando skills prontas.</div>
+    <div class="section-subtitle">Onde achar skills já feitas pra instalar e usar</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <h2>Antes de criar, garimpe</h2>
+    <p>Antes de construir tudo do zero, vale conhecer o ecossistema de skills que já existe. A Anthropic e a comunidade publicam skills gratuitas o tempo todo — muitas resolvem problemas que você ia gastar horas criando.</p>
+
+    <p>Skills são distribuídas via <strong>plugins</strong> e <strong>marketplaces</strong>. Existem 3 fontes principais no Claude Code:</p>
+
+    <div class="card">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px">FONTE 1 · OFICIAL</div>
+      <h3 style="margin:0 0 8px">Marketplace oficial da Anthropic</h3>
+      <p style="margin:0 0 12px">Já vem disponível no Claude Code. Tem skills verificadas pra GitHub, Figma, Slack, Notion, Supabase, Vercel e mais.</p>
+
+      <p style="margin:0 0 8px;font-size:13px;color:var(--text-sec)"><strong>Como descobrir o que tem disponível:</strong> abra o gerenciador interativo e vá na aba Discover:</p>
+      <div class="code-block" style="margin:0 0 12px">
+        <code class="code-text">/plugin</code>
+      </div>
+
+      <p style="margin:0 0 8px;font-size:13px;color:var(--text-sec)"><strong>Para instalar direto pelo nome (se já souber):</strong></p>
+      <div class="code-block" style="margin:0 0 8px">
+        <code class="code-text">/plugin install github@claude-plugins-official</code>
+      </div>
+      <div class="code-block" style="margin:0 0 8px">
+        <code class="code-text">/plugin install figma@claude-plugins-official</code>
+      </div>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">/plugin install slack@claude-plugins-official</code>
+      </div>
+
+      <p style="margin:12px 0 0;font-size:13px;color:var(--text-sec)">Ou veja o catálogo completo em <a href="https://claude.com/plugins" target="_blank"><strong>claude.com/plugins</strong></a>.</p>
+    </div>
+
+    <div class="card">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">FONTE 2 · COMUNIDADE CURADA</div>
+      <h3 style="margin:0 0 8px">skills.sh (mantido pela Vercel)</h3>
+      <p style="margin:0 0 12px">É o <strong>principal repositório curado de skills da comunidade</strong>. A Vercel mantém e valida. Tem skills populares como <code>frontend-design</code>, <code>ui-ux-pro-max</code>, <code>copywriting</code>, <code>seo-optimizer</code> e <code>social-content</code>. Instalação em um comando:</p>
+      <div class="code-block" style="margin:0 0 8px">
+        <code class="code-text">npx skills add [url-do-repo] --skill [nome-da-skill]</code>
+      </div>
+      <p style="margin:12px 0 8px;font-size:13px;color:var(--text-sec)">Exemplo prático — instalar a skill de design:</p>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">npx skills add https://github.com/anthropics/skills --skill frontend-design</code>
+      </div>
+      <p style="margin:12px 0 0;font-size:13px;color:var(--text-sec)">Explore o catálogo completo em <a href="https://skills.sh/" target="_blank"><strong>skills.sh</strong></a>.</p>
+    </div>
+
+    <div class="card">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">FONTE 3 · LOCAL</div>
+      <h3 style="margin:0 0 8px">Arquivo local (pasta ou .skill)</h3>
+      <p style="margin:0 0 12px">Se alguém te enviou uma skill pronta — uma pasta ou arquivo <code>.skill</code> — o Claude Code instala direto. Basta pedir:</p>
+      <div class="prompt-block" style="margin:0">
+        <p style="margin:0"><code class="code-text">Instala essa skill pra mim: [caminho do arquivo ou pasta]. Salva em ~/.claude/skills/ pra ficar disponível em todos os projetos.</code></p>
+      </div>
+    </div>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Pré-requisito pro <code>npx</code>: Node.js instalado</strong>
+      O comando <code>npx</code> (usado pra instalar skills via FONTE 2 e algumas skills da curadoria abaixo) faz parte do <strong>Node.js</strong>. Antes de tentar instalar qualquer skill via <code>npx</code>, verifique se você tem:
+      <p style="margin:12px 0 6px"><strong>1. Teste se já tem:</strong> no terminal, fora do Claude Code, rode <code>node --version</code>. Se aparecer um número (ex: <code>v22.0.0</code>), está ok.</p>
+      <p style="margin:12px 0 6px"><strong>2. Se não tiver</strong> — cole este prompt no Claude Code que ele instala pra você:</p>
+    </div>
+
+    <div class="prompt-block">
+      <span class="code-block-label">Prompt — Instalar Node.js via Claude Code</span>
+      <button class="code-block-copy">Copiar</button>
+      <p><code class="code-text">Verifica se tenho Node.js instalado. Se não tiver, instala pra mim e confirma que o comando npx está funcionando.</code></p>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>📦 Instalação manual do Node.js</strong>
+      Prefere instalar você mesmo? Acesse <a href="https://nodejs.org/" target="_blank"><strong>nodejs.org</strong></a> e baixe a versão <strong>LTS</strong>. Após instalar, feche e reabra o terminal.
+    </div>
+
+    <hr>
+
+    <h2>Nossa curadoria: as 5 skills pra começar</h2>
+    <p>Garimpar leva tempo. Pra você não perder horas testando, selecionamos as <strong>5 skills mais impactantes</strong> do ecossistema — ordenadas por popularidade real (número de instalações no skills.sh). Instale essas primeiro, domine cada uma, depois expanda.</p>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">🥇 TOP 1 · ESSENCIAL</div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted)">731.2K installs</div>
+      </div>
+      <h3 style="margin:0 0 8px">find-skills</h3>
+      <p style="margin:0 0 12px"><strong>A chave do ecossistema.</strong> Funciona como motor de busca — você descreve o que precisa e ela acha skills relevantes. Instale essa primeiro porque ela te economiza horas de garimpo manual.</p>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">npx skills add https://github.com/vercel-labs/skills --skill find-skills</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">🥈 TOP 2 · MÉTODO</div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted)">400K+ installs (pacote)</div>
+      </div>
+      <h3 style="margin:0 0 8px">superpowers</h3>
+      <p style="margin:0 0 8px"><strong>Pacote com 14 skills de metodologia estruturada.</strong> Não é uma skill só — é um conjunto inteiro que aplica rigor profissional a qualquer tarefa. As mais úteis pra dono de negócio:</p>
+      <ul style="margin:0 0 12px 20px;font-size:13px;color:var(--text-muted)">
+        <li><strong>brainstorming</strong> (86K) — gera ideias de forma estruturada antes de qualquer trabalho criativo</li>
+        <li><strong>writing-plans</strong> (47K) — planeja projetos multi-step (lançamento, campanha, produto)</li>
+        <li><strong>executing-plans</strong> (39K) — executa o plano passo a passo sem esquecer etapas</li>
+        <li><strong>verification-before-completion</strong> (29K) — valida se o trabalho está realmente pronto</li>
+      </ul>
+      <p style="margin:0 0 8px;font-size:13px;color:var(--text-muted)">Serve pra <strong>construir qualquer coisa</strong> — não é só pra dev. Use "brainstorming" pra ideias de copy, "writing-plans" pra planejar um lançamento, "executing-plans" pra tocar um projeto do início ao fim.</p>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">/plugin install superpowers@claude-plugins-official</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">🥉 TOP 3 · DESIGN</div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted)">214.1K installs</div>
+      </div>
+      <h3 style="margin:0 0 8px">frontend-design</h3>
+      <p style="margin:0 0 12px"><strong>Cria e melhora páginas com design nível Awwwards.</strong> Extrai design systems de sites existentes, aplica em outras páginas, gera layouts profissionais. Mantida pela Anthropic (anthropics/skills).</p>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">npx skills add https://github.com/anthropics/skills --skill frontend-design</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">4️⃣ TOP 4 · COPY</div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted)">55.8K installs</div>
+      </div>
+      <h3 style="margin:0 0 8px">copywriting</h3>
+      <p style="margin:0 0 12px"><strong>Copy de conversão pra páginas.</strong> Homepage, landing page, pricing, feature, sobre. Regra de ouro: clareza &gt; criatividade. Pede contexto (público, objeções, produto) antes de escrever qualquer coisa.</p>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">npx skills add https://github.com/coreyhaines31/marketingskills --skill copywriting</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent)">5️⃣ TOP 5 · REDES SOCIAIS</div>
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted)">32.7K installs</div>
+      </div>
+      <h3 style="margin:0 0 8px">social-content</h3>
+      <p style="margin:0 0 12px"><strong>Estrategista sênior de mídia social.</strong> Cobre LinkedIn, Instagram, Twitter/X, TikTok, Facebook — cada plataforma com estratégia própria. Cria conteúdo, planeja calendário editorial e faz repurposing (1 peça longa vira 10 pequenas).</p>
+      <div class="code-block" style="margin:0">
+        <code class="code-text">npx skills add https://github.com/coreyhaines31/marketingskills --skill social-content</code>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Ordem sugerida de instalação</strong>
+      Instale nessa ordem: <strong>1) find-skills</strong> (pra achar mais depois) → <strong>2) superpowers</strong> (método pra tudo que você for fazer) → <strong>3) frontend-design</strong> (resultado visual imediato) → <strong>4) copywriting</strong> (sua copy de página) → <strong>5) social-content</strong> (sua presença digital).
+    </div>
+
+    <hr>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ Cuidado com o que você instala</strong>
+      Plugins podem executar código no seu computador com suas permissões. Só instale de fontes confiáveis. A Anthropic não verifica plugins da comunidade — confira sempre o repositório antes (quem criou, quando foi atualizado, reviews, estrelas).
+    </div>
+
+    <div class="callout callout-exercise">
+      <strong>🎯 Regra de ouro</strong>
+      Skill pronta é ponto de partida, não destino. Baixe, use, entenda como funciona — e depois crie a SUA versão adaptada ao SEU processo. É na customização que está o valor real.
+    </div>
+  </div>
+
+  <!-- ATO 2 / BLOCO 5 — Skills vs Agentes -->
+  <div class="section" data-section="d2-b4b" data-day="2" data-block="4b">
+    <div class="section-kicker">Ato 2 · Bloco 5</div>
+    <div class="section-title">Skills vs Agentes.</div>
+    <div class="section-subtitle">A diferença crucial — o erro #1 de quem aprende Claude Code</div>
+    <span class="badge badge-time">20 minutos</span>
+    <hr>
+
+    <h2>A diferença que ninguém explica</h2>
+    <p>O erro mais comum de quem começa com Claude Code é confundir <strong>skills</strong> com <strong>agentes</strong>. São coisas diferentes e complementares.</p>
+
+    <div class="card card-accent">
+      <h3>Skill = Instrução especializada</h3>
+      <p>Você + Claude juntos. Você vê cada passo, aprova cada ação. É como um <strong>manual de procedimentos</strong> — ensina o Claude a executar uma tarefa específica de forma consistente.</p>
+    </div>
+
+    <div class="card card-accent">
+      <h3>Agente = Executor autônomo</h3>
+      <p>Ele trabalha sozinho e entrega o resultado. É como um <strong>funcionário treinado</strong> — você dá a missão, ele executa sem precisar de supervisão constante.</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Skill</th><th>Agente</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Controle</strong></td><td>Você supervisiona cada passo</td><td>Ele trabalha sozinho</td></tr>
+          <tr><td><strong>Contexto</strong></td><td>Tarefa específica</td><td>Missão completa</td></tr>
+          <tr><td><strong>Arquivo</strong></td><td>SKILL.md (texto com instruções)</td><td>AGENT.md (texto com skills + regras)</td></tr>
+          <tr><td><strong>Quando usar</strong></td><td>Precisa de controle e consistência</td><td>Pode rodar no automático</td></tr>
+          <tr><td><strong>Exemplo</strong></td><td>Skill que gera propostas comerciais</td><td>Agente que atende clientes 24/7</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Regra de ouro</strong>
+      Você cria skills para o que precisa de controle. Agrupa skills em agentes para o que pode rodar no automático. Aí você tem um time.
+    </div>
+  </div>
+
+  <!-- ATO 2 / BLOCO 6 — Squads -->
+  <div class="section" data-section="d2-b5" data-day="2" data-block="5">
+    <div class="section-kicker">Ato 2 · Bloco 6</div>
+    <div class="section-title">Squads.</div>
+    <div class="section-subtitle">Times de I.A — agentes trabalhando em operação completa</div>
+    <span class="badge badge-time">30 minutos</span>
+    <hr>
+
+    <h2>Agente = funcionário especializado</h2>
+    <p>Se a skill é uma habilidade, o agente é o <strong>funcionário que tem várias habilidades e sabe quando usar cada uma</strong>. É quem você chama quando precisa de um trabalho feito do início ao fim.</p>
+
+    <div class="card card-accent">
+      <h3>Analogia: contratando seu copywriter</h3>
+      <p>Quando você contrata um copywriter, ele não sabe só escrever copy. Ele sabe pesquisar mercado, entender avatar, escolher framework (PAS, AIDA), estruturar funil, adaptar tom. Ele combina várias habilidades (skills) em uma função (agente).</p>
+    </div>
+
+    <h2>De Skill para Squad — seu time de marketing</h2>
+    <p>Aqui mora a parte que muda o jogo. Um agente sozinho é útil. Um <strong>squad</strong> — um time de agentes que trabalham juntos — é o que substitui uma operação inteira.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Conceito</th><th>Na empresa</th><th>Exemplo de marketing</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Skill</strong></td><td>Uma habilidade</td><td>Saber escrever headline de conversão</td></tr>
+          <tr><td><strong>Agente</strong></td><td>Um funcionário</td><td>Copywriter que domina várias habilidades de copy</td></tr>
+          <tr><td><strong>Squad</strong></td><td>Um time / departamento</td><td>Time de marketing: copywriter + designer + estrategista + gestor de tráfego</td></tr>
+          <tr><td><strong>Orquestrador</strong></td><td>CMO / gerente</td><td>Agente que recebe o briefing e delega pro time certo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Como o squad funciona na prática</h2>
+    <p>Imagine pedir ao seu squad de marketing: <em>"cria uma campanha de lançamento pro meu novo produto"</em>. O que acontece:</p>
+
+    <ol class="stepper">
+      <li class="step">
+        <h4>Estrategista recebe o briefing</h4>
+        <p>Analisa seu produto, pesquisa mercado, define ângulos e monta o plano.</p>
+      </li>
+      <li class="step">
+        <h4>Copywriter escreve</h4>
+        <p>Pega o plano do estrategista e escreve as peças: headline, emails, VSL, anúncios.</p>
+      </li>
+      <li class="step">
+        <h4>Designer cria o visual</h4>
+        <p>Com a copy pronta, gera os criativos, identidade visual, layout das páginas.</p>
+      </li>
+      <li class="step">
+        <h4>Gestor de tráfego monta o plano de mídia</h4>
+        <p>Com copy e visual definidos, calcula orçamento, públicos, metas de CPL.</p>
+      </li>
+      <li class="step">
+        <h4>Você recebe o pacote completo</h4>
+        <p>Estratégia + copy + visual + plano de mídia. Pronto pra executar.</p>
+      </li>
+    </ol>
+
+    <div class="callout callout-tip">
+      <strong>💡 Importante: como isso funciona de verdade</strong>
+      O squad trabalha <strong>sob demanda</strong>. Você pede, o time executa em sequência, você recebe o pacote em minutos. Não é um chatbot 24h atendendo leads sozinho — é um departamento que você aciona quando precisa. Quando a tarefa termina, o time para. Isso é honesto e é o que o Claude Code realmente faz.
+    </div>
+
+    <h2>Como você constrói o seu</h2>
+    <p>Agora que você entende como um squad funciona, o processo pra montar o seu tem 4 movimentos — 2 que são trabalho seu e 2 que podem ser automatizados:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 48px;">#</th>
+            <th>Movimento</th>
+            <th style="width: 200px;">Quem faz</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong></td>
+            <td><strong>Mapear processos</strong><br><span style="color: var(--text-sec); font-size: 14px;">Liste as tarefas repetitivas da sua operação. Cada passo, regra e decisão do seu jeito de trabalhar.</span></td>
+            <td>Você</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong></td>
+            <td><strong>Criar skills adaptadas</strong><br><span style="color: var(--text-sec); font-size: 14px;">Pra cada processo, uma skill que ensina o Claude a executar do SEU jeito. Usa seus exemplos e regras.</span></td>
+            <td>Você + <code>skill-creator</code></td>
+          </tr>
+          <tr>
+            <td><strong>3</strong></td>
+            <td><strong>Agrupar em agentes</strong><br><span style="color: var(--text-sec); font-size: 14px;">Combina skills relacionadas em agentes autônomos. Um agente de vendas, um de conteúdo, cada um com suas habilidades.</span></td>
+            <td><code>squad-builder</code></td>
+          </tr>
+          <tr>
+            <td><strong>4</strong></td>
+            <td><strong>Orquestrar o time</strong><br><span style="color: var(--text-sec); font-size: 14px;">Define o fluxo: quem recebe o briefing, quem trabalha em sequência, quem roda em paralelo. O orquestrador coordena.</span></td>
+            <td><code>squad-builder</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>A verdade</h2>
+    <p>Só baixar skills prontas = <strong>hype, perda de potencial</strong>. Criar suas próprias skills mapeando processos = <strong>transformação real</strong>.</p>
+
+    <div class="callout callout-exercise">
+      <strong>🎯 O nível de personalização</strong>
+      Esse é o nível de personalização que nenhum curso gravado, videoaula ou modelo pronto vai te entregar. Skills criadas para o SEU processo, agentes treinados para a SUA operação, um time de I.A que funciona do SEU jeito.
+    </div>
+  </div>
+
+  <!-- ATO 2 / BLOCO 7 — Squad Builder -->
+  <div class="section" data-section="d2-b6" data-day="2" data-block="6">
+    <div class="section-kicker">Ato 2 · Bloco 7</div>
+    <div class="section-title">Squad Builder.</div>
+    <div class="section-subtitle">A ferramenta que acelera os passos 3 e 4 do caminho</div>
+    <span class="badge badge-time">10 minutos</span>
+    <hr>
+
+    <p>Os passos 1 e 2 (mapear processos, criar skills adaptadas) são trabalho seu — ninguém conhece seu processo melhor que você. Já os passos 3 e 4 (agrupar skills em agentes, orquestrar o time) são <strong>mecânicos</strong>: escrever arquivos de agente, configurar handoff, definir fluxo sequencial vs paralelo.</p>
+
+    <p>Esse trabalho mecânico dá pra automatizar. É exatamente o que o <strong>Squad Builder</strong> faz: você traz as skills (prontas do skills.sh, suas, ou misturadas) e ele monta o squad em volta delas.</p>
+
+    <div class="card card-accent">
+      <h3>Exemplo ao vivo: Squad de Marketing em 5 minutos</h3>
+      <p><strong>Ingredientes (skills que você já tem):</strong></p>
+      <ul>
+        <li><code>/copywriting</code> &nbsp;— do skills.sh</li>
+        <li><code>/frontend-design</code> &nbsp;— do skills.sh</li>
+        <li><code>/meu-processo</code> &nbsp;— opcional, uma skill sua</li>
+      </ul>
+      <p>Você invoca o Squad Builder mencionando essas skills. Ele te entrevista sobre o objetivo (uma pergunta por vez), propõe o design do time, <strong>espera seu OK</strong> e só então gera os arquivos. Em 5 minutos você tem:</p>
+      <pre><code>squad/
+├── CLAUDE.md                    ← orquestrador do time
+├── .claude/agents/
+│   ├── strategist.md            (usa /copywriting)
+│   ├── copywriter.md            (usa /copywriting)
+│   └── ui-designer.md           (usa /frontend-design)
+└── docs/brand-guidelines.md     ← contexto compartilhado</code></pre>
+    </div>
+
+    <h2>Como ele trabalha com você</h2>
+    <p>O diferencial do Squad Builder está no <strong>checkpoint humano no meio do processo</strong>. Você invoca a skill, ele conversa com você até entender o domínio, propõe os agentes que vai criar e o fluxo entre eles — e <strong>espera seu OK antes de escrever qualquer arquivo</strong>. Só depois da sua aprovação é que ele gera o <code>CLAUDE.md</code>, os agentes e os comandos de orquestração, tudo com handoff configurado (<code>01-research.md</code>, <code>02-strategy.md</code>…) pros agentes passarem estado entre si.</p>
+
+    <p>Traduzindo: você não vai acordar com 15 arquivos de agente mal-pensados. Aprova o design primeiro, execução depois.</p>
+
+    <h2>Download</h2>
+    <div class="callout callout-tip" style="text-align: center; padding: 28px 24px;">
+      <p style="margin: 0 0 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: var(--text-ghost);">Grátis · ~7 KB</p>
+      <a href="https://operacaoclaudecode.escoladeautomacao.com.br/squad-builder.skill" download="" style="display: inline-block; padding: 16px 36px; background: #fff; color: #000; text-decoration: none; font-weight: 800; border-radius: 10px; font-size: 15px; letter-spacing: 0.3px;">
+        ⬇ squad-builder.skill
+      </a>
+      <p style="margin: 14px 0 0; font-size: 12px; color: var(--text-ghost);">arquivo .zip renomeado · contém SKILL.md + templates</p>
+    </div>
+
+    <h2>Instalação</h2>
+    <p>Descompacte dentro da pasta de skills do Claude Code:</p>
+    <pre><code>unzip ~/Downloads/squad-builder.skill -d ~/.claude/skills/
+# reinicie o Claude Code pra detectar a skill</code></pre>
+    <p>Pra testar, em um projeto vazio diga: <em>"cria um squad de marketing usando /copywriting e /frontend-design"</em>. Ele vai se ativar e começar a entrevista.</p>
+
+    <div class="callout callout-tip">
+      <strong>🧱 A analogia que fecha o círculo</strong>
+      Skills são os <strong>tijolos</strong>. Você pode comprar tijolos prontos (skills.sh) ou fabricar os seus (skill-creator). O Squad Builder é o <strong>arquiteto</strong> — pega os tijolos que você escolheu e organiza em uma casa que funciona.
+    </div>
+
+    <hr>
+
+    <div style="text-align:center; padding: 32px 0;">
+      <p style="font-size: 13px; color: var(--text-ghost); letter-spacing: 2px; text-transform: uppercase; font-weight: 700;">Operação Claude Code</p>
+      <p style="font-size: 22px; font-weight: 800;">Obrigado por participar!</p>
+      <p style="color: var(--text-sec);">Agora é hora de montar seu time.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" data-section="d2-b7" data-day="2" data-block="7">
+    <div class="section-kicker">FAQ</div>
+    <div class="section-title">Perguntas frequentes.</div>
+    <div class="section-subtitle">10 dúvidas respondidas</div>
+    <span class="badge badge-time">Consulta</span>
+    <hr>
+
+    <details class="toggle">
+      <summary>Preciso do plano pago?</summary>
+      <div class="toggle-content">
+        <p>Sim. O plano Pro (~R$115/mês) libera Cowork, Claude Code, Skills e ~80 mensagens a cada 5 horas. O Free é muito limitado para uso profissional.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Preciso saber programar?</summary>
+      <div class="toggle-content">
+        <p>Não. Skills são texto puro — instruções em linguagem natural. Se você sabe escrever um manual de procedimentos, sabe criar uma skill. O Claude Code entende português e não exige conhecimento de programação.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Funciona no Windows?</summary>
+      <div class="toggle-content">
+        <p>Sim. O Claude Desktop App funciona no Windows 10+ e o Claude Code (terminal) funciona em Mac, Windows e Linux.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Qual a diferença entre Plugin e Skill?</summary>
+      <div class="toggle-content">
+        <p><strong>Skill</strong> = receita de comportamento (SKILL.md). Claude ativa sozinho quando relevante.<br>
+        <strong>Plugin</strong> = pacote que pode conter skills + comandos + agentes + hooks + integrações MCP.<br><br>
+        Analogia: skill é uma receita. Plugin é um kit de cozinha (receitas + utensílios + ingredientes).</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Posso usar ChatGPT em vez do Claude?</summary>
+      <div class="toggle-content">
+        <p>Skills são cross-platform — funcionam em dezenas de ferramentas (Claude, Cursor, VS Code, Copilot, Codex, Gemini CLI). Mas o ecossistema de agentes com MCPs, hooks e subagentes é exclusivo do Claude Code. Para times de I.A completos, Claude Code é a plataforma.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Quanto gasto por mês?</summary>
+      <div class="toggle-content">
+        <p>O plano Pro (R$115/mês) cobre uso moderado — bom para aprender e usar algumas horas por dia. Se bater o limite (reseta em ~3-5h), espere ou migre para o Max 5x (R$575/mês) que tem 5x mais capacidade. A Anthropic não publica números exatos de mensagens — os limites variam dinamicamente.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Skills de terceiros são seguras?</summary>
+      <div class="toggle-content">
+        <p>Sim. Uma skill é <strong>só texto</strong> — instruções que o Claude segue. Ela não executa código automaticamente nem acessa dados sem permissão. Você pode ler o SKILL.md antes de instalar. Skills do <code>anthropics/skills</code> são revisadas pela Anthropic.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>O Claude usa meus dados para treinar a I.A?</summary>
+      <div class="toggle-content">
+        <p><strong>Sim, por padrão.</strong> Desde setembro de 2025, planos Free, Pro e Max têm a opção de treinamento <strong>ativada por padrão</strong>. Você precisa desativar manualmente:</p>
+        <p><strong>Como desativar:</strong> claude.ai → Settings → Privacy → desmarque "Improve Claude for everyone".</p>
+        <p>Planos <strong>Team e Enterprise</strong> nunca têm dados usados para treinamento. Seus arquivos locais ficam no seu computador — o Claude Code só acessa o que você autorizar na sessão.</p>
+        <p style="color:var(--accent);"><strong>Recomendação:</strong> desative agora se você trabalha com dados sensíveis de clientes.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Meu PC é lento — o Claude vai travar?</summary>
+      <div class="toggle-content">
+        <p>O Claude roda nos servidores da Anthropic, não no seu PC. Seu computador só precisa de um navegador ou terminal funcional. A velocidade depende da sua conexão com a internet, não do processador da sua máquina.</p>
+      </div>
+    </details>
+
+    <details class="toggle">
+      <summary>Preciso instalar algum terminal especial?</summary>
+      <div class="toggle-content">
+        <p>Não. Use o terminal que já vem no seu computador: <strong>Terminal</strong> no Mac, <strong>PowerShell</strong> no Windows. O Claude Code funciona em qualquer um deles. Se preferir, também funciona no terminal integrado do VS Code.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="section" data-section="d2-b8" data-day="2" data-block="8">
+    <div class="section-kicker">Troubleshooting</div>
+    <div class="section-title">Problemas comuns.</div>
+    <div class="section-subtitle">Soluções rápidas para os erros mais frequentes</div>
+    <span class="badge badge-time">Consulta</span>
+    <hr>
+
+    <h2>Windows: instalação não funciona</h2>
+    <p>A instalação no Windows é onde mais gente trava. Esses são os erros mais comuns e como resolver — todos vêm da <a href="https://code.claude.com/docs/en/troubleshooting" target="_blank">doc oficial de troubleshooting</a>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th style="width: 32%;">Erro</th><th>Causa &amp; Solução</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong><code>'irm' is not recognized</code></strong></td>
+            <td><strong>Causa:</strong> você está no CMD, não no PowerShell — <code>irm</code> é atalho do PowerShell que não existe no CMD.<br><strong>Solução:</strong> abra o PowerShell (menu Iniciar → digite "PowerShell" → Enter) e rode <code>irm https://claude.ai/install.ps1 | iex</code>. Ou fique no CMD e rode o comando do CMD: <code>curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd</code></td>
+          </tr>
+          <tr>
+            <td><strong><code>The token '&amp;&amp;' is not a valid statement separator</code></strong></td>
+            <td><strong>Causa:</strong> você está no PowerShell mas colou o comando do CMD (que usa <code>&amp;&amp;</code>). PowerShell não aceita esse separador.<br><strong>Solução:</strong> use o comando do PowerShell (<code>irm https://claude.ai/install.ps1 | iex</code>). Pra confirmar qual shell está aberto: prompt com <code>PS C:\&gt;</code> = PowerShell, prompt com só <code>C:\&gt;</code> = CMD.</td>
+          </tr>
+          <tr>
+            <td><strong><code>Claude Code on Windows requires git-bash</code></strong></td>
+            <td><strong>Causa:</strong> Git for Windows não está instalado (ou está em local não-padrão).<br><strong>Solução:</strong> baixe e instale o <a href="https://git-scm.com/downloads/win" target="_blank">Git for Windows</a>. Durante a instalação, marque <strong>"Add to PATH"</strong>. Reinicie o terminal depois. Se mesmo assim continuar, edite <code>%USERPROFILE%\.claude\settings.json</code> e adicione: <code>{"env": {"CLAUDE_CODE_GIT_BASH_PATH": "C:\\Program Files\\Git\\bin\\bash.exe"}}</code></td>
+          </tr>
+          <tr>
+            <td><strong><code>'claude' is not recognized</code></strong> (depois de instalar)</td>
+            <td><strong>Causa:</strong> a instalação funcionou mas o diretório do Claude (<code>%USERPROFILE%\.local\bin</code>) não está no PATH do Windows.<br><strong>Solução:</strong> abra um PowerShell e rode os 2 comandos abaixo, depois feche e reabra o terminal:<br><code>$currentPath = [Environment]::GetEnvironmentVariable('PATH', 'User')</code><br><code>[Environment]::SetEnvironmentVariable('PATH', "$currentPath;$env:USERPROFILE\.local\bin", 'User')</code><br>Confirme com <code>claude --version</code>.</td>
+          </tr>
+          <tr>
+            <td><strong><code>Invoke-Expression: Missing argument in parameter list</code></strong></td>
+            <td><strong>Causa:</strong> o servidor retornou uma página HTML em vez do script (problema temporário de rede ou indisponibilidade regional).<br><strong>Solução:</strong> use o <strong>WinGet</strong> como alternativa: <code>winget install Anthropic.ClaudeCode</code>. Se não tiver WinGet, espere alguns minutos e tente o comando original de novo.</td>
+          </tr>
+          <tr>
+            <td><strong>SSL/TLS errors</strong> (rede corporativa)</td>
+            <td><strong>Causa:</strong> proxy/firewall corporativo bloqueando download ou inspeção de certificado.<br><strong>Solução:</strong> tente o WinGet (<code>winget install Anthropic.ClaudeCode</code>) que evita o curl e contorna a maioria dos problemas. Se não funcionar, fale com o TI pra liberar <code>storage.googleapis.com</code> e <code>claude.ai</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>🧺 Caminho mais infalível em máquina corporativa</strong>
+      Se você está em uma máquina com bloqueios de rede ou políticas restritivas (Windows corporativo), pule direto pro <strong>WinGet</strong>: <code>winget install Anthropic.ClaudeCode</code>. Ele resolve quase todos os problemas de SSL, certificado e proxy de uma vez só. WinGet vem pré-instalado no Windows 11 e no Windows 10 atualizado.
+    </div>
+
+    <h2>Outros problemas comuns</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Problema</th><th>Solução</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong><code>claude: command not found</code></strong></td>
+            <td>Feche e reabra o terminal. No Mac, rode <code>source ~/.zshrc</code>. No Windows, abra um novo PowerShell.</td>
+          </tr>
+          <tr>
+            <td><strong>Login não funciona</strong></td>
+            <td>Tente abrir o link de autenticação em outro navegador (Chrome, Safari, Firefox). Limpe cookies se necessário.</td>
+          </tr>
+          <tr>
+            <td><strong>Skill não ativa</strong></td>
+            <td>Verifique o campo <code>description</code> no SKILL.md — inclua as palavras que você realmente usaria ao pedir. Verifique se o caminho está correto (<code>.claude/skills/</code>). Reinicie o Claude Code.</td>
+          </tr>
+          <tr>
+            <td><strong>Claude lento</strong></td>
+            <td>Use <code>/compact</code> para compactar o contexto. Se persistir, comece uma nova sessão com <code>/clear</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>Erro de permissão</strong></td>
+            <td><strong>Mac/Linux:</strong> <code>chmod +x</code> no arquivo, ou verifique se <code>~/.local/bin/</code> tem permissão de escrita. <strong>Windows:</strong> NÃO precisa rodar como admin — o Claude Code instala em pasta do usuário. Se tiver erro de permissão, verifique se outro processo está bloqueando a pasta <code>%USERPROFILE%\.local\bin</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>Plugin não aparece</strong></td>
+            <td>Use <code>/reload-plugins</code>. Se persistir, feche e reabra o Claude Desktop ou Claude Code.</td>
+          </tr>
+          <tr>
+            <td><strong>Limite de uso atingido</strong></td>
+            <td>Normal no plano Pro — o limite reseta em ~3 horas. Use o modelo Haiku (mais leve) enquanto espera, ou considere o plano Max.</td>
+          </tr>
+          <tr>
+            <td><strong>MCP não conecta</strong></td>
+            <td>Verifique se as variáveis de ambiente estão configuradas. Rode <code>echo $VARIAVEL</code> para testar. Confirme que a API key está válida.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-tip">
+      <strong>💡 Regra geral</strong>
+      90% dos problemas se resolvem com: fechar e reabrir o terminal, verificar o PATH e confirmar que você está usando o plano Pro.
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER NAV -->
+<nav class="footer-nav" style="">
+  <div class="footer-nav-inner">
+    <button class="nav-btn nav-btn-prev" id="btnPrev">← Anterior</button>
+    <span class="nav-current" id="navCurrent">1 / 5</span>
+    <button class="nav-btn nav-btn-next" id="btnNext">Próximo →</button>
+  </div>
+</nav>
+
+<!-- JAVASCRIPT -->
+<script type="text/javascript">
+const SECTIONS = ['home','d1-b1','d1-b2','d1-b3','d1-b3b','d1-b4','d2-b1','d2-b4c','d2-b2','d2-b4','d2-b4b','d2-b5','d2-b6','d2-b7','d2-b8'];
+const DAY_SECTIONS = { '1': ['d1-b1','d1-b2','d1-b3','d1-b3b','d1-b4'], '2': ['d2-b1','d2-b4c','d2-b2','d2-b4','d2-b4b','d2-b5','d2-b6','d2-b7','d2-b8'] };
+var LOCKED_SECTIONS = [];
+let currentIdx = 0;
+
+function isLocked(id) { return LOCKED_SECTIONS.indexOf(id) !== -1; }
+function goToSection(id) { if (isLocked(id)) return; var i = SECTIONS.indexOf(id); if (i !== -1) { currentIdx = i; render(); } }
+function nextSection() { var nextId = SECTIONS[currentIdx + 1]; if (nextId && !isLocked(nextId)) { currentIdx++; render(); } }
+function prevSection() { if (currentIdx > 0) { currentIdx--; render(); } }
+function goToDay(day) { if (day === 'home') { goToSection('home'); return; } var f = DAY_SECTIONS[day]; if (f) goToSection(f[0]); }
+
+function render() {
+  const sid = SECTIONS[currentIdx];
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  const el = document.querySelector('[data-section="' + sid + '"]');
+  if (el) el.classList.add('active');
+
+  const day = el ? el.dataset.day : 'home';
+  document.querySelectorAll('.header-day-btn').forEach(function(b) {
+    if (b.dataset.day === day) { b.classList.add('active'); } else { b.classList.remove('active'); }
+  });
+
+  var prevBtn = document.getElementById('btnPrev');
+  var nextBtn = document.getElementById('btnNext');
+  prevBtn.disabled = currentIdx === 0;
+  nextBtn.disabled = currentIdx === SECTIONS.length - 1;
+  nextBtn.textContent = currentIdx === SECTIONS.length - 1 ? 'Fim' : 'Próximo \u2192';
+
+  // Sidebar active state + scroll into view
+  document.querySelectorAll('.sidebar-item').forEach(function(item) {
+    if (item.dataset.target === sid) {
+      item.classList.add('active');
+      item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    } else {
+      item.classList.remove('active');
+    }
+  });
+
+  // Desktop breadcrumb
+  var breadcrumb = document.getElementById('headerBreadcrumb');
+  var TITLES = {
+    'home': 'Início',
+    'd1-b1': 'Ato 1 / O que é o Claude?',
+    'd1-b2': 'Ato 1 / Precificação e Tokens',
+    'd1-b3': 'Ato 1 / Cowork: Plugins e Conectores',
+    'd1-b3b': 'Ato 1 / Cowork: Demos ao Vivo',
+    'd1-b4': 'Ato 1 / Claude Code',
+    'd2-b1': 'Ato 2 / O que é uma Skill?',
+    'd2-b4c': 'Ato 2 / Garimpando Skills',
+    'd2-b2': 'Ato 2 / Criando sua Skill',
+    'd2-b4': 'Ato 2 / Skills como Negócio',
+    'd2-b4b': 'Ato 2 / Skills vs Agentes',
+    'd2-b5': 'Ato 2 / Squads',
+    'd2-b6': 'Ato 2 / Squad Builder',
+    'd2-b7': 'FAQ',
+    'd2-b8': 'Troubleshooting'
+  };
+  breadcrumb.textContent = TITLES[sid] || '';
+
+  updateProgress(sid, day);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  history.replaceState(null, '', '#' + sid);
+}
+
+function updateProgress(sid, day) {
+  var label = document.getElementById('progressLabel');
+  var fill = document.getElementById('progressFill');
+  var stepsEl = document.getElementById('progressSteps');
+  var navCurrent = document.getElementById('navCurrent');
+
+  if (day === 'home') {
+    label.textContent = 'Início';
+    fill.style.width = '0%';
+    stepsEl.textContent = '';
+    navCurrent.textContent = '';
+    return;
+  }
+
+  var sections = DAY_SECTIONS[day] || [];
+  var blockIdx = sections.indexOf(sid);
+  var pct = ((blockIdx + 1) / sections.length) * 100;
+
+  label.textContent = 'Ato ' + day + ' \u00B7 Bloco ' + (blockIdx + 1) + ' de ' + sections.length;
+  fill.style.width = pct + '%';
+  navCurrent.textContent = (blockIdx + 1) + ' / ' + sections.length;
+
+  // Clear and rebuild dots
+  while (stepsEl.firstChild) { stepsEl.removeChild(stepsEl.firstChild); }
+  sections.forEach(function(s, i) {
+    var dot = document.createElement('div');
+    dot.className = 'progress-dot';
+    if (i < blockIdx) dot.className += ' done';
+    if (i === blockIdx) dot.className += ' current';
+    dot.addEventListener('click', function() { goToSection(s); });
+    stepsEl.appendChild(dot);
+  });
+}
+
+function copyCode(btn) {
+  var block = btn.parentElement;
+  var codeEl = block.querySelector('code') || block.querySelector('.code-text');
+  var text = codeEl ? codeEl.textContent : '';
+  navigator.clipboard.writeText(text.trim()).then(function() {
+    btn.textContent = 'Copiado!';
+    btn.style.background = 'var(--accent)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--accent)';
+    setTimeout(function() { btn.textContent = 'Copiar'; btn.style.background = ''; btn.style.color = ''; btn.style.borderColor = ''; }, 2000);
+  });
+}
+
+function toggleCheck(li) { li.classList.toggle('checked'); }
+
+function init() {
+  var hash = location.hash.replace('#', '');
+  if (hash && SECTIONS.indexOf(hash) !== -1) { currentIdx = SECTIONS.indexOf(hash); }
+  render();
+}
+
+init();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ecef9953a893b1a',t:'MTc3NjI5ODMwOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><div height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" data-original-tag="iframe"></div><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;34f19019a64d46498430f49669019204&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+</body></html>
