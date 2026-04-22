@@ -5,6 +5,16 @@ description: Cria o conteúdo de isca (lead magnet) prometido no post do LinkedI
 
 # Skill: Isca LinkedIn — Criação de Lead Magnet no Notion
 
+## Input obrigatório
+
+Antes de iniciar qualquer etapa, verificar se Eduardo forneceu:
+1. **Tema da isca** — o assunto central do guia
+2. **Promessa do post** — o que o post prometeu entregar ao lead
+
+Se algum dos dois estiver faltando, solicitar antes de continuar. Não presumir nem inventar.
+
+---
+
 ## Contexto do ICP (sempre em mente)
 
 Público-alvo: donos e gestores de PME brasileira (clínicas, imobiliárias, escolas/cursos, financeiras pequenas, serviços locais).
@@ -196,16 +206,6 @@ Guias que prometem resultado visual (imagens, peças, outputs de ferramentas) de
 ### Autoavaliação antes de apresentar
 
 Antes de entregar o conteúdo final para aprovação: faça uma autoavaliação honesta (nota de 0 a 10, com justificativa). Se identificar pontos fracos, corrija antes de apresentar — não espere o feedback para corrigir o óbvio.
-
----
-
-## Input obrigatório
-
-Antes de iniciar qualquer etapa, verificar se Eduardo forneceu:
-1. **Tema da isca** — o assunto central do guia
-2. **Promessa do post** — o que o post prometeu entregar ao lead
-
-Se algum dos dois estiver faltando, solicitar antes de continuar. Não presumir nem inventar.
 
 ---
 
