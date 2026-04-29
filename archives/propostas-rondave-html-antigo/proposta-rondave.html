@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Comercial — Rondave | Vektoz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --bg-alt: #0a0a0d;
+            --surface: #161618;
+            --surface-2: #1e1e22;
+            --text: #ffffff;
+            --text-muted: #a1a1a6;
+            --text-dim: #6b6b70;
+            --border: #2a2a2d;
+            --border-strong: #3a3a3e;
+            --purple: #9333ea;
+            --purple-light: #a855f7;
+            --purple-dark: #7e22ce;
+            --cyan: #22d3ee;
+            --cyan-light: #67e8f9;
+            --gradient: linear-gradient(135deg, #9333ea, #22d3ee);
+            --gradient-h: linear-gradient(90deg, #9333ea, #22d3ee);
+            --glow-purple: 0 0 40px rgba(147, 51, 234, 0.35);
+            --glow-cyan: 0 0 40px rgba(34, 211, 238, 0.25);
+            --glow-soft: 0 0 20px rgba(147, 51, 234, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+        }
+
+        /* Background subtle grid */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 10%, rgba(147, 51, 234, 0.08), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.06), transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .slide-deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        @media (min-width: 769px) {
+            .slide-deck {
+                max-width: calc(100vh * 16 / 9);
+                max-height: calc(100vw * 9 / 16);
+                margin: auto;
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 64px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(30px) scale(0.98);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        visibility 0s 0.6s;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0) scale(1);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide.prev {
+            transform: translateX(-30px) scale(0.98);
+        }
+
+        .slide-content {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Typography */
+        h1 { font-weight: 800; letter-spacing: -0.03em; }
+        h2 { font-weight: 700; letter-spacing: -0.02em; }
+        h3 { font-weight: 600; letter-spacing: -0.01em; }
+
+        .eyebrow {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 16px;
+        }
+
+        .slide-title {
+            font-size: clamp(40px, 4.5vw, 64px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .slide-title .accent {
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(18px, 1.4vw, 22px);
+            color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Animations */
+        .slide.active .animate-in {
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        .slide.active .animate-in:nth-child(1) { animation-delay: 0.1s; }
+        .slide.active .animate-in:nth-child(2) { animation-delay: 0.2s; }
+        .slide.active .animate-in:nth-child(3) { animation-delay: 0.3s; }
+        .slide.active .animate-in:nth-child(4) { animation-delay: 0.4s; }
+        .slide.active .animate-in:nth-child(5) { animation-delay: 0.5s; }
+        .slide.active .animate-in:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(147, 51, 234, 0.4), 0 0 60px rgba(34, 211, 238, 0.2);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 50px rgba(147, 51, 234, 0.6), 0 0 90px rgba(34, 211, 238, 0.3);
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes breathe {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.3)); }
+            50% { filter: drop-shadow(0 0 50px rgba(147, 51, 234, 0.5)); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Animated big numbers */
+        .slide.active .cost-result {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards, breathe 4s ease-in-out 1.3s infinite;
+            opacity: 0;
+        }
+
+        .slide.active .invest-total-value,
+        .slide.active .closing-title .grad {
+            background: linear-gradient(90deg, #9333ea 0%, #22d3ee 25%, #9333ea 50%, #22d3ee 75%, #9333ea 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 6s linear infinite;
+        }
+
+        /* CTA pulse on closing slide */
+        .slide.active .closing-cta {
+            animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards, pulseGlow 2.8s ease-in-out 1.2s infinite;
+            opacity: 0;
+        }
+
+        /* Navigation */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: var(--gradient-h);
+            transition: width 0.4s ease;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+        }
+
+        .nav-controls {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 1000;
+            background: rgba(22, 22, 24, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 10px 20px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .nav-btn:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+            box-shadow: var(--glow-purple);
+        }
+        .slide-counter {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* ============ SLIDE 1: CAPA ============ */
+        .slide-cover {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px;
+        }
+        .cover-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(24px, 3vw, 48px);
+            margin-bottom: 64px;
+        }
+        .cover-logo-vektoz {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(147, 51, 234, 0.25);
+            border-radius: 12px;
+            padding: 0;
+            width: clamp(280px, 24vw, 400px);
+            height: clamp(76px, 6.5vw, 108px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Archivo Black', 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: clamp(32px, 3.2vw, 48px);
+            letter-spacing: 0.12em;
+            background-image: linear-gradient(135deg, #9333ea, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.15), inset 0 0 20px rgba(147, 51, 234, 0.05);
+        }
+        .cover-logo-rondave {
+            background: transparent;
+            padding: 0;
+            border: none;
+            width: clamp(280px, 24vw, 400px);
+            height: clamp(76px, 6.5vw, 108px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: drop-shadow(0 8px 24px rgba(26, 35, 126, 0.4));
+        }
+        .cover-logo-rondave img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .cover-logo-rondave svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .cover-x {
+            font-size: clamp(24px, 2.5vw, 36px);
+            color: var(--text-dim);
+            font-weight: 200;
+            line-height: 1;
+        }
+        .cover-title {
+            font-size: clamp(48px, 6vw, 88px);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -0.04em;
+            margin-bottom: 20px;
+        }
+        .cover-title .grad {
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .cover-sub {
+            font-size: clamp(18px, 1.5vw, 24px);
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+        .cover-date {
+            color: var(--text-dim);
+            font-size: 14px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* ============ SLIDE 2: O QUE OBSERVAMOS ============ */
+        .observation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .observation-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 28px 32px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .observation-item:hover {
+            border-color: var(--purple);
+            box-shadow: var(--glow-soft);
+        }
+        .observation-number {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-h);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: white;
+        }
+        .observation-text {
+            font-size: clamp(18px, 1.6vw, 26px);
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--text);
+        }
+        .observation-text .highlight {
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        /* ============ SLIDE 3: CUSTO REAL ============ */
+        .cost-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 48px;
+        }
+        .cost-equation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .cost-piece {
+            padding: 16px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: clamp(16px, 1.4vw, 22px);
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+        .cost-op {
+            font-size: clamp(20px, 1.8vw, 28px);
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+        .cost-result {
+            font-size: clamp(80px, 10vw, 160px);
+            font-weight: 900;
+            line-height: 1;
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.3));
+            letter-spacing: -0.05em;
+        }
+        .cost-label {
+            font-size: clamp(18px, 1.4vw, 22px);
+            color: var(--text-muted);
+            margin-top: -16px;
+        }
+        .cost-quote {
+            margin-top: 48px;
+            padding: 24px 32px;
+            border-left: 3px solid var(--purple);
+            background: rgba(147, 51, 234, 0.06);
+            border-radius: 0 12px 12px 0;
+            font-size: clamp(16px, 1.3vw, 20px);
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 800px;
+            text-align: left;
+        }
+        .cost-quote strong { color: var(--text); font-style: normal; font-weight: 600; }
+
+        /* ============ SLIDE 4: PROPOSTA ============ */
+        .plan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .plan-card {
+            padding: 36px 32px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .plan-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-h);
+        }
+        .plan-card-num {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--cyan);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .plan-card-title {
+            font-size: clamp(22px, 1.8vw, 30px);
+            font-weight: 700;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+        .plan-card-desc {
+            font-size: 16px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .plan-bottom {
+            margin-top: 48px;
+            padding: 24px 32px;
+            text-align: center;
+            font-size: clamp(16px, 1.4vw, 20px);
+            color: var(--text-muted);
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .plan-bottom strong {
+            color: var(--text);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ============ SLIDES 5 & 6: DETALHES ============ */
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            margin-top: 32px;
+        }
+        .detail-left h3 {
+            font-size: clamp(22px, 1.6vw, 28px);
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        .detail-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 20px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        .detail-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+        .detail-meta-item strong { color: var(--text); font-weight: 600; }
+        .detail-meta-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(147, 51, 234, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .deliverables-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .deliverables-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            font-size: clamp(15px, 1.2vw, 18px);
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .deliverables-list li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gradient-h);
+            margin-top: 8px;
+            box-shadow: var(--glow-soft);
+        }
+
+        /* Process steps (agente) */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .process-step:hover {
+            border-color: var(--cyan);
+            transform: translateX(4px);
+        }
+        .process-step-num {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--purple);
+            font-size: 16px;
+        }
+        .process-step-text {
+            font-size: clamp(15px, 1.2vw, 18px);
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        /* ============ SLIDE 7: ROI ============ */
+        .roi-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+            margin-bottom: 40px;
+        }
+        .roi-col {
+            padding: 28px 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .roi-col.hoje {
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        .roi-col.futuro {
+            border-color: var(--purple);
+            background: rgba(147, 51, 234, 0.06);
+            box-shadow: var(--glow-soft);
+        }
+        .roi-col-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .roi-col.hoje .roi-col-label { color: #ef4444; }
+        .roi-col.futuro .roi-col-label { color: var(--cyan); }
+        .roi-col-content {
+            font-size: clamp(18px, 1.4vw, 22px);
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--text);
+        }
+        .roi-col-sub {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .roi-payoff {
+            padding: 32px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.12), rgba(34, 211, 238, 0.08));
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            text-align: center;
+        }
+        .roi-math {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+        .roi-math-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .roi-math-value {
+            font-size: clamp(24px, 2.2vw, 36px);
+            font-weight: 800;
+            color: var(--text);
+            line-height: 1;
+        }
+        .roi-math-value.grad {
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .roi-math-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .roi-math-op {
+            font-size: 20px;
+            color: var(--text-dim);
+        }
+        .roi-payoff-msg {
+            font-size: clamp(18px, 1.5vw, 24px);
+            font-weight: 700;
+            margin-top: 12px;
+        }
+        .roi-payoff-msg .grad {
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .roi-payoff-note {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ============ SLIDE 8: TIMELINE ============ */
+        .timeline {
+            display: flex;
+            gap: 0;
+            margin-top: 48px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple), var(--cyan));
+            opacity: 0.3;
+        }
+        .timeline-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 12px;
+            position: relative;
+        }
+        .timeline-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--purple);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 0 6px var(--bg);
+        }
+        .timeline-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--cyan);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: clamp(14px, 1.1vw, 17px);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        /* ============ SLIDE 9: INVESTIMENTO ============ */
+        .invest-box {
+            max-width: 720px;
+            margin: 40px auto 0;
+            padding: 40px 48px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+        .invest-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .invest-line:last-of-type { border-bottom: none; }
+        .invest-line-label {
+            font-size: clamp(15px, 1.2vw, 18px);
+            color: var(--text);
+            font-weight: 500;
+        }
+        .invest-line-label span {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+        .invest-line-value {
+            font-size: clamp(18px, 1.6vw, 24px);
+            font-weight: 700;
+            color: var(--text);
+        }
+        .invest-total {
+            margin-top: 16px;
+            padding: 28px 32px;
+            background: linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(34, 211, 238, 0.08));
+            border: 1px solid rgba(147, 51, 234, 0.3);
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .invest-total-label {
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .invest-total-value {
+            font-size: clamp(32px, 3.5vw, 52px);
+            font-weight: 900;
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+        .invest-note {
+            text-align: center;
+            margin-top: 24px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+        .invest-note strong { color: var(--text); font-weight: 600; }
+
+        /* ============ SLIDE 10: POR QUE VEKTOZ ============ */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .why-card {
+            padding: 32px 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .why-card:hover {
+            border-color: var(--purple);
+            transform: translateY(-4px);
+            box-shadow: var(--glow-soft);
+        }
+        .why-card-num {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--purple);
+            margin-bottom: 16px;
+        }
+        .why-card-title {
+            font-size: clamp(18px, 1.4vw, 22px);
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .why-card-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ============ SLIDE 11: PRÓXIMOS PASSOS ============ */
+        .next-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+        .next-step {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 20px 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .next-step-num {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-h);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+            box-shadow: var(--glow-soft);
+        }
+        .next-step-text {
+            font-size: clamp(15px, 1.2vw, 18px);
+            color: var(--text);
+            font-weight: 500;
+        }
+        .next-step-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        /* ============ SLIDE 12: FECHAMENTO ============ */
+        .closing {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .closing-title {
+            font-size: clamp(64px, 9vw, 140px);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            margin-bottom: 32px;
+        }
+        .closing-title .grad {
+            background: var(--gradient-h);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 40px rgba(147, 51, 234, 0.4));
+        }
+        .closing-cta {
+            display: inline-block;
+            padding: 20px 40px;
+            background: var(--gradient-h);
+            border-radius: 999px;
+            color: white;
+            font-size: clamp(18px, 1.4vw, 22px);
+            font-weight: 600;
+            box-shadow: var(--glow-purple);
+            margin-bottom: 48px;
+        }
+        .closing-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 48px;
+        }
+        .closing-contact-name {
+            font-size: clamp(18px, 1.4vw, 22px);
+            font-weight: 600;
+        }
+        .closing-contact-info {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+        .closing-contact-info a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+        .closing-tagline {
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 16px;
+        }
+
+        /* Decorative background for special slides */
+        .slide-glow::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(147, 51, 234, 0.15), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .slide-glow::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.1), transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Slide counter badge */
+        .slide-badge {
+            position: absolute;
+            top: 32px;
+            right: 40px;
+            font-size: 12px;
+            color: var(--text-dim);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 500;
+            z-index: 3;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .slide { padding: 40px 28px; }
+            .plan-grid, .roi-compare, .detail-layout { grid-template-columns: 1fr; gap: 20px; }
+            .why-grid { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; gap: 24px; }
+            .timeline::before { display: none; }
+            .cover-logos { flex-direction: column; gap: 16px; }
+            .cost-equation { flex-direction: column; }
+            .slide-badge { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="slide-deck">
+
+        <!-- ============ SLIDE 1: CAPA ============ -->
+        <div class="slide slide-cover slide-glow active">
+            <div class="slide-content">
+                <div class="cover-logos animate-in">
+                    <div class="cover-logo-rondave">
+                        <img src="../../../context/assets/rondave-logo.png" alt="Rondave">
+                    </div>
+                    <div class="cover-x">×</div>
+                    <div class="cover-logo-vektoz">VEKTOZ</div>
+                </div>
+                <h1 class="cover-title animate-in">Proposta <span class="grad">Comercial</span></h1>
+                <p class="cover-sub animate-in">Consultoria de Marketing e Comercial<br>+ Agente de Leitura de Licitações</p>
+                <p class="cover-date animate-in">Abril · 2026</p>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 2: O QUE OBSERVAMOS ============ -->
+        <div class="slide">
+            <div class="slide-badge">02 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">Diagnóstico</p>
+                <h2 class="slide-title animate-in">O que <span class="accent">conversamos</span></h2>
+                <p class="slide-subtitle animate-in">Dois pontos travando o crescimento da Rondave hoje.</p>
+
+                <div class="observation-list">
+                    <div class="observation-item animate-in">
+                        <div class="observation-number">01</div>
+                        <div class="observation-text">Falta de estrutura de <span class="highlight">marketing e comercial</span> — sem funil definido, sem prospecção ativa consistente.</div>
+                    </div>
+                    <div class="observation-item animate-in">
+                        <div class="observation-number">02</div>
+                        <div class="observation-text">Diretor comercial gasta <span class="highlight">30 minutos por dia</span> lendo 160 licitações — tarefa operacional consumindo o recurso mais estratégico da empresa.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 3: CUSTO REAL ============ -->
+        <div class="slide slide-glow">
+            <div class="slide-badge">03 / 12</div>
+            <div class="slide-content">
+                <div class="cost-hero">
+                    <div>
+                        <p class="eyebrow animate-in">O custo real</p>
+                        <h2 class="slide-title animate-in" style="margin-bottom: 0;">O problema não é a tarefa.<br><span class="accent">É quem está fazendo.</span></h2>
+                    </div>
+
+                    <div class="cost-equation animate-in">
+                        <div class="cost-piece">30min/dia</div>
+                        <div class="cost-op">×</div>
+                        <div class="cost-piece">22 dias</div>
+                        <div class="cost-op">×</div>
+                        <div class="cost-piece">12 meses</div>
+                        <div class="cost-op">=</div>
+                    </div>
+
+                    <div>
+                        <div class="cost-result" data-count="132" data-suffix="h">0h</div>
+                        <p class="cost-label animate-in">por ano do <strong style="color: var(--text);">diretor comercial</strong> em tarefa operacional</p>
+                    </div>
+
+                    <div class="cost-quote animate-in">
+                        <strong>A pergunta real:</strong><br>
+                        Quantos contratos você perdeu este ano porque estava respondendo licitação às 19h em vez de ligando para cliente?
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 4: PROPOSTA ============ -->
+        <div class="slide">
+            <div class="slide-badge">04 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">A Proposta</p>
+                <h2 class="slide-title animate-in">O <span class="accent">plano</span></h2>
+                <p class="slide-subtitle animate-in">Duas frentes trabalhando em paralelo nos próximos 45 dias.</p>
+
+                <div class="plan-grid">
+                    <div class="plan-card animate-in">
+                        <span class="plan-card-num">Frente 01</span>
+                        <h3 class="plan-card-title">Consultoria de Marketing e Comercial</h3>
+                        <p class="plan-card-desc">4 encontros estratégicos para estruturar o funil, os processos e o plano de ação comercial.</p>
+                    </div>
+                    <div class="plan-card animate-in">
+                        <span class="plan-card-num">Frente 02</span>
+                        <h3 class="plan-card-title">Agente de Leitura de Licitações</h3>
+                        <p class="plan-card-desc">IA que lê, filtra e prioriza as 160 licitações/dia — libertando o diretor para focar em vender.</p>
+                    </div>
+                </div>
+
+                <p class="plan-bottom animate-in">Enquanto o agente libera o tempo do diretor, <strong>estruturamos o marketing e o comercial</strong> — para ele virar uma máquina de receita.</p>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 5: CONSULTORIA ============ -->
+        <div class="slide">
+            <div class="slide-badge">05 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">Frente 01</p>
+                <h2 class="slide-title animate-in">Consultoria <span class="accent">Marketing + Comercial</span></h2>
+
+                <div class="detail-layout">
+                    <div class="detail-left animate-in">
+                        <div class="detail-meta">
+                            <div class="detail-meta-item">
+                                <div class="detail-meta-icon">EC</div>
+                                <div><strong>Condução:</strong> Eduardo Salles — CEO Vektoz</div>
+                            </div>
+                            <div class="detail-meta-item">
+                                <div class="detail-meta-icon">04</div>
+                                <div><strong>Formato:</strong> 4 encontros estratégicos</div>
+                            </div>
+                            <div class="detail-meta-item">
+                                <div class="detail-meta-icon">1:1</div>
+                                <div><strong>Modelo:</strong> Direto com a liderança</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-in">
+                        <h3 style="font-size: 16px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;">Entregáveis</h3>
+                        <ul class="deliverables-list">
+                            <li>Diagnóstico completo + plano de ação</li>
+                            <li>Estruturação do funil comercial</li>
+                            <li>Estratégia de marketing digital</li>
+                            <li>Processos de prospecção ativa e reativação de leads</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 6: AGENTE ============ -->
+        <div class="slide">
+            <div class="slide-badge">06 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">Frente 02</p>
+                <h2 class="slide-title animate-in">Agente de <span class="accent">Leitura de Licitações</span></h2>
+                <p class="slide-subtitle animate-in">Um robô dedicado que trabalha 24/7, sem pausa e sem passar nada batido.</p>
+
+                <div class="detail-layout" style="margin-top: 40px;">
+                    <div class="animate-in">
+                        <h3 style="font-size: 16px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;">Como funciona</h3>
+                        <div class="process-steps">
+                            <div class="process-step">
+                                <div class="process-step-num">1</div>
+                                <div class="process-step-text">Conecta às fontes de licitações que a Rondave acompanha</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-step-num">2</div>
+                                <div class="process-step-text">Lê, filtra e prioriza por critérios definidos</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-step-num">3</div>
+                                <div class="process-step-text">Entrega resumo executivo diário com as oportunidades qualificadas</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="animate-in">
+                        <div class="detail-meta" style="margin-top: 40px;">
+                            <div class="detail-meta-item">
+                                <div class="detail-meta-icon">24</div>
+                                <div><strong>Disponibilidade:</strong> 24/7, sem interrupção</div>
+                            </div>
+                            <div class="detail-meta-item">
+                                <div class="detail-meta-icon">IA</div>
+                                <div><strong>Tecnologia:</strong> IA treinada nos critérios da Rondave</div>
+                            </div>
+                            <div class="detail-meta-item">
+                                <div class="detail-meta-icon">0</div>
+                                <div><strong>Intervenção:</strong> Zero manutenção manual diária</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 7: ROI ============ -->
+        <div class="slide slide-glow">
+            <div class="slide-badge">07 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">ROI</p>
+                <h2 class="slide-title animate-in">O <span class="accent">cálculo</span> que importa</h2>
+
+                <div class="roi-compare">
+                    <div class="roi-col hoje animate-in">
+                        <div class="roi-col-label">Hoje</div>
+                        <div class="roi-col-content">132h/ano do diretor comercial em tarefa operacional</div>
+                        <div class="roi-col-sub">Tempo que não vai para fechar contrato, reativar cliente ou renegociar.</div>
+                    </div>
+                    <div class="roi-col futuro animate-in">
+                        <div class="roi-col-label">Com Vektoz</div>
+                        <div class="roi-col-content">Diretor 100% focado em ações de receita</div>
+                        <div class="roi-col-sub">Agente cuida da leitura. Diretor cuida do faturamento.</div>
+                    </div>
+                </div>
+
+                <div class="roi-payoff animate-in">
+                    <div class="roi-math">
+                        <div class="roi-math-item">
+                            <span class="roi-math-value">R$ 17k</span>
+                            <span class="roi-math-label">Investimento único</span>
+                        </div>
+                        <span class="roi-math-op">vs</span>
+                        <div class="roi-math-item">
+                            <span class="roi-math-value grad">R$ 20k+</span>
+                            <span class="roi-math-label">Menor contrato Rondave</span>
+                        </div>
+                    </div>
+                    <div class="roi-payoff-msg"><span class="grad">1 deal adicional fechado</span> = projeto pago com lucro.</div>
+                    <div class="roi-payoff-note">Sem recorrência. Sem surpresa. Sem taxa mensal escondida.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 8: TIMELINE ============ -->
+        <div class="slide">
+            <div class="slide-badge">08 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">Execução</p>
+                <h2 class="slide-title animate-in">Entrega em <span class="accent">45 dias</span></h2>
+                <p class="slide-subtitle animate-in">Sem ciclos infinitos. Sem enrolação. Timeline clara desde o dia 1.</p>
+
+                <div class="timeline">
+                    <div class="timeline-step animate-in">
+                        <div class="timeline-dot">01</div>
+                        <div class="timeline-label">Semana 1–2</div>
+                        <div class="timeline-title">Kickoff + Diagnóstico</div>
+                    </div>
+                    <div class="timeline-step animate-in">
+                        <div class="timeline-dot">02</div>
+                        <div class="timeline-label">Semana 3–4</div>
+                        <div class="timeline-title">Consultoria (encontros 1 e 2) + Dev do agente</div>
+                    </div>
+                    <div class="timeline-step animate-in">
+                        <div class="timeline-dot">03</div>
+                        <div class="timeline-label">Semana 5</div>
+                        <div class="timeline-title">Homologação do agente + Consultoria (3 e 4)</div>
+                    </div>
+                    <div class="timeline-step animate-in">
+                        <div class="timeline-dot">04</div>
+                        <div class="timeline-label">Semana 6–7</div>
+                        <div class="timeline-title">Agente em produção + Handoff</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 9: INVESTIMENTO ============ -->
+        <div class="slide slide-glow">
+            <div class="slide-badge">09 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in" style="text-align: center;">Investimento</p>
+                <h2 class="slide-title animate-in" style="text-align: center;">O <span class="accent">valor</span></h2>
+
+                <div class="invest-box animate-in">
+                    <div class="invest-line">
+                        <div class="invest-line-label">Consultoria Marketing + Comercial<span>4 encontros estratégicos</span></div>
+                        <div class="invest-line-value">R$ 7.000</div>
+                    </div>
+                    <div class="invest-line">
+                        <div class="invest-line-label">Agente de Leitura de Licitações<span>Desenvolvimento + entrega (sem recorrência)</span></div>
+                        <div class="invest-line-value">R$ 10.000</div>
+                    </div>
+
+                    <div class="invest-total">
+                        <div class="invest-total-label">Total</div>
+                        <div class="invest-total-value">R$ 17.000</div>
+                    </div>
+
+                    <p class="invest-note"><strong>Sem mensalidade.</strong> Sem taxa escondida. Um único investimento.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 10: POR QUE VEKTOZ ============ -->
+        <div class="slide">
+            <div class="slide-badge">10 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in">Diferencial</p>
+                <h2 class="slide-title animate-in">Por que <span class="accent">Vektoz</span></h2>
+
+                <div class="why-grid">
+                    <div class="why-card animate-in">
+                        <div class="why-card-num">01</div>
+                        <h3 class="why-card-title">Projeto 100% personalizado</h3>
+                        <p class="why-card-desc">Nada de template ou solução genérica. Construído sob medida para a realidade da Rondave.</p>
+                    </div>
+                    <div class="why-card animate-in">
+                        <div class="why-card-num">02</div>
+                        <h3 class="why-card-title">Plano de ação consistente</h3>
+                        <p class="why-card-desc">Agente libera o tempo do seu time enquanto estruturamos marketing e comercial em paralelo.</p>
+                    </div>
+                    <div class="why-card animate-in">
+                        <div class="why-card-num">03</div>
+                        <h3 class="why-card-title">Entrega em 45 dias</h3>
+                        <p class="why-card-desc">Sem enrolação. Sem ciclos infinitos. Prazo definido e entregue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 11: PRÓXIMOS PASSOS ============ -->
+        <div class="slide">
+            <div class="slide-badge">11 / 12</div>
+            <div class="slide-content">
+                <p class="eyebrow animate-in" style="text-align: center;">Próximos Passos</p>
+                <h2 class="slide-title animate-in" style="text-align: center;">Como <span class="accent">seguimos</span></h2>
+
+                <div class="next-steps">
+                    <div class="next-step animate-in">
+                        <div class="next-step-num">1</div>
+                        <div class="next-step-text">Assinatura do contrato
+                            <div class="next-step-sub">Envio imediato após fechamento</div>
+                        </div>
+                    </div>
+                    <div class="next-step animate-in">
+                        <div class="next-step-num">2</div>
+                        <div class="next-step-text">Kickoff + alinhamento técnico
+                            <div class="next-step-sub">Até 3 dias úteis após assinatura</div>
+                        </div>
+                    </div>
+                    <div class="next-step animate-in">
+                        <div class="next-step-num">3</div>
+                        <div class="next-step-text">Primeiro encontro de consultoria + início do desenvolvimento
+                            <div class="next-step-sub">Trabalho em paralelo nas duas frentes</div>
+                        </div>
+                    </div>
+                    <div class="next-step animate-in">
+                        <div class="next-step-num">4</div>
+                        <div class="next-step-text">Go-live do agente + entregáveis da consultoria
+                            <div class="next-step-sub">45 dias após kickoff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ SLIDE 12: FECHAMENTO ============ -->
+        <div class="slide slide-glow">
+            <div class="slide-badge">12 / 12</div>
+            <div class="slide-content closing">
+                <h1 class="closing-title animate-in">Vamos <span class="grad">nessa?</span></h1>
+                <div class="closing-cta animate-in">Assinar proposta e começar segunda-feira</div>
+
+                <div class="closing-contact animate-in">
+                    <div class="closing-contact-name">Eduardo Salles</div>
+                    <div class="closing-contact-info">CEO · Vektoz</div>
+                    <div class="closing-contact-info"><a href="mailto:eduardo@vektoz.com.br">eduardo@vektoz.com.br</a></div>
+                </div>
+
+                <p class="closing-tagline animate-in">Vektoz · Inteligência Artificial que Impulsiona seu Futuro</p>
+            </div>
+        </div>
+
+    </div><!-- /.slide-deck -->
+
+    <!-- Navigation -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()" aria-label="Slide anterior">←</button>
+        <span class="slide-counter"><span id="current">1</span> / <span id="total">12</span></span>
+        <button class="nav-btn" onclick="nextSlide()" aria-label="Próximo slide">→</button>
+    </div>
+
+    <script>
+        let current = 1;
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        document.getElementById('total').textContent = total;
+
+        function animateCount(el) {
+            const target = parseInt(el.dataset.count, 10);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1400;
+            const start = performance.now();
+            function tick(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const value = Math.floor(target * eased);
+                el.textContent = value + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+                else el.textContent = target + suffix;
+            }
+            requestAnimationFrame(tick);
+        }
+
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > total) n = total;
+            const prev = current;
+            current = n;
+            slides.forEach((s, i) => {
+                s.classList.remove('prev');
+                if (i === n - 1) {
+                    s.classList.add('active');
+                } else {
+                    if (i < n - 1) s.classList.add('prev');
+                    s.classList.remove('active');
+                }
+            });
+            document.getElementById('current').textContent = n;
+            document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+
+            // Trigger counter animations on active slide
+            setTimeout(() => {
+                const activeSlide = slides[n - 1];
+                activeSlide.querySelectorAll('[data-count]').forEach(el => {
+                    el.textContent = '0' + (el.dataset.suffix || '');
+                    animateCount(el);
+                });
+            }, 900);
+        }
+
+        function nextSlide() { showSlide(current + 1); }
+        function prevSlide() { showSlide(current - 1); }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+                e.preventDefault();
+                nextSlide();
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+                e.preventDefault();
+                prevSlide();
+            }
+            if (e.key === 'f' || e.key === 'F') {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+            if (e.key === 'Home') { e.preventDefault(); showSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); showSlide(total); }
+        });
+
+        // Click advances but not on nav controls
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-controls') && !e.target.closest('a')) {
+                const x = e.clientX;
+                const w = window.innerWidth;
+                if (x > w * 0.3) nextSlide();
+                else prevSlide();
+            }
+        });
+
+        showSlide(1);
+    </script>
+</body>
+</html>
