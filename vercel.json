@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd projects/propostas/lucas-noob && npm run build",
+  "outputDirectory": "projects/propostas/lucas-noob/.next",
+  "devCommand": "cd projects/propostas/lucas-noob && npm run dev"
+}
