@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd projects/propostas/lucas-noob && npm run build",
+  "outputDirectory": "projects/propostas/lucas-noob/.next",
+  "framework": "nextjs",
+  "rootDirectory": "projects/propostas/lucas-noob"
+}
