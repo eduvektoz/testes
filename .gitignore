@@ -3,3 +3,5 @@ CLAUDE.local.md
 .claude/settings.local.json
 node_modules/
 .next/
+.claude/skills/extract-design-system/
+.claude/skills/frontend-slides/
