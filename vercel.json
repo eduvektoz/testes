@@ -1,4 +1,4 @@
 {
-  "buildCommand": "npm ci --prefix projects/propostas/lucas-noob && npm run build --prefix projects/propostas/lucas-noob",
+  "buildCommand": "cd projects/propostas/lucas-noob && npm ci && npm run build",
   "outputDirectory": "projects/propostas/lucas-noob/.next"
 }
